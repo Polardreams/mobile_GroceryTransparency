@@ -1,0 +1,57 @@
+<div class="container">
+    <header>
+        <div class="row justify-content-start">
+            
+            <div class="row">
+                <div class="col-10">
+                    <form>
+                        <div class="row">
+                            <div class="col-7"><input class="form-control" type="Text" placeholder="Produkt, Kategorie"/></div>
+                            <div class="col-5"><button class="form-control" type="submit">suchen</button></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-2" ><input type="image" src="../../assets/images/icon_personal.png" /></div>
+            </div>            
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="row">
+                <div class="col-3">
+                    <button class="btn btn-light">Sortieren</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-light">Discounter</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-light">Suchoption</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </header>
+    <main>
+        <app-card-for-main [temp]="products"></app-card-for-main>
+    </main>
+    <nav>
+        <hr>
+        <div class="row">
+            <div class="col-3">
+                <div class="row"><input type="image" src="../../assets/images/icon_discount.png" /></div>
+                <div class="row"><span >Angebote</span></div>
+            </div>
+            <div class="col-3">
+                <div class="row"><input type="image" src="../../assets/images/icon_shoppinglist.png" /></div>
+                <div class="row"><span >Einkauf</span></div>
+            </div>
+            <div class="col-3">
+                <div class="row"><input type="image" src="../../assets/images/icon_favorits.png" /></div>
+                <div class="row"><span >Favoriten</span></div>
+            </div>
+            <div class="col-3">
+                <div class="row"><input type="image" src="../../assets/images/icon_setting.png" /></div>
+                <div class="row"><span >Optionen</span></div>
+            </div>
+        </div>
+    </nav>
+</div>
