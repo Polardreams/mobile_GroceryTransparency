@@ -1,0 +1,22 @@
+<div *ngFor="let favorit of products">
+    <div class="col-4" style="padding-left: 2px;padding-right: 2px;">
+        <img src="{{favorit.pic_url}}" style="width:80px;height:80px;object-fit:cover;margin-left: 5px;" (click)="getDetails(favorit.id)"/>
+    </div>
+    <div class="col-3 fs-6" style="padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;">
+        {{favorit.title}}
+    </div>
+    <div class="col-1" style="padding-left: 2px;padding-right: 2px;">
+        <img src={{getComopaniePic(favorit.companie)}} style="width:15px;height:15px;object-fit:contain;"/>
+    </div>
+    <div class="col-3">
+        <div class="row">
+            <div style="position:relative;top:12px;font-size: 12px;">{{favorit.discount}}</div>
+        </div>
+        <div class="row" >
+            <div style="position:relative;top:15px;font-size: 14px;">{{favorit.new_price}}€</div>
+        </div>
+    </div>
+    <div class="col-1 fs-3" style="margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto; padding-left: 2px;padding-right: 2px;">
+        <app-submenu-cardforfavorits [id]="favorit.id" [alllists]="alllists" [service_Favorits]="service_managingFavorits"></app-submenu-cardforfavorits>
+    </div>
+</div>

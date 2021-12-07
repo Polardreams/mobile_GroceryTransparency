@@ -1,15 +1,15 @@
 export class CardContent{
-    id!:number;
-    favflag!:boolean;
-    title!:string;
-    pic_url!:string;
-    pic_companie!:string;
-    new_price!:number;
-    companie!:number;
-    discount!:string;
-    date!:Date;
-    list!:any[];
+    id:number;
+    favflag:boolean;
+    title:string;
+    pic_url:string;
+    pic_companie:string;
+    new_price:number;
+    companie:number;
+    discount:string;
+    date:Date;
 
+    
     constructor(id:number, favflag:boolean, title:string, pic_url:string, pic_companie:string, new_price:number, companie:number, discount:string, date:Date) {
         this.id = id;
         this.favflag = favflag;
@@ -21,5 +21,5 @@ export class CardContent{
         this.date = date;
         this.pic_companie = pic_companie;
     }
-
+ 
 }

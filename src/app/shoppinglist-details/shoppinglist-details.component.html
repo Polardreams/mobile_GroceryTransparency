@@ -1,0 +1,39 @@
+
+<div *ngFor="let card of products">
+    <div class="row border rounded">
+        <div class="col-5 border" style="padding-left: 2px;padding-right: 2px;">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="card.ischeck" [ngModelOptions]="{standalone: true}">
+            <input class="form-number-input"type="number" style="width: 60px;" min=1 [(ngModel)]="card.amount" name="shopListCheck" [ngModelOptions]="{standalone: true}">
+            <img src="{{card.pic_url}}" style="width:80px;height:80px;object-fit:cover;margin-left: 5px;" />
+        </div>
+        <div class="col-3 border fs-6" style="padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;">
+            {{card.title}}
+        </div>
+        <div class="col-1 border" style="padding-left: 2px;padding-right: 2px;">
+            <img src={{getComopaniePic(card.cid)}} style="width:15px;height:15px;object-fit:contain;"/>
+        </div>
+        <div class="col-2 border">
+            <div class="row">
+                <div style="position:relative;top:12px;font-size: 12px;">{{card.discount}}</div>
+            </div>
+            <div class="row" >
+                <div style="position:relative;top:15px;font-size: 14px;">{{card.new_price}}€</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="position-fixed start-50 top-50">
+    <button class="btn btn-primary" (click)="deleteSelectedProducts()">löschen</button><br>
+    <button class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#ShopDetailMenu">hinzufügen</button>
+    <div id="ShopDetailMenu" class="collapse">
+        <button class="btn btn-light" routerLink="main">wählen aus Angeboten</button>
+        <button class="btn btn-light" routerLink="*">wählen aus Favoriten</button>
+    </div>
+</div>
+
+<div class="position-fixed start-0 top-50"> 
+    <button class="btn btn-secondary" (click)="goBack()">zurück</button>
+</div>
+
+

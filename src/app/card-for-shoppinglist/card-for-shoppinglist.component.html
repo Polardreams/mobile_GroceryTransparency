@@ -1,0 +1,21 @@
+<div *ngFor="let card of shoppinglists">
+    <div class="row border rounded">
+        <div class="col-8" style="padding-left: 2px;padding-right: 2px;" >
+            <button class="btn btn-light" id="span_name" data-bs-toggle="collapse" [attr.data-bs-target]="'#targetRename'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">{{card.name}}</button>
+            <div [attr.id]="'targetRename'+card.id" class="collapse">
+                <input type="text" [(ngModel)]="card.name"> 
+                <button id="btn_close" data-bs-toggle="collapse" [attr.data-bs-target]="'#targetRename'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">X</button>
+            </div>
+            
+        </div>
+        <div class="col-3">
+            <button class="btn btn-light" (click)="navigateToDetails(card.id)">öffnen</button>
+        </div>
+        <div class="col-1 fs-3" style="margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto; padding-left: 2px;padding-right: 2px;">
+            
+            <app-submenu-cardforshoppinglist [id]="card.id"></app-submenu-cardforshoppinglist>
+        </div>
+        
+    </div>
+</div>
+<button class="btn btn-light position-fixed top-50 start-50 bg-light" (click)="createShoppingList()">Einkaufsliste erstellen</button>

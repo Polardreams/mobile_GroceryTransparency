@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+
 @font-face {
     font-family: "Capriola";
     src:local("Capriola"), URL("./assets/font/Capriola-Regular.ttf") format("truetype")

@@ -1,0 +1,25 @@
+<main>
+    <app-cards-for-favorits [favorits]="favorits" [alllists]="alllists" [service_managingFavorits]="service_managingFavorits"></app-cards-for-favorits>
+</main>
+
+<nav>
+    <hr>
+    <div class="row position-fixed bottom-0 start-0 bg-light">
+        <div class="col-3">
+            <div class="row"><a routerLink="../main"><input type="image"  src="../../assets/images/icon_discount.png" /></a></div>
+            <div class="row"><span >Angebote</span></div>
+        </div>
+        <div class="col-3">
+            <div class="row"><a routerLink="../shoppinglist"><input type="image" src="../../assets/images/icon_shoppinglist.png" /></a></div>
+            <div class="row"><span >Einkauf</span></div>
+        </div>
+        <div class="col-3">
+            <div class="row"><a routerLink="../favorits"><input type="image" src="../../assets/images/icon_favorits.png" /></a></div>
+            <div class="row"><span >Favoriten</span></div>
+        </div>
+        <div class="col-3">
+            <div class="row"><input type="image" src="../../assets/images/icon_setting.png" /></div>
+            <div class="row"><span >Optionen</span></div>
+        </div>
+    </div>
+</nav>
