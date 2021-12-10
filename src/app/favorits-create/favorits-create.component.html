@@ -1,0 +1,30 @@
+<div class="container">
+<form id="formCreate" method="post" enctype="multipart/form-data" action="">
+    <strong>bitte keine Bilder größer als 3 MB hochladen</strong>
+    <input id="PicDialog" class="form-control" type="file" size=3000000 name="picture" (change)="preview($event)"/>
+    <img src="../../assets/images/camera.png" style="width:50px;height:50px">
+    <img id="preview" [src]="imageSrc" style="width:150px;height:150px"/>
+    <select class="form-select" id="cid">
+        <option value=1>Lidl</option>
+        <option value=2>Rewe</option>
+        <option value=3>Kaufland</option>
+        <option value=4>Aldi Nord</option>
+        <option value=5>Aldi Süd</option>
+    </select>
+    <input class="form-control" type="text" id="price" placeholder="Preis" value="1.55"><!--regex-->
+    <input class="form-control" type="text" id="title" placeholder="Bezeichnung" value="Testprodukt">
+    <input class="form-control" type="textarea" id="description" placeholder="Beschreibung" value="Das Produkt ist ganz neu.">
+    <input class="form-control" type="text" id="amount" placeholder="Menge" value="100">
+    <select class="form-select" id="amount_suffix">
+        <option>g</option>
+        <option>kg</option>
+        <option>l</option>
+        <option>ml</option>
+        <option>Stück</option>
+        <option></option>
+    </select>
+    <input class="form-control" type="text" id="price_per_amount" placeholder="Preis pro Menge" value="1.55€ pro 100g">
+    <input class="form-control" type="text" id="hint" placeholder="Hinweis" value="nur für kurze Zeit">
+    <button (click)="postForm()">erstelle Favorit</button>
+</form>
+</div>

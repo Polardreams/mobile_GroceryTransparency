@@ -6,6 +6,7 @@ import { Searchfilter } from "./searchfilter";
 import { Discounterfilter } from "./discounterfilter";
 import { PermissionNpolicy } from "./permission-npolicy";
 import { Shoppinglist } from "./shoppinglists";
+import { CreateProduct } from "./create-product";
 
 export interface GT_Response_List {
     iserror:boolean;
@@ -52,4 +53,10 @@ export interface GT_Response_ShoppingListAddToProducts {
     iserror:boolean;
     error:string;
     responseShoppinglist:number;
+}
+
+export interface GT_Response_CreateProduct {
+    iserror:boolean;
+    error:string;
+    response:CreateProduct;
 }

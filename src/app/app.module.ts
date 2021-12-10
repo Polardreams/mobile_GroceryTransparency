@@ -16,6 +16,7 @@ import { ShoppinglistDetailsComponent } from './shoppinglist-details/shoppinglis
 import { FavoritsScreenComponent } from './favorits-screen/favorits-screen.component';
 import { CardsForFavoritsComponent } from './cards-for-favorits/cards-for-favorits.component';
 import { SubmenuCardforfavoritsComponent } from './submenu-cardforfavorits/submenu-cardforfavorits.component';
+import { FavoritsCreateComponent } from './favorits-create/favorits-create.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SubmenuCardforfavoritsComponent } from './submenu-cardforfavorits/subme
     FavoritsScreenComponent,
     CardsForFavoritsComponent,
     SubmenuCardforfavoritsComponent,
+    FavoritsCreateComponent,
     
   ],
   imports: [
