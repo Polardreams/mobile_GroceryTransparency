@@ -89,34 +89,7 @@
                                         <label for="discounter_rewe">Rewe</label><br>
                                         <input id="discounter_lidl" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_lidl" [ngModelOptions]="{standalone: true}">
                                         <label for="discounter_rewe">Lidl</label><br>
-                                        <select id="categories" [(ngModel)]="filterPnp.discounterfilter.categorie" [ngModelOptions]="{standalone: true}">
-                                            <option [value]="categories.ohneKategorie.index">{{categories.ohneKategorie.name}}</option>
-                                            <option [value]="categories.dressings.index">{{categories.dressings.name}}</option>
-                                            <option [value]="categories.getreide.index">{{categories.getreide.name}}</option>
-                                            <option [value]="categories.desserts.index">{{categories.desserts.name}}</option>
-                                            <option [value]="categories.salziges.index">{{categories.salziges.name}}</option>
-                                            <option [value]="categories.fette.index">{{categories.fette.name}}</option>
-                                            <option [value]="categories.obst.index">{{categories.obst.name}}</option>
-                                            <option [value]="categories.alkfrei.index">{{categories.alkfrei.name}}</option>
-                                            <option [value]="categories.alk.index">{{categories.alk.name}}</option>
-                                            <option [value]="categories.kaffee.index">{{categories.kaffee.name}}</option>
-                                            <option [value]="categories.fleisch.index">{{categories.fleisch.name}}</option>
-                                            <option [value]="categories.gefluegel.index">{{categories.gefluegel.name}}</option>
-                                            <option [value]="categories.fisch.index">{{categories.fisch.name}}</option>
-                                            <option [value]="categories.milch.index">{{categories.milch.name}}</option>
-                                            <option [value]="categories.vegan.index">{{categories.vegan.name}}</option>
-                                            <option [value]="categories.fertig.index">{{categories.fertig.name}}</option>
-                                            <option [value]="categories.tiere.index">{{categories.tiere.name}}</option>
-                                            <option [value]="categories.pflanzen.index">{{categories.pflanzen.name}}</option>
-                                            <option [value]="categories.moebel.index">{{categories.moebel.name}}</option>
-                                            <option [value]="categories.kosmetik.index">{{categories.kosmetik.name}}</option>
-                                            <option [value]="categories.geraete.index">{{categories.geraete.name}}</option>
-                                            <option [value]="categories.medien.index">{{categories.medien.name}}</option>
-                                            <option [value]="categories.haushalt.index">{{categories.haushalt.name}}</option>
-                                            <option [value]="categories.kleidung.index">{{categories.kleidung.name}}</option>
-                                            <option [value]="categories.aufstrich.index">{{categories.aufstrich.name}}</option>
-                                        </select>  
-                                        <label for="categories">Kategorie</label><br>  
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--> 
                                     </fieldset>
                                 </form>
                             </div>
@@ -213,6 +186,34 @@ Duis autem vel eum iriure
 
             </div>
         </div>
+        <select id="categories" [(ngModel)]="filterPnp.discounterfilter.categorie" [ngModelOptions]="{standalone: true}" (change)="displaySearchResultWithoutKeyowrd()">
+            <option [value]="categories.ohneKategorie.index">{{categories.ohneKategorie.name}}</option>
+            <option [value]="categories.dressings.index">{{categories.dressings.name}}</option>
+            <option [value]="categories.getreide.index">{{categories.getreide.name}}</option>
+            <option [value]="categories.desserts.index">{{categories.desserts.name}}</option>
+            <option [value]="categories.salziges.index">{{categories.salziges.name}}</option>
+            <option [value]="categories.fette.index">{{categories.fette.name}}</option>
+            <option [value]="categories.obst.index">{{categories.obst.name}}</option>
+            <option [value]="categories.alkfrei.index">{{categories.alkfrei.name}}</option>
+            <option [value]="categories.alk.index">{{categories.alk.name}}</option>
+            <option [value]="categories.kaffee.index">{{categories.kaffee.name}}</option>
+            <option [value]="categories.fleisch.index">{{categories.fleisch.name}}</option>
+            <option [value]="categories.gefluegel.index">{{categories.gefluegel.name}}</option>
+            <option [value]="categories.fisch.index">{{categories.fisch.name}}</option>
+            <option [value]="categories.milch.index">{{categories.milch.name}}</option>
+            <option [value]="categories.vegan.index">{{categories.vegan.name}}</option>
+            <option [value]="categories.fertig.index">{{categories.fertig.name}}</option>
+            <option [value]="categories.tiere.index">{{categories.tiere.name}}</option>
+            <option [value]="categories.pflanzen.index">{{categories.pflanzen.name}}</option>
+            <option [value]="categories.moebel.index">{{categories.moebel.name}}</option>
+            <option [value]="categories.kosmetik.index">{{categories.kosmetik.name}}</option>
+            <option [value]="categories.geraete.index">{{categories.geraete.name}}</option>
+            <option [value]="categories.medien.index">{{categories.medien.name}}</option>
+            <option [value]="categories.haushalt.index">{{categories.haushalt.name}}</option>
+            <option [value]="categories.kleidung.index">{{categories.kleidung.name}}</option>
+            <option [value]="categories.aufstrich.index">{{categories.aufstrich.name}}</option>
+        </select>  
+        <label for="categories">Kategorie</label><br> 
         <hr>
     </header>
     <main>

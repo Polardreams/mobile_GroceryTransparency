@@ -238,7 +238,23 @@ export class MainScreenComponent implements AfterViewInit{
     this.service_managingFilterNPolicy.updatePermissionNpolicyintoSession();
     this.service_managingFilterNPolicy.readNpostFilterintoDB(1);
     this.service_managingFilterNPolicy.readNpostPolicyintoDB(1);
+
+    //Suche ohne Keyword
+    this.displaySearchResultWithoutKeyowrd();
+
   }
+
+  displaySearchResultWithoutKeyowrd () {
+    if (this.filterPnp.searchfilter.allweeks) {
+      console.log("test");
+      if (this.searchterm=="") 
+      this.searchterm = "*";
+      this.searchForProducts();
+    } else {
+      this.getcurrentProducts(this.filterPnp.discounterfilter.discount_kaufland_storeid);
+    }
+  }
+
 
   acceptAllTerms () {
     this.filterPnp.permissionNpolicy.camera = true;

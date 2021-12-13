@@ -8,7 +8,7 @@
                 <img src="../../assets/images/star_grey.png" style="width:25px;height:25px;margin-left: 5px;"/>
             </ng-template>
 
-            <img src="{{card.pic_url}}" style="width:80px;height:80px;object-fit:cover;margin-left: 5px;" (click)="getDetails(card.id)"/>
+            <img src="{{card.pic_url}}" loading="lazy" style="width:80px;height:80px;object-fit:cover;margin-left: 5px;" (click)="getDetails(card.id)"/>
         </div>
         <div class="col-3 fs-6" style="padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;">
             {{card.title}}
