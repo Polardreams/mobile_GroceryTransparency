@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { CreateProduct } from '../_models/create-product';
 import { GT_Response_CreateProduct, GT_Response_Resonse } from '../_models/Response';
+import { ManagingFavoritsService } from '../_Services/managing-favorits.service';
 
 @Component({
   selector: 'app-favorits-create',
@@ -14,15 +16,16 @@ export class FavoritsCreateComponent implements AfterViewInit{
   imageSrc!: string;
   file!:File;
   http:HttpClient;
+  router!:Router;
+  service_Favorits!:ManagingFavoritsService;
 
-  constructor(_http:HttpClient) { 
+  constructor(_http:HttpClient, private _router:Router, _service_Favorits:ManagingFavoritsService) { 
     this.owner = 0;
     this.http = _http;
+    this.router = _router;
+    this.service_Favorits = _service_Favorits;
   }
   ngAfterViewInit(): void {
-    //document.getElementById("formCreate")?.setAttribute("action", environment.backendUrl+"createProduct.php?");
-    document.getElementById("formCreate")?.setAttribute("action", "http://localhost/dashboard/myLocal/TransparencyGrocery/mobilebackend/"+"createProduct.php?");
-   
     this.owner = 1;
   }
 
@@ -54,15 +57,14 @@ export class FavoritsCreateComponent implements AfterViewInit{
     obj.pic = this.imageSrc;
     obj.owner = 1;
     
-    console.log(JSON.stringify(obj));
-
     var formData = new FormData();
     formData.append("body", JSON.stringify(obj));
     formData.append("filename", this.file.name);
-    console.log(formData);
-    this.http.post<GT_Response_CreateProduct>(environment.backendUrl+"createProduct.php?",formData).subscribe((response) => {
-      console.log(JSON.stringify(response));
+    this.http.post<GT_Response_CreateProduct>(environment.backendUrl+"createProduct.php?",formData).subscribe((res) => {
+      this.service_Favorits.addProductToFavorits(res.responseCreateProduct.id);
+      this.router.navigate(["favorits"]);
     });
+
   }
 
 }

@@ -20,11 +20,14 @@ export class FavoritsScreenComponent implements AfterViewInit, OnChanges {
     this.service_fetchAllLists = _service_fetchAllLists;
     this.service_fetchAllLists.fetchNwriteintoSession(1);
   }
+
   ngOnChanges(changes: SimpleChanges): void {
+    
     this.service_fetchAllLists.getAlllists().subscribe((datas) => {
       this.alllists = datas;
       this.alllists.Fav.forEach((items, index, arr) => {
         this.favorits = arr;
+              
       });
     });
   }

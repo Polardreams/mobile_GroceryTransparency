@@ -60,13 +60,20 @@ export class FetchAllListsService {
       }
       this.subject.next(this.alllists);
       
-      if (localStorage.getItem("alllists")!=null) {
-        localStorage.removeItem("alllists");
-        localStorage.setItem("alllists", JSON.stringify(this.alllists));  
-      } else {
-        console.error(`Polardreams [fetchNwriteintoSession]- error: session.getItem ist null`);
-      }
+      if (localStorage.getItem("alllists")==null) {
+        this.iniSessionFilterNPolicy();
+      } 
+      localStorage.removeItem("alllists");
+      localStorage.setItem("alllists", JSON.stringify(this.alllists));  
+
     });
+  }
+
+  private iniSessionFilterNPolicy () {
+    if (localStorage.getItem("alllists")==null) {
+      this.alllists = new Alllists();
+      localStorage.setItem("alllists", JSON.stringify(this.alllists));
+    }
   }
 
   tinyintToBool(int:any):boolean {

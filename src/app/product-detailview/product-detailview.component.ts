@@ -21,8 +21,19 @@ export class ProductDetailviewComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
     this.service_productDetails.getcurrentProduct(history.state.data).subscribe((response) => {
+      let pic_url_arr:any = [];
+      
+      if (response.response.pic_url.split(',').length>1) {
+        response.response.pic_url.split(',').forEach((item) => {
+          pic_url_arr.push(item.slice(0, item.indexOf(' ')));//aus zeitgründen immer für das erste Element entscheiden. eigentlich müsste eine Prüfung erfolgen.
+        });
+        console.log("test: " + JSON.stringify(pic_url_arr));
+      } else {
+        console.log("else ");
+        pic_url_arr.push(response.response.pic_url);
+      }
+      response.response.pic_url = pic_url_arr[0];
       this.product = response.response;
-      console.log("test: "+JSON.stringify(this.product));
     });
     
   }

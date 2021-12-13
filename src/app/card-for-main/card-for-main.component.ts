@@ -42,7 +42,16 @@ export class CardForMainComponent implements OnChanges{
     this.cardcontent = [];
     if (this._productlist!=undefined) {
       this._productlist.forEach((item, index, arr) => {              
-        this.cardcontent.push(new CardContent(item.id, this.checkFavStat(item.id), item.title, item.pic_url, this.getComopaniePic(item.companie), item.new_price, item.companie, item.discount, item.date));
+        let pic_url_arr:any = [];
+        if (item.pic_url.split(',').length>1) {
+          item.pic_url.split(',').forEach((item) => {
+            pic_url_arr.push(item.slice(0, item.indexOf(' ')));//aus zeitgründen immer für das erste Element entscheiden. eigentlich müsste eine Prüfung erfolgen.
+          });
+        } else {
+          pic_url_arr.push(item.pic_url);
+        }
+        
+        this.cardcontent.push(new CardContent(item.id, this.checkFavStat(item.id), item.title, pic_url_arr[0], this.getComopaniePic(item.companie), item.new_price, item.companie, item.discount, item.date));
       });
     }
   }

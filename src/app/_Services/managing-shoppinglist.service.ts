@@ -10,6 +10,7 @@ import { FetchAllListsService } from './fetch-all-lists.service';
 import { Product } from '../_models/Product';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -123,16 +124,34 @@ export class ManagingShoppinglistService {
     if (temp.length<=1) {
       this.http.get<GT_Response_ShoppingList>(environment.backendUrl+"updateShoppingList.php?id="+1+'&func=0&name='+temp[0].name).subscribe((data) => {
         console.log(`Polardreams [server]: ${JSON.stringify(data)}`);
-        data.responseShoppinglist.products = temp[0].products;
-        this.alllists.Shop.push(data.responseShoppinglist);
-        this.updateShoppingListsIntoSession();
+        data.responseShoppinglist.products = [];
+        let resCount = temp[0].products.length;
+        let n = 0;
+        temp[0].products.forEach(products => {
+          this.copyProductToShoppingList(data.responseShoppinglist.id, products.groceryid).subscribe((res) => {
+            n++;
+            res.responseShoppinglist.ischeck = products.ischeck;
+            res.responseShoppinglist.amount = products.amount;
+            data.responseShoppinglist.products.push(res.responseShoppinglist);
+            if (resCount==n) {
+              console.log("test: Speicherung");
+              
+              this.alllists.Shop.push(data.responseShoppinglist);
+              console.log("test list ID : " + data.responseShoppinglist.id);
+              this.postShoppingListCheckNAmountIntoDB(data.responseShoppinglist.id);
+            }
+          });
+        });
       });
   
     } else {
       console.error(`Polardreams [copyShoppingListintoDBNSession]: ShoppingList ID ist nicht eindeutig. ${JSON.stringify(temp)}`);
     }
   }
-
+  
+  copyProductToShoppingList(id:number, pid:number) {
+    return this.http.get<GT_Response_ShoppingListAddToProducts>(environment.backendUrl+"updateShoppingList.php?id="+1+"&func=3&shlid="+id+"&gid="+pid);
+  }
   addProductToShoppingList(id:number, pid:number) {
     
     this.http.get<GT_Response_ShoppingListAddToProducts>(environment.backendUrl+"updateShoppingList.php?id="+1+"&func=3&shlid="+id+"&gid="+pid).subscribe((data) => {
@@ -143,7 +162,7 @@ export class ManagingShoppinglistService {
         if (id == list.id) {
           var temp = new ShoppingListProducts();
           temp.groceryid = pid;
-          temp.shoppingid = data.responseShoppinglist;
+          temp.shoppingid = data.responseShoppinglist.shoppingid;
           list.products.push(temp); 
         }
       });
@@ -155,11 +174,13 @@ export class ManagingShoppinglistService {
   postShoppingListCheckNAmountIntoDB(id:number) {
     this.updateShoppingListsIntoSession();
     var temp = this.alllists.Shop.filter((lists) => {
+      console.log("lists before update: " + lists.id + " serach for: "+id);
       return (lists.id == id)? lists:null;
     });
-
+    console.log("found: " + JSON.stringify(temp[0]));
     if (temp.length==1) {
       temp[0].products.forEach((item, index, arr) => {
+        console.log("test post: " +item.id+" "+ item.amount+" "+item.ischeck);
         this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+1+"&func=5&pid="+item.id+"&amount="+item.amount).subscribe((datas) => {
           console.log(`Polardreams [server]: ${JSON.stringify(datas)}`);
         });

@@ -20,31 +20,33 @@ export class CardsForFavoritsComponent implements OnChanges {
   service!:FetchProductdetailsService;
   router!:Router;
   products:Product[] = [];
+  flag:boolean = true;
+
+  test:number = 0;
 
   constructor(_service:FetchProductdetailsService, _router:Router) { 
     this.service = _service;
     this.router = _router;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.favorits) {
+  ngOnChanges(changes: SimpleChanges): void {  
+    if (this.favorits && this.flag) {
       this.products = [];
+      this.flag = false;
       this.favorits.forEach((items, index, arr) => {
         this.service.getcurrentProduct(items.grocerie).subscribe((datas) => {
           this.products.push(datas.response);
         });
       });
-    } else {
-      this.service_managingFavorits.getAllLists().subscribe((datas) => {
-        var temp = datas.Fav;
-        this.products = [];
-        temp.forEach((items, index, arr) => {
-          this.service.getcurrentProduct(items.grocerie).subscribe((datas) => {
-            this.products.push(datas.response);
-          });
-        });
-      });
     }
+
+    this.service_managingFavorits.getAllLists().subscribe((lists) => {
+      
+      console.log(JSON.stringify(lists));
+      window.location.reload();//Es ist weiterhin unklar, warum hier nicht ordnungsgemäßg geladen wird
+       
+    });
+  
   }
 
   public getDetails(id:number) {

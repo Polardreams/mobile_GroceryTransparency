@@ -73,6 +73,7 @@ export class ManagingFavoritsService {
           return (item.grocerie!=pid)? item : null;
         });
         this.alllists.Fav = tmp;
+        this.subject.next(this.alllists);
         this.updateShoppingListsIntoSession();
       } else {
         console.error(`Polardreams [Server-Error]: ${response.error}`);
