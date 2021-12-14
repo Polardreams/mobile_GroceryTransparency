@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { CreateProduct } from '../_models/create-product';
 import { GT_Response_CreateProduct, GT_Response_Resonse } from '../_models/Response';
 import { ManagingFavoritsService } from '../_Services/managing-favorits.service';
-
+import * as globals from '../../global';
 @Component({
   selector: 'app-favorits-create',
   templateUrl: './favorits-create.component.html',
@@ -26,7 +26,7 @@ export class FavoritsCreateComponent implements AfterViewInit{
     this.service_Favorits = _service_Favorits;
   }
   ngAfterViewInit(): void {
-    this.owner = 1;
+    this.owner = globals.account.prototype.id;
   }
 
   preview(event:any) {
@@ -55,7 +55,7 @@ export class FavoritsCreateComponent implements AfterViewInit{
     obj.new_price = parseFloat(document.querySelector("#price")?.getAttribute("value") || "");
     obj.cid = parseInt(sel_cid.value);
     obj.pic = this.imageSrc;
-    obj.owner = 1;
+    obj.owner = globals.account.prototype.id;
     
     var formData = new FormData();
     formData.append("body", JSON.stringify(obj));

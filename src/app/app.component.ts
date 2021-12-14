@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, SimpleChanges } from '@angular/core';
+import { GenerateAccountService } from './_Services/generate-account.service';
+import * as globals from '../global';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'GroceryTransparency';
+  
+  constructor(_account:GenerateAccountService) {
+    _account.checkAccount();
+  }
+  
 }

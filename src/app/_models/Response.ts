@@ -61,3 +61,9 @@ export interface GT_Response_CreateProduct {
     error:string;
     responseCreateProduct:CreateProduct;
 }
+
+export interface GT_Response_Account {
+    iserror:boolean;
+    error:string;
+    response:number;
+}
