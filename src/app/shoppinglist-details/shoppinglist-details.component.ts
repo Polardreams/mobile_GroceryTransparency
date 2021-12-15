@@ -6,7 +6,7 @@ import { Product } from '../_models/Product';
 import { ShoppingListProducts } from '../_models/shopping-list';
 import { FetchAllListsService } from '../_Services/fetch-all-lists.service';
 import { ManagingShoppinglistService } from '../_Services/managing-shoppinglist.service';
-
+import * as globals from '../../global';
 @Component({
   selector: 'app-shoppinglist-details',
   templateUrl: './shoppinglist-details.component.html',
@@ -23,7 +23,7 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
 
   constructor(_service_fetchalllists:FetchAllListsService, _service_ManageingShoppinglist:ManagingShoppinglistService, _router:Router) { 
     this.service_fetchalllists = _service_fetchalllists;
-    this.service_fetchalllists.fetchNwriteintoSession(1);
+    this.service_fetchalllists.fetchNwriteintoSession(globals.account.prototype.id);
     this.service_ManageingShoppinglist = _service_ManageingShoppinglist;
     this.router = _router;
   }

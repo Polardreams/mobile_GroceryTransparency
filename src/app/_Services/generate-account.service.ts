@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { GT_Response_Account } from '../_models/Response';
 import * as globals from '../../global';
+import { FilterNpolicy } from '../_models/filter-npolicy';
 
 @Injectable({
   providedIn: 'root'
@@ -14,24 +15,24 @@ export class GenerateAccountService {
     this.http = _http;
   }
 
-  checkAccount () {
+
+
+  checkAccount ():number|null {
     if (localStorage.getItem("account")) {
       var check = JSON.parse(localStorage.getItem("account") || "");
       globals.account.prototype.id = check.id;
       console.log("Deine Account ID lautet: " + JSON.stringify(check.id));
+      return check.id;
+      
     } else {
       console.error("Polardreams[error]: Du besitzt keine ID. Ein neues Account wird erstellt.");
-      this.generateAccount();
+      return null;
     }    
   }
 
   generateAccount () {
     let code = this.generateCode();
-    this.http.get<GT_Response_Account>(environment.backendUrl+"/temp_generateAccount.php?code="+code).subscribe((data) => {
-      var account = {id:data.response};
-      localStorage.setItem("account", JSON.stringify(account));
-      console.log("Deine Account wurde mit der ID: " + JSON.stringify(data.response)+" erstellt.");
-    });
+    return this.http.get<GT_Response_Account>(environment.backendUrl+"/temp_generateAccount.php?code="+code);
   }
 
 

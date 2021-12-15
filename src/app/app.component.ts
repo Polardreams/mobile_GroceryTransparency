@@ -8,9 +8,21 @@ import * as globals from '../global';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+  activate:boolean = false;
   constructor(_account:GenerateAccountService) {
-    _account.checkAccount();
+    let id:number|null = _account.checkAccount();
+    if (id==null) {
+      _account.generateAccount().subscribe((data) => {
+        var account = {id:data.response};
+        localStorage.setItem("account", JSON.stringify(account));
+        console.log("Deine Account wurde mit der ID: " + JSON.stringify(data.response)+" erstellt.");
+        globals.account.prototype.id = data.response;
+        this.activate = true;
+      });
+    } else {
+      this.activate = true;
+    }
+    
   }
   
 }

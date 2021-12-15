@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<div *ngIf="activate==false; else elseprivacy">
+    <span>Nutzer Account wird erstellt, bitte warten ...</span>
+</div>
+<ng-template #elseprivacy>
+    <router-outlet></router-outlet>    
+</ng-template>

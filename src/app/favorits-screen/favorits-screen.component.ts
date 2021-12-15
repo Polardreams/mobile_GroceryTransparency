@@ -3,7 +3,7 @@ import { Alllists } from '../_models/alllists';
 import { Favorits } from '../_models/favorits';
 import { FetchAllListsService } from '../_Services/fetch-all-lists.service';
 import { ManagingFavoritsService } from '../_Services/managing-favorits.service';
-
+import * as globals from '../../global';
 @Component({
   selector: 'app-favorits-screen',
   templateUrl: './favorits-screen.component.html',
@@ -18,7 +18,7 @@ export class FavoritsScreenComponent implements AfterViewInit, OnChanges {
   constructor(_service_managingFavorits:ManagingFavoritsService, _service_fetchAllLists:FetchAllListsService) { 
     this.service_managingFavorits = _service_managingFavorits;
     this.service_fetchAllLists = _service_fetchAllLists;
-    this.service_fetchAllLists.fetchNwriteintoSession(1);
+    this.service_fetchAllLists.fetchNwriteintoSession(globals.account.prototype.id);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

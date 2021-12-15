@@ -9,6 +9,10 @@ import { Kauflandstores } from '../_models/kauflandstores';
 import { FetchSearchResultsService } from '../_Services/fetch-search-results.service';
 import { FetchAllListsService } from '../_Services/fetch-all-lists.service';
 import { Alllists } from '../_models/alllists';
+import * as globals from '../../global';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { GenerateAccountService } from '../_Services/generate-account.service';
 
 
 
@@ -34,16 +38,17 @@ export class MainScreenComponent implements AfterViewInit{
   temp_datas!:Product[];
   searchterm:string="";
   alllists!:Alllists;
-
+  http!:HttpClient;
   
 
-  constructor(private _service:FetchCurrentOffersService, private _serviceManagingFilterNPolicy:ManagingFiltersNPolicyService, _service_search:FetchSearchResultsService, _service_alllists:FetchAllListsService) { 
+  constructor(private _http:HttpClient, private _service:FetchCurrentOffersService, private _serviceManagingFilterNPolicy:ManagingFiltersNPolicyService, _service_search:FetchSearchResultsService, _service_alllists:FetchAllListsService) { 
     this.service_managingFilterNPolicy = _serviceManagingFilterNPolicy;
-    this.service_managingFilterNPolicy.fetchNwriteFilterNPolicyintoSession(1);
+    this.service_managingFilterNPolicy.fetchNwriteFilterNPolicyintoSession(globals.account.prototype.id);
     this.service = _service;
     this.service_search = _service_search;
     this.service_alllists = _service_alllists;
-    this.service_alllists.fetchNwriteintoSession(1);
+    this.service_alllists.fetchNwriteintoSession(globals.account.prototype.id);
+    this.http = _http;  
   }
 
   getcurrentProducts (sid:string|null) {
@@ -56,6 +61,7 @@ export class MainScreenComponent implements AfterViewInit{
           let arr:Product[] = [];
           this.productlist = [];
           this.temp_datas = datas.list;
+          
           datas.list.forEach((item, index, array) => {
             if (index <= this.filterPnp.searchfilter.search_result_count) {
               this.productlist.push(item);
@@ -181,16 +187,16 @@ export class MainScreenComponent implements AfterViewInit{
    this.service_managingFilterNPolicy.getFiltersNPolicy().subscribe((fpnp) => {
    this.filterPnp = fpnp;
    this.getcurrentProducts(this.filterPnp.discounterfilter.discount_kaufland_storeid);
-   
    this.service_alllists.getAlllists().subscribe((datas) => {
     this.alllists = datas;
    });
    });
 
    setTimeout(() => {
-    if (!this.filterPnp.permissionNpolicy.policy) { 
-      //let modal = new bootstrap.Modal(document.getElementById("pnpModal") as HTMLInputElement);
-      //modal.show();
+    var btn = document.getElementById("btnpnp") as HTMLButtonElement;
+    if (this.filterPnp.permissionNpolicy.policy==null) { 
+      this.filterPnp = new FilterNpolicy();
+      btn.click();
     } else {
       if (this.filterPnp.permissionNpolicy.localisation) {
         this.checkNUpdateGpsPermission();
@@ -213,34 +219,46 @@ export class MainScreenComponent implements AfterViewInit{
   }
 
   saveFilterNPolicyintoSessionNDB() {
-    var temp = null; 
-    temp = document.getElementById("sort_price_asc") as HTMLInputElement;
-    if (temp.checked) this.filterPnp.sortfilter.sort_price_asc=true; else this.filterPnp.sortfilter.sort_price_asc=false;
-    temp = document.getElementById("sort_price_desc") as HTMLInputElement;
-    if (temp.checked) this.filterPnp.sortfilter.sort_price_desc=true; else this.filterPnp.sortfilter.sort_price_desc=false;
-    temp = document.getElementById("sort_discount_asc") as HTMLInputElement;
-    if (temp.checked) this.filterPnp.sortfilter.sort_discount_asc=true; else this.filterPnp.sortfilter.sort_discount_asc=false;
-     temp = document.getElementById("sort_discount_desc") as HTMLInputElement;
-    if (temp.checked) this.filterPnp.sortfilter.sort_discount_desc=true; else this.filterPnp.sortfilter.sort_discount_desc=false;
-     temp = document.getElementById("group_discounter") as HTMLInputElement;
-    if (temp.checked) this.filterPnp.sortfilter.group_discounter=true; else this.filterPnp.sortfilter.group_discounter=false;
+    
+    this.http.get(environment.backendUrl+"updatefilters.php?id="+globals.account.prototype.id).subscribe(() => {
+      console.log("response updatefilter.php");
+      
+        this.http.get(environment.backendUrl+"updatepnp.php?id="+globals.account.prototype.id).subscribe(() => {
+          console.log("response updatepnp.php");
+          var temp = null; 
+          temp = document.getElementById("sort_price_asc") as HTMLInputElement;
+          if (temp.checked) this.filterPnp.sortfilter.sort_price_asc=true; else this.filterPnp.sortfilter.sort_price_asc=false;
+          temp = document.getElementById("sort_price_desc") as HTMLInputElement;
+          if (temp.checked) this.filterPnp.sortfilter.sort_price_desc=true; else this.filterPnp.sortfilter.sort_price_desc=false;
+          temp = document.getElementById("sort_discount_asc") as HTMLInputElement;
+          if (temp.checked) this.filterPnp.sortfilter.sort_discount_asc=true; else this.filterPnp.sortfilter.sort_discount_asc=false;
+           temp = document.getElementById("sort_discount_desc") as HTMLInputElement;
+          if (temp.checked) this.filterPnp.sortfilter.sort_discount_desc=true; else this.filterPnp.sortfilter.sort_discount_desc=false;
+           temp = document.getElementById("group_discounter") as HTMLInputElement;
+          if (temp.checked) this.filterPnp.sortfilter.group_discounter=true; else this.filterPnp.sortfilter.group_discounter=false;
+      
+          temp = document.getElementById("allweeks") as HTMLInputElement;
+          if (temp.checked) this.filterPnp.searchfilter.allweeks=true; else this.filterPnp.searchfilter.allweeks=false;
+          temp = document.getElementById("currentweeks") as HTMLInputElement;
+          if (temp.checked) this.filterPnp.searchfilter.currentweeks=true; else this.filterPnp.searchfilter.currentweeks=false;
+      
+          if (this.filterPnp.permissionNpolicy.localisation) {
+            this.checkNUpdateGpsPermission();
+          }
+          this.updateProductList();
+          this.service_managingFilterNPolicy.writeFilterNPolicyintoSession(this.filterPnp);
+          this.service_managingFilterNPolicy.readNpostFilterintoDB(globals.account.prototype.id);
+          this.service_managingFilterNPolicy.readNpostPolicyintoDB(globals.account.prototype.id);
+      
+          //Suche ohne Keyword
+          this.displaySearchResultWithoutKeyowrd();
 
-    temp = document.getElementById("allweeks") as HTMLInputElement;
-    if (temp.checked) this.filterPnp.searchfilter.allweeks=true; else this.filterPnp.searchfilter.allweeks=false;
-    temp = document.getElementById("currentweeks") as HTMLInputElement;
-    if (temp.checked) this.filterPnp.searchfilter.currentweeks=true; else this.filterPnp.searchfilter.currentweeks=false;
+        });
+      });
+    
 
-    if (this.filterPnp.permissionNpolicy.localisation) {
-      this.checkNUpdateGpsPermission();
-    }
-    this.updateProductList();
-    this.service_managingFilterNPolicy.writeFilterNPolicyintoSession(this.filterPnp);
-    this.service_managingFilterNPolicy.updatePermissionNpolicyintoSession();
-    this.service_managingFilterNPolicy.readNpostFilterintoDB(1);
-    this.service_managingFilterNPolicy.readNpostPolicyintoDB(1);
 
-    //Suche ohne Keyword
-    this.displaySearchResultWithoutKeyowrd();
+    
 
   }
 
@@ -408,7 +426,7 @@ export class MainScreenComponent implements AfterViewInit{
 
   searchForProducts() {
     this.service_search.getSearchResults(
-      1, 
+      globals.account.prototype.id, 
       this.searchterm, 
       this.getMode(), 
       this.filterPnp.discounterfilter.categorie, 

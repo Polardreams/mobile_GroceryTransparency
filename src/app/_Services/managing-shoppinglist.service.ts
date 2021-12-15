@@ -8,7 +8,7 @@ import { ShoppingListProducts } from '../_models/shopping-list';
 import { GT_Response_Resonse, GT_Response_ShoppingList, GT_Response_ShoppingListAddToProducts } from '../_models/Response';
 import { FetchAllListsService } from './fetch-all-lists.service';
 import { Product } from '../_models/Product';
-
+import * as globals from '../../global';
 
 
 @Injectable({
@@ -60,7 +60,7 @@ export class ManagingShoppinglistService {
     });
     if (temp.length<=1) {
       this.updateShoppingListsIntoSession();
-      this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+1+"&func=2&shlid="+id+"&name="+temp[0].name).subscribe((data) => {
+      this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=2&shlid="+id+"&name="+temp[0].name).subscribe((data) => {
         console.log(`Polardreams [server]: ${JSON.stringify(data)}`);
       });
     } else {
@@ -78,7 +78,7 @@ export class ManagingShoppinglistService {
         this.responseCount = 0;
         if (datas.products.length>0) {
           datas.products.forEach((item, index, arr) => {
-            this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+1+"&func=4&pid="+item.id).subscribe((data) => {
+            this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=4&pid="+item.id).subscribe((data) => {
               this.responseCount++;
               console.log(`Polardreams [server]: ${JSON.stringify(data)} | Antwort: ${this.responseCount} von ${datas.products.length}`);
               if (this.responseCount==datas.products.length) {
@@ -98,7 +98,7 @@ export class ManagingShoppinglistService {
   }
 
   removeShoppingListFromDB(id:number) {
-    this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+1+"&func=1&shlid="+id).subscribe((data) => {
+    this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=1&shlid="+id).subscribe((data) => {
       console.log(`Polardreams [server]: ${JSON.stringify(data)}`);
           var temp = this.alllists.Shop.filter((datas) => {
       return datas.id != id;
@@ -109,7 +109,7 @@ export class ManagingShoppinglistService {
   }
 
   createShoppingListintoDBNSession () {
-    this.http.get<GT_Response_ShoppingList>(environment.backendUrl+"updateShoppingList.php?id="+1+'&func=0&name=meine Einkaufsliste').subscribe((data) => {
+    this.http.get<GT_Response_ShoppingList>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+'&func=0&name=meine Einkaufsliste').subscribe((data) => {
       console.log(`Polardreams [server]: ${JSON.stringify(data)}`);
       data.responseShoppinglist.products = [];
       this.alllists.Shop.push(data.responseShoppinglist);
@@ -122,7 +122,7 @@ export class ManagingShoppinglistService {
       return (shoppinglist.id==id)? shoppinglist:null;
     });
     if (temp.length<=1) {
-      this.http.get<GT_Response_ShoppingList>(environment.backendUrl+"updateShoppingList.php?id="+1+'&func=0&name='+temp[0].name).subscribe((data) => {
+      this.http.get<GT_Response_ShoppingList>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+'&func=0&name='+temp[0].name).subscribe((data) => {
         console.log(`Polardreams [server]: ${JSON.stringify(data)}`);
         data.responseShoppinglist.products = [];
         let resCount = temp[0].products.length;
@@ -150,11 +150,11 @@ export class ManagingShoppinglistService {
   }
   
   copyProductToShoppingList(id:number, pid:number) {
-    return this.http.get<GT_Response_ShoppingListAddToProducts>(environment.backendUrl+"updateShoppingList.php?id="+1+"&func=3&shlid="+id+"&gid="+pid);
+    return this.http.get<GT_Response_ShoppingListAddToProducts>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=3&shlid="+id+"&gid="+pid);
   }
   addProductToShoppingList(id:number, pid:number) {
     
-    this.http.get<GT_Response_ShoppingListAddToProducts>(environment.backendUrl+"updateShoppingList.php?id="+1+"&func=3&shlid="+id+"&gid="+pid).subscribe((data) => {
+    this.http.get<GT_Response_ShoppingListAddToProducts>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=3&shlid="+id+"&gid="+pid).subscribe((data) => {
       console.log(`Polardreams [server]: ${JSON.stringify(data)}`);
       
       this.alllists.Shop.filter((list) => {
@@ -181,10 +181,10 @@ export class ManagingShoppinglistService {
     if (temp.length==1) {
       temp[0].products.forEach((item, index, arr) => {
         console.log("test post: " +item.id+" "+ item.amount+" "+item.ischeck);
-        this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+1+"&func=5&pid="+item.id+"&amount="+item.amount).subscribe((datas) => {
+        this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=5&pid="+item.id+"&amount="+item.amount).subscribe((datas) => {
           console.log(`Polardreams [server]: ${JSON.stringify(datas)}`);
         });
-        this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+1+"&func=6&pid="+item.id+"&ischeck="+this.convertBoolToTinyint(item.ischeck)).subscribe((datas) => {
+        this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=6&pid="+item.id+"&ischeck="+this.convertBoolToTinyint(item.ischeck)).subscribe((datas) => {
           console.log(`Polardreams [server]: ${JSON.stringify(datas)}`);
         });
          
@@ -204,7 +204,7 @@ export class ManagingShoppinglistService {
       temp[0].products.filter((item) => {
         
         if (item.ischeck) {
-          this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+1+"&func=4&pid="+item.id).subscribe((datas) => {
+          this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=4&pid="+item.id).subscribe((datas) => {
             console.log(`Polardreams [server]: ${JSON.stringify(datas)}`);
           });
           return null;

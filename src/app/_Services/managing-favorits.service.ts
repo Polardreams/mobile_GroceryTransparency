@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Alllists } from '../_models/alllists';
 import { Favorits } from '../_models/favorits';
 import { GT_Response_Resonse } from '../_models/Response';
+import * as globals from '../../global';
 
 @Injectable({
   providedIn: 'root'
@@ -53,10 +54,10 @@ export class ManagingFavoritsService {
   }
 
   addProductToFavorits (pid:number) {
-    this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateFavorits.php?id="+1+"&func=0&gid="+pid).subscribe((response) => {
+    this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateFavorits.php?id="+globals.account.prototype.id+"&func=0&gid="+pid).subscribe((response) => {
       if (!response.iserror) {
         console.log(`Polardreams [Server]: ${response.response}`);
-        this.alllists.Fav.push(new Favorits(1, pid));
+        this.alllists.Fav.push(new Favorits(globals.account.prototype.id, pid));
         this.subject.next(this.alllists);
         this.updateShoppingListsIntoSession();
       } else {
@@ -66,7 +67,7 @@ export class ManagingFavoritsService {
   }
 
   removeProductfromFavorits (pid:number) {
-    this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateFavorits.php?id="+1+"&func=1&gid="+pid).subscribe((response) => {
+    this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateFavorits.php?id="+globals.account.prototype.id+"&func=1&gid="+pid).subscribe((response) => {
       var tmp;
       if (!response.iserror) {
         tmp = this.alllists.Fav.filter((item) => {

@@ -5,6 +5,7 @@ import { FilterNpolicy } from '../_models/filter-npolicy';
 import { GT_Response_filterNpolicy } from '../_models/Response';
 import { Subject } from 'rxjs'; 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,6 +26,7 @@ export class ManagingFiltersNPolicyService {
   private iniSessionFilterNPolicy () {
     if (localStorage.getItem("fpp")==null) {
       this.FilterpermissionNpolicy = new FilterNpolicy();
+      console.log("iniSessionFilterNPolicy");
       localStorage.setItem("fpp", JSON.stringify(this.FilterpermissionNpolicy));
     }
   }
@@ -43,15 +45,15 @@ export class ManagingFiltersNPolicyService {
   fetchNwriteFilterNPolicyintoSession(id:number) {
     this.iniSessionFilterNPolicy();
     this.getcurrentFiltersNPolicyfromDB(id).subscribe((response)=>{
-      this.converter_tinyint_into_boolean(response.response);
-      this.FilterpermissionNpolicy = response.response;
+      this.FilterpermissionNpolicy = this.converter_tinyint_into_boolean(response.response);
       this.subject.next(this.FilterpermissionNpolicy);
       localStorage.removeItem("fpp");
       localStorage.setItem("fpp", JSON.stringify(this.FilterpermissionNpolicy));
     });
   }
 
-  tinyintToBool(int:number):boolean {
+  tinyintToBool(int:number | null):boolean | null {
+    if (int == null) return null;
     if (int==0) {
       return false;
     } else {
@@ -124,7 +126,7 @@ export class ManagingFiltersNPolicyService {
   readNpostFilterintoDB (id:number) {
     if (localStorage.getItem("fpp")!=null) {
       this.session = localStorage.getItem("fpp");
-      var session = this.converter_boolean_into_tinyint(JSON.parse(this.session));      
+      var session = this.converter_boolean_into_tinyint(JSON.parse(this.session));
       this.http.get<GT_Response_filterNpolicy>(environment.backendUrl+"updatefilters.php?id="+id+ '&body={"discounterfilter":'+JSON.stringify(session.discounterfilter)+',"searchfilter":'+JSON.stringify(session.searchfilter)+',"sortfilter":'+JSON.stringify(session.sortfilter)+"}").subscribe((response) => {
         console.log("Polardreams[readNpostFilterNPolicyintoDB] Server-Response: " + JSON.stringify(response));
       });    
@@ -154,5 +156,6 @@ export class ManagingFiltersNPolicyService {
       console.error("Polardreams[writeFilterNPolicyintoSession] Error: filterpermissionNpolicy darf nicht null sein. Filter und Policy nicht gespeichert!");
     }
   }
+
 
 }

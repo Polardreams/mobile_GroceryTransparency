@@ -1,7 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Alllists } from '../_models/alllists';
 import { FetchAllListsService } from '../_Services/fetch-all-lists.service';
-
+import * as globals from '../../global';
 @Component({
   selector: 'app-shoppinglist-screen',
   templateUrl: './shoppinglist-screen.component.html',
@@ -14,7 +14,7 @@ export class ShoppinglistScreenComponent implements AfterViewInit {
 
   constructor(_service_fetchalllists:FetchAllListsService) { 
     this.service_fetchalllists = _service_fetchalllists;
-    this.service_fetchalllists.fetchNwriteintoSession(1);
+    this.service_fetchalllists.fetchNwriteintoSession(globals.account.prototype.id);
   }
 
   ngAfterViewInit(): void {
