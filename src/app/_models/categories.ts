@@ -1,5 +1,10 @@
+
+/**
+ * Categories includes all categories - objects for 
+ * these obects are important for the Main-Screen Component
+ * for generate the options for select categories (html)
+ */
 export class Categories {
-    
     
     public  ohneKategorie = {index:1, name:"ohne Kategorie"};
     public  dressings = {index:2, name:"Ketchup, Dips, Pfeffer, Salz, Tabasco"};

@@ -1,3 +1,7 @@
+/**
+ * Model for store Productinformation for each ShoppingList entry (Product)
+ */
+
 export class ShoppingListProducts {
     id:number = -1;
     shoppingid:number = -1;   

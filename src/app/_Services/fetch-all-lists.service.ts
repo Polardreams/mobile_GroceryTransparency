@@ -8,11 +8,19 @@ import { ShoppingListProducts } from '../_models/shopping-list';
 import { Subject } from 'rxjs';
 
 
+/**
+ * Service fetch the following lists for user account:
+ *  Favorits
+ *  ShoppingLists with all products per ShoppingList
+ */
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class FetchAllListsService {
+  
   private http!:HttpClient;
   private alllists:Alllists = new Alllists();
   private subject = new Subject<Alllists>();
@@ -22,8 +30,17 @@ export class FetchAllListsService {
   }
 
   private getAllLists(id:number) {
-    return this.http.get<GT_Response_Resonse>(environment.backendUrl+"fetchingAllLists.php?id="+id);//
+    return this.http.get<GT_Response_Resonse>(environment.backendUrl+"fetchingAllLists.php?id="+id);
   }
+
+  /**
+   * 
+   * @param id is id from user account
+   * use this function as public
+   * it will fetch all Lists for user account and write them into model AND localStorgae
+   * 
+   * this function use a Observable to make a callback for the executing instance.
+   */
 
   fetchNwriteintoSession(id:number) {
     this.getAllLists(id).subscribe((datas) => {
@@ -76,6 +93,14 @@ export class FetchAllListsService {
     }
   }
 
+  /**
+   * 
+   * @param int 
+   * @returns boolean
+   * 
+   * convert mysql tinyint into typescript boolean
+   */
+
   tinyintToBool(int:any):boolean {
     if (int==0) {
       return false;
@@ -83,6 +108,12 @@ export class FetchAllListsService {
       return true;
     }
   }
+
+  /**
+   * 
+   * @returns Allists
+   * it's part of Callback from fetchNwriteintoSession
+   */
 
   getAlllists() {
     return this.subject.asObservable();

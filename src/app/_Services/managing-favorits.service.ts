@@ -7,6 +7,18 @@ import { Favorits } from '../_models/favorits';
 import { GT_Response_Resonse } from '../_models/Response';
 import * as globals from '../../global';
 
+/**
+ * Service wich handle Favorits
+ *  add Products to Favorits
+ *  remove Products from Favorits
+ * 
+ * with an Observable this Service generate a Callback to 
+ * to give the executing instance a response from backend
+ * The Callback pass Alllists
+ * 
+ * During updating something both save in localStorage and Model
+ */
+
 @Injectable({
   providedIn: 'root'
 })
@@ -53,6 +65,17 @@ export class ManagingFavoritsService {
     this.subject.next(this.alllists);
   }
 
+  /**
+   * 
+   * @param pid productid = grocery.id
+   * add Product to Favorits table
+   * need following params
+   *  id = account id
+   *  0=addFavorits
+   *  gid = pid 
+   * executing updateShoppingListsIntoSession()
+   */
+
   addProductToFavorits (pid:number) {
     this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateFavorits.php?id="+globals.account.prototype.id+"&func=0&gid="+pid).subscribe((response) => {
       if (!response.iserror) {
@@ -65,7 +88,16 @@ export class ManagingFavoritsService {
       }
     });
   }
-
+  /**
+   * 
+   * @param pid productid = grocery.id
+   * remove Product to Favorits table
+   * need following params
+   *  id = account id
+   *    1=removefromfavorits
+   *    gid = pid
+   * executing updateShoppingListsIntoSession()
+   */
   removeProductfromFavorits (pid:number) {
     this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateFavorits.php?id="+globals.account.prototype.id+"&func=1&gid="+pid).subscribe((response) => {
       var tmp;

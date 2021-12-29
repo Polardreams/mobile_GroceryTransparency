@@ -4,6 +4,12 @@ import {environment} from '../../environments/environment';
 
 import { GT_Response_List } from '../_models/Response';
 
+/**
+ * Service wich fetch current weekly offers from all discounter as Products
+ * it use <GT_Response_List>
+ * 
+ * sid is store id for Kaufland stores
+ */
 
 @Injectable({
   providedIn: 'root'

@@ -1,3 +1,9 @@
+/**
+ * It's a Model for get methode to send all form datas to
+ * backend to create a new product in table groceries
+ * 
+ * CreateProduct is located in Componentn favorits-create
+ */
 export class CreateProduct {
     public id:number = -1;
     public title:string = "";

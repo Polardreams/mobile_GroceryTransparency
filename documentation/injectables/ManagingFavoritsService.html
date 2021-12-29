@@ -1,0 +1,950 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>grocery-transparency documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">grocery-transparency documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >ManagingFavoritsService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/_Services/managing-favorits.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service wich handle Favorits
+ add Products to Favorits
+ remove Products from Favorits</p>
+<p>with an Observable this Service generate a Callback to
+to give the executing instance a response from backend
+The Callback pass Alllists</p>
+<p>During updating something both save in localStorage and Model</p>
+
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#alllists" >alllists</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#http" >http</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#responseCount" >responseCount</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#subject" >subject</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addProductToFavorits" >addProductToFavorits</a>
+                            </li>
+                            <li>
+                                <a href="#get_Alllists" >get_Alllists</a>
+                            </li>
+                            <li>
+                                <a href="#getAllLists" >getAllLists</a>
+                            </li>
+                            <li>
+                                <a href="#iniSessionNModel" >iniSessionNModel</a>
+                            </li>
+                            <li>
+                                <a href="#removeProductfromFavorits" >removeProductfromFavorits</a>
+                            </li>
+                            <li>
+                                <a href="#setAlllist" >setAlllist</a>
+                            </li>
+                            <li>
+                                <a href="#updateShoppingListsIntoSession" >updateShoppingListsIntoSession</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/_Services/managing-favorits.service.ts:29</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addProductToFavorits"></a>
+                    <span class="name">
+                        <span ><b>addProductToFavorits</b></span>
+                        <a href="#addProductToFavorits"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addProductToFavorits(pid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/app/_Services/managing-favorits.service.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>add Product to Favorits table
+need following params
+ id = account id
+ 0=addFavorits
+ gid = pid
+executing updateShoppingListsIntoSession()</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pid</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>productid = grocery.id
+add Product to Favorits table
+need following params
+id = account id
+0=addFavorits
+gid = pid 
+executing updateShoppingListsIntoSession()</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="get_Alllists"></a>
+                    <span class="name">
+                        <span ><b>get_Alllists</b></span>
+                        <a href="#get_Alllists"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>get_Alllists()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/app/_Services/managing-favorits.service.ts:52</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Alllists.html" target="_self" >Alllists</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllLists"></a>
+                    <span class="name">
+                        <span ><b>getAllLists</b></span>
+                        <a href="#getAllLists"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllLists()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/_Services/managing-favorits.service.ts:43</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iniSessionNModel"></a>
+                    <span class="name">
+                        <span ><b>iniSessionNModel</b></span>
+                        <a href="#iniSessionNModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iniSessionNModel(alllists: <a href="../classes/Alllists.html" target="_self">Alllists</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/_Services/managing-favorits.service.ts:36</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>alllists</td>
+                                    <td>
+                                                <code><a href="../classes/Alllists.html" target="_self" >Alllists</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeProductfromFavorits"></a>
+                    <span class="name">
+                        <span ><b>removeProductfromFavorits</b></span>
+                        <a href="#removeProductfromFavorits"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeProductfromFavorits(pid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/_Services/managing-favorits.service.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>remove Product to Favorits table
+need following params
+ id = account id
+   1=removefromfavorits
+   gid = pid
+executing updateShoppingListsIntoSession()</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pid</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>productid = grocery.id
+remove Product to Favorits table
+need following params
+id = account id
+1=removefromfavorits
+gid = pid
+executing updateShoppingListsIntoSession()</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setAlllist"></a>
+                    <span class="name">
+                        <span ><b>setAlllist</b></span>
+                        <a href="#setAlllist"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setAlllist(param: <a href="../classes/Alllists.html" target="_self">Alllists</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/_Services/managing-favorits.service.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>param</td>
+                                    <td>
+                                                <code><a href="../classes/Alllists.html" target="_self" >Alllists</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateShoppingListsIntoSession"></a>
+                    <span class="name">
+                        <span ><b>updateShoppingListsIntoSession</b></span>
+                        <a href="#updateShoppingListsIntoSession"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateShoppingListsIntoSession()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/_Services/managing-favorits.service.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="alllists"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>alllists</b></span>
+                        <a href="#alllists"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Alllists.html" target="_self" >Alllists</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Alllists()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/_Services/managing-favorits.service.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="http"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>http</b></span>
+                        <a href="#http"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/_Services/managing-favorits.service.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="responseCount"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>responseCount</b></span>
+                        <a href="#responseCount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/_Services/managing-favorits.service.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subject"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>subject</b></span>
+                        <a href="#subject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;Alllists&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/_Services/managing-favorits.service.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { Subject } from &#x27;rxjs&#x27;;
+import { environment } from &#x27;src/environments/environment&#x27;;
+import { Alllists } from &#x27;../_models/alllists&#x27;;
+import { Favorits } from &#x27;../_models/favorits&#x27;;
+import { GT_Response_Resonse } from &#x27;../_models/Response&#x27;;
+import * as globals from &#x27;../../global&#x27;;
+
+/**
+ * Service wich handle Favorits
+ *  add Products to Favorits
+ *  remove Products from Favorits
+ * 
+ * with an Observable this Service generate a Callback to 
+ * to give the executing instance a response from backend
+ * The Callback pass Alllists
+ * 
+ * During updating something both save in localStorage and Model
+ */
+
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class ManagingFavoritsService {
+  private http!:HttpClient;
+  private alllists:Alllists &#x3D; new Alllists();
+  private subject &#x3D; new Subject&lt;Alllists&gt;();
+  private responseCount:number &#x3D; 0;
+
+
+  constructor(private _http:HttpClient) { 
+    this.http &#x3D; _http;
+  }
+
+  iniSessionNModel (alllists:Alllists) {
+    if (localStorage.getItem(&quot;alllists&quot;)&#x3D;&#x3D;null) {
+      localStorage.setItem(&quot;alllists&quot;, JSON.stringify(new Alllists()));
+    }
+    this.alllists &#x3D; alllists;
+  }
+
+  getAllLists() {
+    return this.subject.asObservable();
+  }
+
+
+  setAlllist(param:Alllists) {
+    this.alllists &#x3D; param;
+  }
+
+  get_Alllists():Alllists {
+    return this.alllists;
+  }
+  
+  updateShoppingListsIntoSession() {
+    if (localStorage.getItem(&quot;alllists&quot;)!&#x3D;null) {
+      localStorage.removeItem(&quot;alllists&quot;);
+      localStorage.setItem(&quot;alllists&quot;, JSON.stringify(this.alllists));
+    } else {
+      console.error(&#x60;Polardreams [updateShoppingListIntoSession]- error: session.getItem ist null&#x60;);
+      this.iniSessionNModel(this.alllists);
+      console.log(&#x60;Polardreams [updateShoppingListIntoSession]: eine neue alllists wurde erstellt&#x60;);
+    }
+    this.subject.next(this.alllists);
+  }
+
+  /**
+   * 
+   * @param pid productid &#x3D; grocery.id
+   * add Product to Favorits table
+   * need following params
+   *  id &#x3D; account id
+   *  0&#x3D;addFavorits
+   *  gid &#x3D; pid 
+   * executing updateShoppingListsIntoSession()
+   */
+
+  addProductToFavorits (pid:number) {
+    this.http.get&lt;GT_Response_Resonse&gt;(environment.backendUrl+&quot;updateFavorits.php?id&#x3D;&quot;+globals.account.prototype.id+&quot;&amp;func&#x3D;0&amp;gid&#x3D;&quot;+pid).subscribe((response) &#x3D;&gt; {
+      if (!response.iserror) {
+        console.log(&#x60;Polardreams [Server]: ${response.response}&#x60;);
+        this.alllists.Fav.push(new Favorits(globals.account.prototype.id, pid));
+        this.subject.next(this.alllists);
+        this.updateShoppingListsIntoSession();
+      } else {
+        console.error(&#x60;Polardreams [Server-Error]: ${response.error}&#x60;);
+      }
+    });
+  }
+  /**
+   * 
+   * @param pid productid &#x3D; grocery.id
+   * remove Product to Favorits table
+   * need following params
+   *  id &#x3D; account id
+   *    1&#x3D;removefromfavorits
+   *    gid &#x3D; pid
+   * executing updateShoppingListsIntoSession()
+   */
+  removeProductfromFavorits (pid:number) {
+    this.http.get&lt;GT_Response_Resonse&gt;(environment.backendUrl+&quot;updateFavorits.php?id&#x3D;&quot;+globals.account.prototype.id+&quot;&amp;func&#x3D;1&amp;gid&#x3D;&quot;+pid).subscribe((response) &#x3D;&gt; {
+      var tmp;
+      if (!response.iserror) {
+        tmp &#x3D; this.alllists.Fav.filter((item) &#x3D;&gt; {
+          return (item.grocerie!&#x3D;pid)? item : null;
+        });
+        this.alllists.Fav &#x3D; tmp;
+        this.subject.next(this.alllists);
+        this.updateShoppingListsIntoSession();
+      } else {
+        console.error(&#x60;Polardreams [Server-Error]: ${response.error}&#x60;);
+      }
+    });
+  }
+
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ManagingFavoritsService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

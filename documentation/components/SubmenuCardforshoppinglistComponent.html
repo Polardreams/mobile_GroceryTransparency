@@ -1,0 +1,830 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>grocery-transparency documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">grocery-transparency documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  SubmenuCardforshoppinglistComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>ParentComponent contain:
+none
+Main Features are:
+ copy shoppingList
+ delete shoppingList (include all products references (not products in table groceries themselfe))
+ (future plan is to implement sharing function)</p>
+<p>Dataflow:
+ Component between following Services:</p>
+<p> Parent between Child
+   none</p>
+<p>Hooks
+ life cycles:</p>
+<ul>
+<li>constructor</li>
+<li>AfterViewInit</li>
+</ul>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-submenu-cardforshoppinglist</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./submenu-cardforshoppinglist.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./submenu-cardforshoppinglist.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#idbutton" >idbutton</a>
+                            </li>
+                            <li>
+                                <a href="#idtarget" >idtarget</a>
+                            </li>
+                            <li>
+                                <a href="#isopen" >isopen</a>
+                            </li>
+                            <li>
+                                <a href="#service" >service</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#copyShoppingList" >copyShoppingList</a>
+                            </li>
+                            <li>
+                                <a href="#deleteShoppingList" >deleteShoppingList</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#id" >id</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_service: <a href="../injectables/ManagingShoppinglistService.html" target="_self">ManagingShoppinglistService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>register:</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_service</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ManagingShoppinglistService.html" target="_self" >ManagingShoppinglistService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>ManagingShoppinglistService</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="id"></a>
+                        <b>id</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:31</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="copyShoppingList"></a>
+                    <span class="name">
+                        <span ><b>copyShoppingList</b></span>
+                        <a href="#copyShoppingList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>copyShoppingList(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:66</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>copy shoppinglist (include all productreferences)</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>shoppinglist id</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteShoppingList"></a>
+                    <span class="name">
+                        <span ><b>deleteShoppingList</b></span>
+                        <a href="#deleteShoppingList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteShoppingList(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>delete ShoppingList (include all productreferences)</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>account id</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>set individual id for Submenu-button</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="idbutton"></a>
+                    <span class="name">
+                        <span ><b>idbutton</b></span>
+                        <a href="#idbutton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="idtarget"></a>
+                    <span class="name">
+                        <span ><b>idtarget</b></span>
+                        <a href="#idtarget"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isopen"></a>
+                    <span class="name">
+                        <span ><b>isopen</b></span>
+                        <a href="#isopen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="service"></a>
+                    <span class="name">
+                        <span ><b>service</b></span>
+                        <a href="#service"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ManagingShoppinglistService.html" target="_self" >ManagingShoppinglistService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, Input, OnInit, SimpleChanges } from &#x27;@angular/core&#x27;;
+import { ManagingShoppinglistService } from &#x27;../_Services/managing-shoppinglist.service&#x27;;
+
+/**
+ * ParentComponent contain:
+ * none
+ * Main Features are:
+ *  copy shoppingList
+ *  delete shoppingList (include all products references (not products in table groceries themselfe))
+ *  (future plan is to implement sharing function)
+ *  
+ * Dataflow:
+ *  Component between following Services:
+ * 
+ *  Parent between Child
+ *    none
+ * 
+ * Hooks
+ *  life cycles:
+ *    - constructor 
+ *    - AfterViewInit
+ */
+
+@Component({
+  selector: &#x27;app-submenu-cardforshoppinglist&#x27;,
+  templateUrl: &#x27;./submenu-cardforshoppinglist.component.html&#x27;,
+  styleUrls: [&#x27;./submenu-cardforshoppinglist.component.css&#x27;]
+})
+export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
+
+  @Input() id!:number;
+  idtarget!:string;
+  idbutton!:string;
+  isopen:boolean &#x3D; false;
+  service:ManagingShoppinglistService;
+
+  /**
+   * register:
+   * @param _service ManagingShoppinglistService
+   */
+  constructor(_service:ManagingShoppinglistService) { 
+    this.service &#x3D; _service;
+  }
+
+  /**
+   * set individual id for Submenu-button
+   */
+  ngAfterViewInit(): void {
+    document.getElementById(&quot;btn&quot;)?.setAttribute(&quot;id&quot;, &quot;btn&quot;+this.id);
+    document.getElementById(&quot;btn&quot;+this.id)?.setAttribute(&quot;data-bs-target&quot;, &quot;#target&quot;+this.id);
+    document.getElementById(&quot;target&quot;)?.setAttribute(&quot;id&quot;, &quot;target&quot;+this.id);
+  }
+
+  /**
+   * delete ShoppingList (include all productreferences)
+   * @param id account id
+   */
+  deleteShoppingList (id:number) {
+    this.service.removeShoppingListfromDBNSession(id);
+  }
+
+  /**
+   * copy shoppinglist (include all productreferences)
+   * @param id shoppinglist id
+   */
+  copyShoppingList(id:number) {
+    this.service.copyShoppingListintoDBNSession(id);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;button id&#x3D;&quot;btn&quot; class&#x3D;&quot;btn btn-primary-outline fs-1&quot; style&#x3D;&quot;padding-left: 0px;&quot; type&#x3D;&quot;button&quot; data-bs-target&#x3D;&quot;#target&quot; data-bs-toggle&#x3D;&quot;collapse&quot; aria-expanded&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;collapseExample&quot;&gt;
+    ...
+  &lt;/button&gt;
+  &lt;!--Collapse--&gt;
+    &lt;div class&#x3D;&quot;collapse mt-2&quot; id&#x3D;&quot;target&quot;&gt;
+      &lt;div class&#x3D;&quot;card border-light&quot; style&#x3D;&quot;padding-left: 0px;&quot;&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col&quot; &gt;
+              &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; style&#x3D;&quot;padding-left: 0px;&quot; (click)&#x3D;&quot;deleteShoppingList(id)&quot;&gt;
+                  &lt;img src&#x3D;&quot;../../assets/images/bin.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
+              &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;
+              &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; style&#x3D;&quot;padding-left: 0px;&quot; (click)&#x3D;&quot;copyShoppingList(id)&quot;&gt;
+                  &lt;img src&#x3D;&quot;../../assets/images/copy.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
+              &lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+              &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; style&#x3D;&quot;padding-left: 0px;&quot;&gt;
+                  &lt;img src&#x3D;&quot;../../assets/images/teilen.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
+              &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    </code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./submenu-cardforshoppinglist.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><button id="btn" class="btn btn-primary-outline fs-1" style="padding-left: 0px;" type="button" data-bs-target="#target" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">    ...  </button>  <!--Collapse-->    <div class="collapse mt-2" id="target">      <div class="card border-light" style="padding-left: 0px;">        <div class="row">            <div class="col" >              <button class="btn btn-primary-outline" style="padding-left: 0px;" (click)="deleteShoppingList(id)">                  <img src="../../assets/images/bin.png" width="25px" height="25px"/>              </button>            </div>            <div class="col">              <button class="btn btn-primary-outline" style="padding-left: 0px;" (click)="copyShoppingList(id)">                  <img src="../../assets/images/copy.png" width="25px" height="25px"/>              </button>          </div>          <div class="col">              <button class="btn btn-primary-outline" style="padding-left: 0px;">                  <img src="../../assets/images/teilen.png" width="25px" height="25px"/>              </button>          </div>        </div>      </div>    </div>    </div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SubmenuCardforshoppinglistComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SubmenuCardforshoppinglistComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

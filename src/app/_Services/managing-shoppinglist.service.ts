@@ -3,13 +3,25 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Alllists } from '../_models/alllists';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Shoppinglist } from '../_models/shoppinglists';
 import { ShoppingListProducts } from '../_models/shopping-list';
 import { GT_Response_Resonse, GT_Response_ShoppingList, GT_Response_ShoppingListAddToProducts } from '../_models/Response';
-import { FetchAllListsService } from './fetch-all-lists.service';
-import { Product } from '../_models/Product';
 import * as globals from '../../global';
 
+/**
+ * Service wich handle all ShoppingList functions
+ * use Observable to make a Callback for executing instance
+ * Observable pass Alllists
+ * 
+ * param func:
+ * 0 = add
+ * 1 = remove
+ * 2 = rename
+ * 3 = addProduct
+ * 4 = removeProduct
+ * 5 = setAmtount
+ * 6 = checkProduct
+ */
+ 
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +38,10 @@ export class ManagingShoppinglistService {
     this.http = _http;
   }
 
+  /**
+   * 
+   * @param alllists alllists is tag for localStorage
+   */
   iniSessionNModel (alllists:Alllists) {
     if (localStorage.getItem("alllists")==null) {
       localStorage.setItem("alllists", JSON.stringify(new Alllists()));
@@ -33,15 +49,26 @@ export class ManagingShoppinglistService {
     this.alllists = alllists;
   }
 
+    /**
+   * part of Observable Callback
+   * @returns Alllists
+   */
   getAllLists() {
     return this.subject.asObservable();
   }
 
-
+  /**
+   * set Alllists in Service from 
+   * @param param Alllists
+   */
   setAlllist(param:Alllists) {
     this.alllists = param;
   }
   
+  /**
+   * write Allliste from Model into localStorage
+   */
+
   updateShoppingListsIntoSession() {
     if (localStorage.getItem("alllists")!=null) {
       localStorage.removeItem("alllists");
@@ -53,6 +80,11 @@ export class ManagingShoppinglistService {
     }
     this.subject.next(this.alllists);
   }
+
+  /**
+   * post ShoppingList Name into DB and execute updateShoppingListsIntoSession()
+   * @param id account id
+   */
 
   postShoppingListNameintoDB (id:number) {
     var temp = this.alllists.Shop.filter((datas) => {
@@ -68,10 +100,24 @@ export class ManagingShoppinglistService {
     }
   }
 
+  /**
+   * remove ShoppingList from DB and localStorage
+   * before removing ShoppingList, there must be delete all Products from ShoppingList
+   * @param id account id
+   * 
+   * execute updateShoppingListsIntoSession() in sub function
+   */
   removeShoppingListfromDBNSession(id:number) {
     this.removeAllProductsFromShoppingList(id);
   }
 
+  /**
+   * delete all Products from products (table) and Model
+   * -> remove all ShoppingList-products from ShoppingList
+   * 
+   * execute updateShoppingListsIntoSession after delete 
+   * @param id account id
+   */
   private removeAllProductsFromShoppingList(id:number) {
     var shoppinglist = this.alllists.Shop.filter((datas) => {
       if (datas.id ==  id) {
@@ -97,6 +143,13 @@ export class ManagingShoppinglistService {
     this.updateShoppingListsIntoSession();
   }
 
+  /**
+   * remove shoppinglist from db
+   * @param id shoppinglist id
+   * 
+   * execute updateShoppingListsIntoSession()
+   */
+
   removeShoppingListFromDB(id:number) {
     this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=1&shlid="+id).subscribe((data) => {
       console.log(`Polardreams [server]: ${JSON.stringify(data)}`);
@@ -107,7 +160,11 @@ export class ManagingShoppinglistService {
     this.updateShoppingListsIntoSession();
     });
   }
-
+/**
+ * create ShoppingList in DB and add them to Model
+ * 
+ * execute updateShoppingListsIntoSession()
+ */
   createShoppingListintoDBNSession () {
     this.http.get<GT_Response_ShoppingList>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+'&func=0&name=meine Einkaufsliste').subscribe((data) => {
       console.log(`Polardreams [server]: ${JSON.stringify(data)}`);
@@ -117,6 +174,12 @@ export class ManagingShoppinglistService {
     });
   }
 
+  /**
+   * copy ShoppingList into db and Model
+   * @param id shoppingLIst id
+   * 
+   * execute updateShoppingListsIntoSession() in subfunction
+   */
   copyShoppingListintoDBNSession (id:number) {
     var temp = this.alllists.Shop.filter((shoppinglist) => {
       return (shoppinglist.id==id)? shoppinglist:null;
@@ -134,10 +197,7 @@ export class ManagingShoppinglistService {
             res.responseShoppinglist.amount = products.amount;
             data.responseShoppinglist.products.push(res.responseShoppinglist);
             if (resCount==n) {
-              console.log("test: Speicherung");
-              
               this.alllists.Shop.push(data.responseShoppinglist);
-              console.log("test list ID : " + data.responseShoppinglist.id);
               this.postShoppingListCheckNAmountIntoDB(data.responseShoppinglist.id);
             }
           });
@@ -149,9 +209,23 @@ export class ManagingShoppinglistService {
     }
   }
   
+  /**
+   add Product to  productids
+   * @param id shoppinglist id
+   * @param pid is product id (pid = gid)
+   * @returns 
+   */
   copyProductToShoppingList(id:number, pid:number) {
     return this.http.get<GT_Response_ShoppingListAddToProducts>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=3&shlid="+id+"&gid="+pid);
   }
+
+  /**
+   * add Prodict to shoppingList
+   * @param id shoppingList id
+   * @param pid product id (pid = gid)
+   * 
+   * execute updateShoppingListsIntoSession()
+   */
   addProductToShoppingList(id:number, pid:number) {
     
     this.http.get<GT_Response_ShoppingListAddToProducts>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=3&shlid="+id+"&gid="+pid).subscribe((data) => {
@@ -171,29 +245,40 @@ export class ManagingShoppinglistService {
     });
   }
 
+/**
+ * update all datas Check and Amount 
+ * first save Model into localStiorage
+ * secound post Model into db
+ 
+hint: * execute updateShoppingListsIntoSession(); before executing script
+ * @param id shoppinglist id
+ */
+
   postShoppingListCheckNAmountIntoDB(id:number) {
-    this.updateShoppingListsIntoSession();
+    this.updateShoppingListsIntoSession();// was soll das hier???
     var temp = this.alllists.Shop.filter((lists) => {
-      console.log("lists before update: " + lists.id + " serach for: "+id);
       return (lists.id == id)? lists:null;
     });
-    console.log("found: " + JSON.stringify(temp[0]));
     if (temp.length==1) {
       temp[0].products.forEach((item, index, arr) => {
-        console.log("test post: " +item.id+" "+ item.amount+" "+item.ischeck);
         this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=5&pid="+item.id+"&amount="+item.amount).subscribe((datas) => {
           console.log(`Polardreams [server]: ${JSON.stringify(datas)}`);
         });
         this.http.get<GT_Response_Resonse>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=6&pid="+item.id+"&ischeck="+this.convertBoolToTinyint(item.ischeck)).subscribe((datas) => {
           console.log(`Polardreams [server]: ${JSON.stringify(datas)}`);
         });
-         
       });
     } else {
       console.error(`Polardreams[postShoppingListCheckNAmountIntoDB]: alllists ID sind nicht eindeutig oder nicht vorhanden.`);
     }
   }
 
+  /**
+   * remove single Productentry from ShoppingList Database and localStorage
+   * @param id shoppingList id
+   * 
+   * executing updateShoppingListsIntoSession()
+   */
   removeShoppingListProductsfromSessionNDB(id:number) {
 
     var temp = this.alllists.Shop.filter((lists) => {
@@ -234,10 +319,19 @@ export class ManagingShoppinglistService {
     }
   }
 
+  /**
+   * get Alllists directly as property without 
+   * @returns Alllists
+   */
   getTest ():Alllists {
     return this.alllists;
   }
-  
+
+  /**
+ * convert WebApp boolean into database (mysql) tinyint
+ * @param boolean
+ * @returns number
+ */
   convertBoolToTinyint (param:boolean) {
     if (param) {
       return 1;

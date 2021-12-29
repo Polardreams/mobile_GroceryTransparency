@@ -4,6 +4,17 @@ import {environment} from '../../environments/environment';
 
 import { GT_Response_List, GT_Response_Resonse } from '../_models/Response';
 
+/**
+ * Service wicht fetch Searchresults. It communicate with an Backend and need the foloowing params:
+ *  id = accountid from user
+ *  searchterm = Keyword from Input (form)
+ *  mode = API commands (0 == search in weekly offers; 1 == search in all offers)
+ *  categories = find matches in groceries (table) with this categories
+ *  discounter = find matches in groceries (table) with this dicounters (one than one discounter possible)
+ *  resultlength = define count of results 
+ *  sid = find matches in groceries with distinction of kaufland stores (matching for one store)
+ */
+
 @Injectable({
   providedIn: 'root'
 })

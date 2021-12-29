@@ -1,0 +1,1022 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>grocery-transparency documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">grocery-transparency documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  ShoppinglistDetailsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shoppinglist-details/shoppinglist-details.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>ParentComponent contain:
+ none</p>
+<p>Main Features are:
+ show shoppinglist with all listed products
+ set amount for every product
+ set check for every product (check mean mark for bought)
+ navigate to favorits or ShoppingLIst to add Products
+ remove Products from ShoppingLIst</p>
+<p>Dataflow:
+ Component between following Services:
+   FetchAllListsService
+   ManagingShoppinglistService</p>
+<p> Parent between Child
+   none</p>
+<p>Hooks
+ life cycles:</p>
+<ul>
+<li>constructor</li>
+<li>AfterViewInit</li>
+<li>OnDestroy</li>
+</ul>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-shoppinglist-details</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./shoppinglist-details.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./shoppinglist-details.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#alllists" >alllists</a>
+                            </li>
+                            <li>
+                                <a href="#id" >id</a>
+                            </li>
+                            <li>
+                                <a href="#products" >products</a>
+                            </li>
+                            <li>
+                                <a href="#router" >router</a>
+                            </li>
+                            <li>
+                                <a href="#service_fetchalllists" >service_fetchalllists</a>
+                            </li>
+                            <li>
+                                <a href="#service_ManageingShoppinglist" >service_ManageingShoppinglist</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deleteSelectedProducts" >deleteSelectedProducts</a>
+                            </li>
+                            <li>
+                                <a href="#getComopaniePic" >getComopaniePic</a>
+                            </li>
+                            <li>
+                                <a href="#goBack" >goBack</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_service_fetchalllists: <a href="../injectables/FetchAllListsService.html" target="_self">FetchAllListsService</a>, _service_ManageingShoppinglist: <a href="../injectables/ManagingShoppinglistService.html" target="_self">ManagingShoppinglistService</a>, _router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>register:</p>
+<p>fetch and write Allists into localStorage</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_service_fetchalllists</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FetchAllListsService.html" target="_self" >FetchAllListsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>FetchAllListsService</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>_service_ManageingShoppinglist</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ManagingShoppinglistService.html" target="_self" >ManagingShoppinglistService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>ManagingShoppinglistService</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>_router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Router</p>
+<p>fetch and write Allists into localStorage</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteSelectedProducts"></a>
+                    <span class="name">
+                        <span ><b>deleteSelectedProducts</b></span>
+                        <a href="#deleteSelectedProducts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteSelectedProducts()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="131"
+                            class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:131</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>remove selected products from shoppinglistz</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getComopaniePic"></a>
+                    <span class="name">
+                        <span ><b>getComopaniePic</b></span>
+                        <a href="#getComopaniePic"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getComopaniePic(cid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>get companie icon</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>cid</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>companie id</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goBack"></a>
+                    <span class="name">
+                        <span ><b>goBack</b></span>
+                        <a href="#goBack"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goBack()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:124</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>navigate back to shoppinglist-screen</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>fetch alllists as Observable
+pass user id
+get product informations</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>set Alllists after close this Component
+and
+postr Check and Amount changes into database</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="alllists"></a>
+                    <span class="name">
+                        <span ><b>alllists</b></span>
+                        <a href="#alllists"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Alllists.html" target="_self" >Alllists</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="id"></a>
+                    <span class="name">
+                        <span ><b>id</b></span>
+                        <a href="#id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="products"></a>
+                    <span class="name">
+                        <span ><b>products</b></span>
+                        <a href="#products"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ShoppingListProducts[]</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="service_fetchalllists"></a>
+                    <span class="name">
+                        <span ><b>service_fetchalllists</b></span>
+                        <a href="#service_fetchalllists"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/FetchAllListsService.html" target="_self" >FetchAllListsService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="service_ManageingShoppinglist"></a>
+                    <span class="name">
+                        <span ><b>service_ManageingShoppinglist</b></span>
+                        <a href="#service_ManageingShoppinglist"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ManagingShoppinglistService.html" target="_self" >ManagingShoppinglistService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, Input, OnChanges, OnDestroy } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Companiepictures } from &#x27;../companiepictures&#x27;;
+import { Alllists } from &#x27;../_models/alllists&#x27;;
+import { Product } from &#x27;../_models/Product&#x27;;
+import { ShoppingListProducts } from &#x27;../_models/shopping-list&#x27;;
+import { FetchAllListsService } from &#x27;../_Services/fetch-all-lists.service&#x27;;
+import { ManagingShoppinglistService } from &#x27;../_Services/managing-shoppinglist.service&#x27;;
+import * as globals from &#x27;../../global&#x27;;
+
+/**
+ * ParentComponent contain:
+ *  none 
+ * 
+ * Main Features are:
+ *  show shoppinglist with all listed products
+ *  set amount for every product
+ *  set check for every product (check mean mark for bought)
+ *  navigate to favorits or ShoppingLIst to add Products
+ *  remove Products from ShoppingLIst
+ * 
+ * Dataflow:
+ *  Component between following Services:
+ *    FetchAllListsService
+ *    ManagingShoppinglistService
+ * 
+ *  Parent between Child
+ *    none
+ * 
+ * Hooks
+ *  life cycles:
+ *    - constructor 
+ *    - AfterViewInit
+ *    - OnDestroy
+ */
+
+@Component({
+  selector: &#x27;app-shoppinglist-details&#x27;,
+  templateUrl: &#x27;./shoppinglist-details.component.html&#x27;,
+  styleUrls: [&#x27;./shoppinglist-details.component.css&#x27;]
+})
+export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
+
+  alllists!:Alllists;
+  service_fetchalllists:FetchAllListsService;
+  service_ManageingShoppinglist:ManagingShoppinglistService;
+  router!:Router;
+  id!:number;
+  products!:ShoppingListProducts[];
+
+  /**
+   * register: 
+   * @param _service_fetchalllists FetchAllListsService
+   * @param _service_ManageingShoppinglist ManagingShoppinglistService
+   * @param _router Router
+   * 
+   * fetch and write Allists into localStorage
+   */
+  constructor(_service_fetchalllists:FetchAllListsService, _service_ManageingShoppinglist:ManagingShoppinglistService, _router:Router) { 
+    this.service_fetchalllists &#x3D; _service_fetchalllists;
+    this.service_fetchalllists.fetchNwriteintoSession(globals.account.prototype.id);
+    this.service_ManageingShoppinglist &#x3D; _service_ManageingShoppinglist;
+    this.router &#x3D; _router;
+  }
+/**
+ * set Alllists after close this Component
+ * and 
+ * postr Check and Amount changes into database
+ */
+  
+  ngOnDestroy(): void {
+      this.service_ManageingShoppinglist.setAlllist(this.alllists);//ist das an der Stelle sinnvoll??? Weil der Service stirbt auch mit der Componente. Er wird auch nicht weitergereicht durch das ParentComponent
+      this.service_ManageingShoppinglist.postShoppingListCheckNAmountIntoDB(this.id);
+  }
+
+  /**
+   * fetch alllists as Observable
+   * pass user id
+   * get product informations
+   */
+  ngAfterViewInit(): void {
+    this.service_fetchalllists.getAlllists().subscribe((datas) &#x3D;&gt; {
+      this.alllists &#x3D; datas;
+      this.service_ManageingShoppinglist.setAlllist(this.alllists);
+      this.service_ManageingShoppinglist.setAlllist(this.alllists);
+      this.id &#x3D; history.state.data;
+      
+      this.alllists.Shop.filter((item) &#x3D;&gt; {
+        if (item.id &#x3D;&#x3D; this.id) {
+          this.products &#x3D; item.products;
+        }
+      });
+    });
+  }
+
+  /**
+   * get companie icon
+   * @param cid companie id
+   * @returns 
+   */
+  getComopaniePic (cid:number) {
+    let path&#x3D;&#x27;&#x27;;
+    if (cid&#x3D;&#x3D;Companiepictures.Lidl) {
+      path &#x3D; &quot;../../assets/images/logos/lidl.svg&quot;;
+    }
+    if (cid&#x3D;&#x3D;Companiepictures.Rewe) {
+      path &#x3D; &quot;../../assets/images/logos/rewe.svg&quot;;
+    }
+    if (cid&#x3D;&#x3D;Companiepictures.Kaufland) {
+      path &#x3D; &quot;../../assets/images/logos/kaufland.svg&quot;;
+    }
+    if (cid&#x3D;&#x3D;Companiepictures.AldiNord) {
+      path &#x3D; &quot;../../assets/images/logos/aldiN.svg&quot;;
+    }
+    if (cid&#x3D;&#x3D;Companiepictures.AldiSued) {
+      path &#x3D; &quot;../../assets/images/logos/aldiS.svg&quot;
+    }
+    return path;
+  }
+
+  /**
+   * navigate back to shoppinglist-screen
+   */ 
+  goBack (){
+    this.router.navigate([&quot;shoppinglist&quot;]);
+  }
+
+  /**
+   * remove selected products from shoppinglistz
+   */
+  deleteSelectedProducts() {
+    this.service_ManageingShoppinglist.removeShoppingListProductsfromSessionNDB(this.id);
+    this.alllists &#x3D; this.service_ManageingShoppinglist.getTest();
+    this.alllists.Shop.forEach((element) &#x3D;&gt; {
+      if (element.id &#x3D;&#x3D; this.id) {
+        this.products &#x3D; element.products;
+      }
+    });
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">
+&lt;div *ngFor&#x3D;&quot;let card of products&quot;&gt;
+    &lt;div class&#x3D;&quot;row border rounded&quot;&gt;
+        &lt;div class&#x3D;&quot;col-5 border&quot; style&#x3D;&quot;padding-left: 2px;padding-right: 2px;&quot;&gt;
+            &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; [(ngModel)]&#x3D;&quot;card.ischeck&quot; [ngModelOptions]&#x3D;&quot;{standalone: true}&quot;&gt;
+            &lt;input class&#x3D;&quot;form-number-input&quot;type&#x3D;&quot;number&quot; style&#x3D;&quot;width: 60px;&quot; min&#x3D;1 [(ngModel)]&#x3D;&quot;card.amount&quot; name&#x3D;&quot;shopListCheck&quot; [ngModelOptions]&#x3D;&quot;{standalone: true}&quot;&gt;
+            &lt;img src&#x3D;&quot;{{card.pic_url}}&quot; style&#x3D;&quot;width:80px;height:80px;object-fit:cover;margin-left: 5px;&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col-3 border fs-6&quot; style&#x3D;&quot;padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;&quot;&gt;
+            {{card.title}}
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col-1 border&quot; style&#x3D;&quot;padding-left: 2px;padding-right: 2px;&quot;&gt;
+            &lt;img src&#x3D;{{getComopaniePic(card.cid)}} style&#x3D;&quot;width:15px;height:15px;object-fit:contain;&quot;/&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col-2 border&quot;&gt;
+            &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;div style&#x3D;&quot;position:relative;top:12px;font-size: 12px;&quot;&gt;{{card.discount}}&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;row&quot; &gt;
+                &lt;div style&#x3D;&quot;position:relative;top:15px;font-size: 14px;&quot;&gt;{{card.new_price}}€&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;position-fixed start-50 top-50&quot;&gt;
+    &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;deleteSelectedProducts()&quot;&gt;löschen&lt;/button&gt;&lt;br&gt;
+    &lt;button class&#x3D;&quot;btn btn-secondary&quot; data-bs-toggle&#x3D;&quot;collapse&quot; data-bs-target&#x3D;&quot;#ShopDetailMenu&quot;&gt;hinzufügen&lt;/button&gt;
+    &lt;div id&#x3D;&quot;ShopDetailMenu&quot; class&#x3D;&quot;collapse&quot;&gt;
+        &lt;button class&#x3D;&quot;btn btn-light&quot; routerLink&#x3D;&quot;main&quot;&gt;wählen aus Angeboten&lt;/button&gt;
+        &lt;button class&#x3D;&quot;btn btn-light&quot; routerLink&#x3D;&quot;../favorits&quot;&gt;wählen aus Favoriten&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;position-fixed start-0 top-50&quot;&gt; 
+    &lt;button class&#x3D;&quot;btn btn-secondary&quot; (click)&#x3D;&quot;goBack()&quot;&gt;zurück&lt;/button&gt;
+&lt;/div&gt;
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./shoppinglist-details.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div *ngFor="let card of products">    <div class="row border rounded">        <div class="col-5 border" style="padding-left: 2px;padding-right: 2px;">            <input class="form-check-input" type="checkbox" [(ngModel)]="card.ischeck" [ngModelOptions]="{standalone: true}">            <input class="form-number-input"type="number" style="width: 60px;" min=1 [(ngModel)]="card.amount" name="shopListCheck" [ngModelOptions]="{standalone: true}">            <img src="{{card.pic_url}}" style="width:80px;height:80px;object-fit:cover;margin-left: 5px;" />        </div>        <div class="col-3 border fs-6" style="padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;">            {{card.title}}        </div>        <div class="col-1 border" style="padding-left: 2px;padding-right: 2px;">            <img src={{getComopaniePic(card.cid)}} style="width:15px;height:15px;object-fit:contain;"/>        </div>        <div class="col-2 border">            <div class="row">                <div style="position:relative;top:12px;font-size: 12px;">{{card.discount}}</div>            </div>            <div class="row" >                <div style="position:relative;top:15px;font-size: 14px;">{{card.new_price}}€</div>            </div>        </div>    </div></div><div class="position-fixed start-50 top-50">    <button class="btn btn-primary" (click)="deleteSelectedProducts()">löschen</button><br>    <button class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#ShopDetailMenu">hinzufügen</button>    <div id="ShopDetailMenu" class="collapse">        <button class="btn btn-light" routerLink="main">wählen aus Angeboten</button>        <button class="btn btn-light" routerLink="../favorits">wählen aus Favoriten</button>    </div></div><div class="position-fixed start-0 top-50">     <button class="btn btn-secondary" (click)="goBack()">zurück</button></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ShoppinglistDetailsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ShoppinglistDetailsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

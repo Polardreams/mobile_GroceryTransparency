@@ -3,9 +3,28 @@ import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { CreateProduct } from '../_models/create-product';
-import { GT_Response_CreateProduct, GT_Response_Resonse } from '../_models/Response';
+import { GT_Response_CreateProduct} from '../_models/Response';
 import { ManagingFavoritsService } from '../_Services/managing-favorits.service';
 import * as globals from '../../global';
+
+/**
+ * ParentComponent contain:
+ * none
+ * Main Features are:
+ * create new Favorit nad upload picture
+ * 
+ * Dataflow:
+ *  Component between following Services:
+ *    +ManagingFavoritsService
+ *  Parent between Child
+  none
+ * 
+ * Hooks
+ *  life cycles:
+ *    - constructor 
+ *    - AfterViewInit
+ */
+
 @Component({
   selector: 'app-favorits-create',
   templateUrl: './favorits-create.component.html',
@@ -19,18 +38,31 @@ export class FavoritsCreateComponent implements AfterViewInit{
   router!:Router;
   service_Favorits!:ManagingFavoritsService;
 
+  /**
+   * register: 
+   * @param _http 
+   * @param _router 
+   * @param _service_Favorits
+   * and ini owner = 0 (user id = 0) 
+   */
   constructor(_http:HttpClient, private _router:Router, _service_Favorits:ManagingFavoritsService) { 
     this.owner = 0;
     this.http = _http;
     this.router = _router;
     this.service_Favorits = _service_Favorits;
   }
+  /**
+   * define user id
+   */
   ngAfterViewInit(): void {
     this.owner = globals.account.prototype.id;
   }
 
+  /**
+   * show picture for uploading
+   * @param event 
+   */
   preview(event:any) {
-
     const reader = new FileReader();
     if(event.target.files && event.target.files.length) {
       this.file = event.target.files[0];
@@ -41,8 +73,11 @@ export class FavoritsCreateComponent implements AfterViewInit{
     }
   }
 
+
+  /**
+   * post form data for create Favorit to backend
+   */
   postForm() {
-    
     const sel_cid = document.querySelector("#cid") as HTMLSelectElement;
     const sel_suffix = document.querySelector("amount_suffix") as HTMLSelectElement;
     

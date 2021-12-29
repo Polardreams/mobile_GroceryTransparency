@@ -7,6 +7,27 @@ import { Favorits } from '../_models/favorits';
 import { Product } from '../_models/Product';
 import { FetchAllListsService } from '../_Services/fetch-all-lists.service';
 
+/**
+ * ChildComponent contain:
+ * submenu card for main
+ * 
+ * Main Features are:
+ *  display productinformation
+ *  containing submenu
+ * 
+ * Dataflow:
+ *  Component between following Services:
+ *    + FetchAllListsService
+ * 
+ *  Parent between Child
+ *    submenu card for main
+ * 
+ * Hooks
+ *  life cycles:
+ *    - constructor 
+ *    - OnChanges
+ */
+
 @Component({
   selector: 'app-card-for-main',
   templateUrl: './card-for-main.component.html',
@@ -23,21 +44,42 @@ export class CardForMainComponent implements OnChanges{
   _service_getAllLists!:FetchAllListsService;
   _router!:Router;
 
+  
+  /**
+   * register Alllist Service
+   * register Router
+   * 
+   * @param _service FetchAllListsService
+   * @param router Router
+   */
   constructor(private _service:FetchAllListsService, private router:Router) { 
     this._service_getAllLists = _service;
     this._router = router;
   }
 
+  /**
+   * fetch Observable if Alllists changes their value (f.e. Favorits)
+   * exe createCards()
+   * 
+   * @param changes SimpleChanges
+   */
   ngOnChanges(changes: SimpleChanges): void {
     this.fetchAllLists();
     this.createCards();
-    
   }
 
+  /**
+   * navigate to product details view
+   * @param id product id
+   */
   public getDetails(id:number) {
     this._router.navigate(["productdetail"], {state: {data:id}});
   }
 
+  /**
+   * read productlist and prepare picture url
+   * load products in cardcontent array
+   */
   createCards() {
     this.cardcontent = [];
     if (this._productlist!=undefined) {
@@ -56,6 +98,11 @@ export class CardForMainComponent implements OnChanges{
     }
   }
 
+  /**
+   * load companie icons
+   * @param cid  companie id
+   * @returns 
+   */
   getComopaniePic (cid:number) {
     let path='';
     if (cid==Companiepictures.Lidl) {
@@ -76,6 +123,13 @@ export class CardForMainComponent implements OnChanges{
     return path;
   }
 
+  /**
+   * check if product is an Favorit of current user
+   * set gold star if user has product as Favorit
+   * set grey star if is not
+   * @param groceryid 
+   * @returns 
+   */
   checkFavStat(groceryid:number){
     
     let flag = false;
@@ -88,8 +142,10 @@ export class CardForMainComponent implements OnChanges{
 
   }
 
+  /**
+   * load Observable Alllist from Service
+   */
   fetchAllLists() {
-    
     this._service_getAllLists.getAlllists().subscribe((datas) => {
       this.fav = datas.Fav;
       this.alllists = datas;

@@ -14,7 +14,37 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { GenerateAccountService } from '../_Services/generate-account.service';
 
-
+/**
+ * ParentComponent contain:
+ *  card-for-main
+ *  submenu-cardformain
+ * 
+ * Main Features are:
+ *  Permission and private policy dialogue
+ *  Sort dialogue
+ *  Discounter dialogue
+ *  Search dialogue
+ *  Select categories
+ *  Search form
+ *  List layout for weekly offers and searchresulte
+ *  click one card to get product detail view
+ *  include Methods for handling ShoppingList and Favorits
+ * 
+ * Dataflow:
+ *  Component between following Services:
+ *    - FetchCurrentOffersService
+ *    - ManagingFiltersNPolicyService
+ *    - FetchSearchResultsService
+ *    - FetchAllListsService
+ * 
+ *  Parent between Child
+ *    card-for-main ([_productlist]="productlist" [alllists]="alllists")
+ * 
+ * Hooks
+ *  life cycles:
+ *    - constructor 
+ *    - AfterViewInit
+ */
 
 @Component({
   selector: 'app-main-screen',
@@ -40,7 +70,17 @@ export class MainScreenComponent implements AfterViewInit{
   alllists!:Alllists;
   http!:HttpClient;
   
-
+/**
+ * pass the following Libs and services
+ * @param _http 
+ * @param _service 
+ * @param _serviceManagingFilterNPolicy 
+ * @param _service_search 
+ * @param _service_alllists 
+ * 
+ * fetch and write Filter and Policy into Session from user account
+ * fetch and write Alllists into Session
+ */
   constructor(private _http:HttpClient, private _service:FetchCurrentOffersService, private _serviceManagingFilterNPolicy:ManagingFiltersNPolicyService, _service_search:FetchSearchResultsService, _service_alllists:FetchAllListsService) { 
     this.service_managingFilterNPolicy = _serviceManagingFilterNPolicy;
     this.service_managingFilterNPolicy.fetchNwriteFilterNPolicyintoSession(globals.account.prototype.id);
@@ -51,6 +91,10 @@ export class MainScreenComponent implements AfterViewInit{
     this.http = _http;  
   }
 
+  /**
+   * check if sid is load and execute getcurrentProduct
+   * @param sid Kauflandstore
+   */
   getcurrentProducts (sid:string|null) {
     if (sid!=null) {
       this._service.getcurrentProduct(sid).subscribe((datas) => {
@@ -90,6 +134,9 @@ export class MainScreenComponent implements AfterViewInit{
     }
   }
 
+  /**
+   * reset current productlist back to received weekly offers from getCurrentProducts()
+   */
   resetProductList() {
     this.productlist = [];
     this.temp_datas.forEach((item, index, array) => {
@@ -97,6 +144,10 @@ export class MainScreenComponent implements AfterViewInit{
     });
   }
 
+  /**
+   * sort productlist 
+   *  based on price asc
+   */
   sort_price_asc () {
     var temp = this.productlist;
     temp.sort((a:Product, b:Product) => a.new_price - b.new_price);
@@ -105,6 +156,11 @@ export class MainScreenComponent implements AfterViewInit{
       this.productlist.push(item);
     });
   }
+
+  /**
+   * sort productlist 
+   *  based on price desc
+   */
   sort_price_desc () {
     var temp = this.productlist;
     temp.sort((a:Product, b:Product) => a.new_price + b.new_price);
@@ -113,6 +169,11 @@ export class MainScreenComponent implements AfterViewInit{
       this.productlist.push(item);
     });
   }
+
+  /**
+   * sort productlist 
+   *  based on discount asc
+   */
   sort_discount_asc () {
     var temp = this.productlist;
     temp.sort(function(a,b) {
@@ -129,6 +190,11 @@ export class MainScreenComponent implements AfterViewInit{
       if (item.discount!="") this.productlist.push(item);
     });
   }
+
+  /**
+   * sort productlist 
+   *  based on discount desc
+   */
   sort_discount_desc () {
     var temp = this.productlist;
     temp.sort(function(a,b) {
@@ -145,6 +211,11 @@ export class MainScreenComponent implements AfterViewInit{
       if (item.discount!="") this.productlist.push(item);
     });
   }
+
+  /**
+   * group productlist 
+   *  based on discounter 
+   */
   sort_group () {
     var temp = this.productlist;
     temp.sort(function(a,b) {
@@ -161,6 +232,10 @@ export class MainScreenComponent implements AfterViewInit{
       this.productlist.push(item);
     });
   }
+
+  /**
+   * reset productlist based on discounter filter
+   */
   setcompanies() {
     var temp = this.productlist;
     this.productlist = [];
@@ -173,6 +248,9 @@ export class MainScreenComponent implements AfterViewInit{
     });
   }
 
+  /**
+   * bounds displaying products
+   */
   setproductLimit () {
     var temp = this.productlist;
     this.productlist = [];
@@ -183,6 +261,11 @@ export class MainScreenComponent implements AfterViewInit{
     });
   }
 
+  /**
+   * get Filter and Polcy from database (service_managingFilterNPolicy.getFiltersNPolicy())
+   * getCurrentProducts()
+   * fetch Alllists
+   */
   ngAfterViewInit(): void {
    this.service_managingFilterNPolicy.getFiltersNPolicy().subscribe((fpnp) => {
    this.filterPnp = fpnp;
@@ -202,10 +285,12 @@ export class MainScreenComponent implements AfterViewInit{
         this.checkNUpdateGpsPermission();
       }
     }
-   }, 2000);
+   }, 2000);//display after 2 secounds
   }
 
- 
+ /**
+  * bind all nessessary methods to update UI for displaying products
+  */
   updateProductList () {
     this.resetProductList();
     this.setcompanies();
@@ -218,13 +303,13 @@ export class MainScreenComponent implements AfterViewInit{
      
   }
 
+  /**
+   * post filters and policy into localStorage and database
+   */
   saveFilterNPolicyintoSessionNDB() {
     
-    this.http.get(environment.backendUrl+"updatefilters.php?id="+globals.account.prototype.id).subscribe(() => {
-      console.log("response updatefilter.php");
-      
+    this.http.get(environment.backendUrl+"updatefilters.php?id="+globals.account.prototype.id).subscribe(() => {     
         this.http.get(environment.backendUrl+"updatepnp.php?id="+globals.account.prototype.id).subscribe(() => {
-          console.log("response updatepnp.php");
           var temp = null; 
           temp = document.getElementById("sort_price_asc") as HTMLInputElement;
           if (temp.checked) this.filterPnp.sortfilter.sort_price_asc=true; else this.filterPnp.sortfilter.sort_price_asc=false;
@@ -255,16 +340,16 @@ export class MainScreenComponent implements AfterViewInit{
 
         });
       });
-    
-
-
-    
-
   }
+
+/**
+ * preview for search results
+ * instead of keywords, there use filter options (categories)
+ * or use getcurrentProducts() (when demande weekly offers)
+ */
 
   displaySearchResultWithoutKeyowrd () {
     if (this.filterPnp.searchfilter.allweeks) {
-      console.log("test");
       if (this.searchterm=="") 
       this.searchterm = "*";
       this.searchForProducts();
@@ -273,7 +358,10 @@ export class MainScreenComponent implements AfterViewInit{
     }
   }
 
-
+/**
+ * set all permissions and policy true 
+ * and save thios into localStorage and database
+ */
   acceptAllTerms () {
     this.filterPnp.permissionNpolicy.camera = true;
     this.filterPnp.permissionNpolicy.localisation = true;
@@ -284,6 +372,10 @@ export class MainScreenComponent implements AfterViewInit{
     this.saveFilterNPolicyintoSessionNDB();
   }
 
+  /**
+   * send request to browser navigator API
+   * browser will ask for permission
+   */
   checkNUpdateGpsPermission () {
       navigator.geolocation.getCurrentPosition(
         () => {
@@ -294,6 +386,9 @@ export class MainScreenComponent implements AfterViewInit{
         });      
   }
 
+  /**
+   * save current location to localeStorage
+   */
   updateGpsPosition() {
     navigator.geolocation.getCurrentPosition((pos) => {
       var temp;
@@ -309,10 +404,17 @@ export class MainScreenComponent implements AfterViewInit{
     });
   }
 
+  /**
+   * show privacy text
+   */
   clickPrivacyText() {
     this.privacyTextflag = !this.privacyTextflag;
   }
 
+  /**
+   * check if location ist exist on localeStorage
+   * @returns boolean
+   */
   positionFromStorageExist ():boolean {
 		let flag;
 		if (typeof(Storage) !== "undefined") {
@@ -327,6 +429,15 @@ export class MainScreenComponent implements AfterViewInit{
 		return flag;
 	}
 
+  /**
+   * calculate distance between two locations
+   * @param lat1 
+   * @param lon1 
+   * @param lat2 
+   * @param lon2 
+   * @param unit 
+   * @returns 
+   */
   distance(lat1:number, lon1:number, lat2:number, lon2:number, unit:string):number {
 		/**
 		https://www.geodatasource.com/developers/javascript
@@ -352,6 +463,9 @@ export class MainScreenComponent implements AfterViewInit{
 		}
 	}
 	
+  /**
+   * find nearest Kaufland store based on location (GPS)
+   */
 	loadNmatchKauflandStores() {
 		//lade alle Stores von Kaufland
 		
@@ -376,6 +490,10 @@ export class MainScreenComponent implements AfterViewInit{
 		}
 	}
 
+  /**
+   * 
+   * @param pos get all Kauflandstores in distance of 30 km
+   */
   matchingStoresNPosition (pos:any | null) {
 		//setze pos in storage
 		
@@ -424,6 +542,9 @@ export class MainScreenComponent implements AfterViewInit{
  		});
 	}
 
+  /**
+   * search for products with keyword
+   */
   searchForProducts() {
     this.service_search.getSearchResults(
       globals.account.prototype.id, 
@@ -452,6 +573,11 @@ export class MainScreenComponent implements AfterViewInit{
     
   }
 
+  /**
+   * filterPnp.searchfilter.allweeks = 1
+   * filterPnp.searchfilter.currentweeks = 0
+   * @returns 
+   */
   getMode():number {
     if (this.filterPnp.searchfilter.allweeks==true) {
       return 1;
@@ -465,6 +591,10 @@ export class MainScreenComponent implements AfterViewInit{
     }
   }
 
+  /**
+   * 
+   * @returns array of selected discounter
+   */
   getDiscounter():string {
 
     var arr = [];
@@ -477,6 +607,10 @@ export class MainScreenComponent implements AfterViewInit{
     return arr.join(',');
   }
 
+  /**
+   * 
+   * @returns get current Kauflandstore
+   */
   getSid():string|null {
 
     if (this.filterPnp.discounterfilter.discount_kaufland && this.filterPnp.discounterfilter.discount_kaufland_storeid!="") 
@@ -486,6 +620,10 @@ export class MainScreenComponent implements AfterViewInit{
 
 }
 
+/**
+ * Enumeration of 
+ * all Companies in WebApp
+ */
 enum Discounter {
   Lidl=1, 
   Rewe=2,

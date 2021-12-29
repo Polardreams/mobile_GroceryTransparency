@@ -1,3 +1,9 @@
+/**
+ * SubModel for filterNpolicy
+ * store all sort informations
+ * 
+ */
+
 export class Sortfilter {
     sort_price_asc:boolean=false;
     sort_price_desc:boolean=false;

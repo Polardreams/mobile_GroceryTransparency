@@ -2,10 +2,29 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { Router } from '@angular/router';
 import { Alllists } from '../_models/alllists';
 import { Shoppinglist } from '../_models/shoppinglists';
-import { FetchAllListsService } from '../_Services/fetch-all-lists.service';
 import { ManagingShoppinglistService } from '../_Services/managing-shoppinglist.service';
 
-
+/**
+ * ParentComponent contain:
+ * submenu card for shoppinglist
+ * 
+ * Main Features are:
+    displaying Title of ShoppingLIst
+    rename ShoppingList
+    contain submenu
+    open shoppinglist details
+ * 
+ * Dataflow:
+ *  Component between following Services:
+ * 
+ *  Parent between Child
+ *    submenu card for shoppinglist ([id]="card.id)
+ * 
+ * Hooks
+ *  life cycles:
+ *    - constructor 
+ *    - OnChanges
+ */
 
 @Component({
   selector: 'app-card-for-shoppinglist',
@@ -19,11 +38,21 @@ export class CardForShoppinglistComponent implements OnChanges {
   service!:ManagingShoppinglistService;
   router!:Router;
 
+  /**
+   * register: 
+   * @param _service ManagingShoppinglistService
+   * @param _router Router
+   */
   constructor(_service:ManagingShoppinglistService, private _router:Router) { 
     this.service = _service;
     this.router = _router;
   }
   
+  /**
+   * exe createcards()
+   * get Alllists Observable
+   * @param changes SimpleChanges
+   */
   ngOnChanges(changes: SimpleChanges): void {
     this.createCards();
     
@@ -33,6 +62,10 @@ export class CardForShoppinglistComponent implements OnChanges {
     });
   }
 
+  /**
+   * create cards with Alllists.shoppinglist
+   * pass them to param shoppinglists
+   */
   createCards() {
     this.service.iniSessionNModel(this._alllists);
     if (this._alllists!=undefined) {
@@ -40,14 +73,25 @@ export class CardForShoppinglistComponent implements OnChanges {
     }
   }
 
+  /**
+   * rename shoppinglist
+   * @param id account id
+   */
   renameShoppingListNwriteIntoSession (id:number) {
     this.service.postShoppingListNameintoDB(id);
   }
 
+  /**
+   * create new shoppinglist
+   */
   createShoppingList() {
     this.service.createShoppingListintoDBNSession();
   }
 
+  /**
+   * navigate to shoppinglist details and open current shoppinglist
+   * @param id shoppinglist id
+   */
   navigateToDetails (id:number) {
     this.router.navigate(["shoppinglist-details"], {state: {data:id}});
   }

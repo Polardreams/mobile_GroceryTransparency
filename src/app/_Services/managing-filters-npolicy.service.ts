@@ -5,6 +5,12 @@ import { FilterNpolicy } from '../_models/filter-npolicy';
 import { GT_Response_filterNpolicy } from '../_models/Response';
 import { Subject } from 'rxjs'; 
 
+/**
+ * Service wich handle all Filters and Policy between WebApp and Backend
+ * use Observable to make a Callback for executing instance
+ * Observable pass FilterNpolicy 
+ */
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +25,12 @@ export class ManagingFiltersNPolicyService {
     this.http = _http;
   }
 
+/**
+ * 
+ * @param id account id
+ * @returns GT_Response_filterNpolicy
+ */
+
   private getcurrentFiltersNPolicyfromDB(id:number) {
     return this.http.get<GT_Response_filterNpolicy>(environment.backendUrl+"getfilterNpolicy.php?id="+id);
   }
@@ -31,6 +43,9 @@ export class ManagingFiltersNPolicyService {
     }
   }
 
+  /**
+   * write Permissions and Policy user declaration into localStorage from browser
+   */
   updatePermissionNpolicyintoSession() {
     if (localStorage.getItem("fpp")!=null) {
       localStorage.removeItem("fpp");
@@ -42,6 +57,10 @@ export class ManagingFiltersNPolicyService {
     }
   }
 
+  /**
+   * fetch permissions and policy and write them into localStorage and Model
+   * @param id account id
+   */
   fetchNwriteFilterNPolicyintoSession(id:number) {
     this.iniSessionFilterNPolicy();
     this.getcurrentFiltersNPolicyfromDB(id).subscribe((response)=>{
@@ -52,6 +71,12 @@ export class ManagingFiltersNPolicyService {
     });
   }
 
+  /**
+   * convert database mysql tinyint into boolean
+   * @param int tinyInt
+   * @returns boolean
+   */
+
   tinyintToBool(int:number | null):boolean | null {
     if (int == null) return null;
     if (int==0) {
@@ -60,6 +85,12 @@ export class ManagingFiltersNPolicyService {
       return true;
     }
   }
+
+/**
+ * convert WebApp boolean into database (mysql) tinyint
+ * @param boolean
+ * @returns number
+ */
 
   booleanToTinyint (bool:boolean):number {
     if (bool==false) {
@@ -70,7 +101,7 @@ export class ManagingFiltersNPolicyService {
   }
 
   /**
-   * Convertiert alle wichtigen properties von TinyInt in Boolean
+   * convert all important properties from TinyInt into boolean
    * @param filter 
    * @returns 
    */
@@ -95,8 +126,8 @@ export class ManagingFiltersNPolicyService {
   }
 
   /**
-   * 
-   * @param filter Convertiert alle wichtigen propertiers von Boolean in TinyInt
+   * convert all important properties from boolean to TinyInt
+   * @param filter 
    * @returns 
    */
   converter_boolean_into_tinyint(filter:any):any {
@@ -119,10 +150,19 @@ export class ManagingFiltersNPolicyService {
     return filter;
   }
 
+  /**
+   * part of Observable Callback
+   * @returns FilterNpolicy
+   */
+
   getFiltersNPolicy() {
     return this.subject.asObservable();
   }
 
+  /**
+   * read from Model Filters and post into database
+   * @param id account id
+   */
   readNpostFilterintoDB (id:number) {
     if (localStorage.getItem("fpp")!=null) {
       this.session = localStorage.getItem("fpp");
@@ -134,7 +174,11 @@ export class ManagingFiltersNPolicyService {
       console.error(`Polardreams [readNpostFilterNPolicyintoDB]- error: session.getItem ist null`);
     }
   }
-
+  /**
+   * read from Model Policy and post into database
+   * fpp = filterNPermissionNPolicy tag
+   * @param id account id
+   */
   readNpostPolicyintoDB (id:number) {
     if (localStorage.getItem("fpp")!=null) {
       this.session = localStorage.getItem("fpp");
@@ -148,6 +192,12 @@ export class ManagingFiltersNPolicyService {
     }
   }
 
+  /**
+   * write FilterNpolicy (Model) into localStorage
+   * fpp = filterNPermissionNPolicy tag
+   * @param filterpermissionNpolicy (FilterNpolicy)
+   */
+   
   writeFilterNPolicyintoSession (filterpermissionNpolicy:FilterNpolicy) {
     if (filterpermissionNpolicy!=null) {
       localStorage.removeItem("fpp");

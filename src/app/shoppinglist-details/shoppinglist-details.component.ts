@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Companiepictures } from '../companiepictures';
 import { Alllists } from '../_models/alllists';
@@ -7,6 +7,33 @@ import { ShoppingListProducts } from '../_models/shopping-list';
 import { FetchAllListsService } from '../_Services/fetch-all-lists.service';
 import { ManagingShoppinglistService } from '../_Services/managing-shoppinglist.service';
 import * as globals from '../../global';
+
+/**
+ * ParentComponent contain:
+ *  none 
+ * 
+ * Main Features are:
+ *  show shoppinglist with all listed products
+ *  set amount for every product
+ *  set check for every product (check mean mark for bought)
+ *  navigate to favorits or ShoppingLIst to add Products
+ *  remove Products from ShoppingLIst
+ * 
+ * Dataflow:
+ *  Component between following Services:
+ *    FetchAllListsService
+ *    ManagingShoppinglistService
+ * 
+ *  Parent between Child
+ *    none
+ * 
+ * Hooks
+ *  life cycles:
+ *    - constructor 
+ *    - AfterViewInit
+ *    - OnDestroy
+ */
+
 @Component({
   selector: 'app-shoppinglist-details',
   templateUrl: './shoppinglist-details.component.html',
@@ -21,19 +48,36 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
   id!:number;
   products!:ShoppingListProducts[];
 
+  /**
+   * register: 
+   * @param _service_fetchalllists FetchAllListsService
+   * @param _service_ManageingShoppinglist ManagingShoppinglistService
+   * @param _router Router
+   * 
+   * fetch and write Allists into localStorage
+   */
   constructor(_service_fetchalllists:FetchAllListsService, _service_ManageingShoppinglist:ManagingShoppinglistService, _router:Router) { 
     this.service_fetchalllists = _service_fetchalllists;
     this.service_fetchalllists.fetchNwriteintoSession(globals.account.prototype.id);
     this.service_ManageingShoppinglist = _service_ManageingShoppinglist;
     this.router = _router;
   }
-
+/**
+ * set Alllists after close this Component
+ * and 
+ * postr Check and Amount changes into database
+ */
   
   ngOnDestroy(): void {
-      this.service_ManageingShoppinglist.setAlllist(this.alllists);
+      this.service_ManageingShoppinglist.setAlllist(this.alllists);//ist das an der Stelle sinnvoll??? Weil der Service stirbt auch mit der Componente. Er wird auch nicht weitergereicht durch das ParentComponent
       this.service_ManageingShoppinglist.postShoppingListCheckNAmountIntoDB(this.id);
   }
 
+  /**
+   * fetch alllists as Observable
+   * pass user id
+   * get product informations
+   */
   ngAfterViewInit(): void {
     this.service_fetchalllists.getAlllists().subscribe((datas) => {
       this.alllists = datas;
@@ -49,6 +93,11 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
     });
   }
 
+  /**
+   * get companie icon
+   * @param cid companie id
+   * @returns 
+   */
   getComopaniePic (cid:number) {
     let path='';
     if (cid==Companiepictures.Lidl) {
@@ -69,10 +118,16 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
     return path;
   }
 
+  /**
+   * navigate back to shoppinglist-screen
+   */ 
   goBack (){
     this.router.navigate(["shoppinglist"]);
   }
 
+  /**
+   * remove selected products from shoppinglistz
+   */
   deleteSelectedProducts() {
     this.service_ManageingShoppinglist.removeShoppingListProductsfromSessionNDB(this.id);
     this.alllists = this.service_ManageingShoppinglist.getTest();

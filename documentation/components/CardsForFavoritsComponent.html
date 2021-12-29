@@ -1,0 +1,1014 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>grocery-transparency documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">grocery-transparency documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  CardsForFavoritsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/cards-for-favorits/cards-for-favorits.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>ParentComponent contain:
+submenu cardforfavorits</p>
+<p>Main Features are:
+ display Favorit informations
+ navigate to product details view</p>
+<p>Dataflow:
+ Component between following Services:
+      FetchProductdetailsService</p>
+<p> Parent between Child
+   submenu cardforfavorits ([id]=&quot;favorit.id&quot; [alllists]=&quot;alllists&quot; [service_Favorits]=&quot;service_managingFavorits&quot;)</p>
+<p>Hooks
+ life cycles:</p>
+<ul>
+<li>constructor</li>
+<li>OnChanges</li>
+</ul>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-cards-for-favorits</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./cards-for-favorits.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./cards-for-favorits.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#flag" >flag</a>
+                            </li>
+                            <li>
+                                <a href="#products" >products</a>
+                            </li>
+                            <li>
+                                <a href="#router" >router</a>
+                            </li>
+                            <li>
+                                <a href="#service" >service</a>
+                            </li>
+                            <li>
+                                <a href="#test" >test</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getComopaniePic" >getComopaniePic</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getDetails" >getDetails</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#alllists" >alllists</a>
+                            </li>
+                            <li>
+                                <a href="#favorits" >favorits</a>
+                            </li>
+                            <li>
+                                <a href="#service_managingFavorits" >service_managingFavorits</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_service: <a href="../injectables/FetchProductdetailsService.html" target="_self">FetchProductdetailsService</a>, _router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:47</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>register following services:</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_service</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FetchProductdetailsService.html" target="_self" >FetchProductdetailsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>FetchProductdetailsService</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>_router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Router</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="alllists"></a>
+                        <b>alllists</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Alllists.html" target="_self" >Alllists</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:39</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="favorits"></a>
+                        <b>favorits</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Favorits.html" target="_self" >Favorits[]</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:38</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="service_managingFavorits"></a>
+                        <b>service_managingFavorits</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ManagingFavoritsService.html" target="_self" >ManagingFavoritsService</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:40</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getComopaniePic"></a>
+                    <span class="name">
+                        <span ><b>getComopaniePic</b></span>
+                        <a href="#getComopaniePic"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getComopaniePic(cid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>get comnpanie icon</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>cid</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>companie id</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDetails"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getDetails</b></span>
+                        <a href="#getDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getDetails(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>navigate to product details view</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>get array of all Favorits and fetch products details
+also fetch Allists as Observable</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>SimpleChanges</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="flag"></a>
+                    <span class="name">
+                        <span ><b>flag</b></span>
+                        <a href="#flag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="products"></a>
+                    <span class="name">
+                        <span ><b>products</b></span>
+                        <a href="#products"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Product.html" target="_self" >Product[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="service"></a>
+                    <span class="name">
+                        <span ><b>service</b></span>
+                        <a href="#service"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/FetchProductdetailsService.html" target="_self" >FetchProductdetailsService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="test"></a>
+                    <span class="name">
+                        <span ><b>test</b></span>
+                        <a href="#test"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Companiepictures } from &#x27;../companiepictures&#x27;;
+import { Alllists } from &#x27;../_models/alllists&#x27;;
+import { Favorits } from &#x27;../_models/favorits&#x27;;
+import { Product } from &#x27;../_models/Product&#x27;;
+import { FetchProductdetailsService } from &#x27;../_Services/fetch-productdetails.service&#x27;;
+import { ManagingFavoritsService } from &#x27;../_Services/managing-favorits.service&#x27;;
+
+/**
+ * ParentComponent contain:
+ * submenu cardforfavorits
+ * 
+ * Main Features are:
+ *  display Favorit informations
+ *  navigate to product details view
+ * 
+ * Dataflow:
+ *  Component between following Services:
+ *       FetchProductdetailsService
+ * 
+ *  Parent between Child
+ *    submenu cardforfavorits ([id]&#x3D;&quot;favorit.id&quot; [alllists]&#x3D;&quot;alllists&quot; [service_Favorits]&#x3D;&quot;service_managingFavorits&quot;)
+ * 
+ * Hooks
+ *  life cycles:
+ *    - constructor 
+ *    - OnChanges
+ */
+
+@Component({
+  selector: &#x27;app-cards-for-favorits&#x27;,
+  templateUrl: &#x27;./cards-for-favorits.component.html&#x27;,
+  styleUrls: [&#x27;./cards-for-favorits.component.css&#x27;]
+})
+
+export class CardsForFavoritsComponent implements OnChanges {
+  @Input() favorits!:Favorits[];
+  @Input() alllists!:Alllists;
+  @Input() service_managingFavorits!:ManagingFavoritsService;
+
+  service!:FetchProductdetailsService;
+  router!:Router;
+  products:Product[] &#x3D; [];
+  flag:boolean &#x3D; true;
+
+  test:number &#x3D; 0;
+
+  /**
+   * register following services:
+   * @param _service FetchProductdetailsService
+   * @param _router Router
+   */
+  constructor(_service:FetchProductdetailsService, _router:Router) { 
+    this.service &#x3D; _service;
+    this.router &#x3D; _router;
+  }
+
+  /**
+   * get array of all Favorits and fetch products details
+   * also fetch Allists as Observable
+   * @param changes SimpleChanges
+   */
+  ngOnChanges(changes: SimpleChanges): void {  
+    if (this.favorits &amp;&amp; this.flag) {
+      this.products &#x3D; [];
+      this.flag &#x3D; false;
+      this.favorits.forEach((items, index, arr) &#x3D;&gt; {
+        this.service.getcurrentProduct(items.grocerie).subscribe((datas) &#x3D;&gt; {
+          this.products.push(datas.response);
+        });
+      });
+    }
+
+    this.service_managingFavorits.getAllLists().subscribe((lists) &#x3D;&gt; {
+      window.location.reload();//Es ist weiterhin unklar, warum hier nicht ordnungsgemäßg geladen wird
+    });
+  
+  }
+
+  /**
+   * 
+   * @param id navigate to product details view
+   */
+  public getDetails(id:number) {
+    this.router.navigate([&quot;productdetail&quot;], {state: {data:id}});
+  }
+
+  /**
+   * get comnpanie icon
+   * @param cid companie id
+   * @returns 
+   */
+  getComopaniePic (cid:number) {
+    let path&#x3D;&#x27;&#x27;;
+    if (cid&#x3D;&#x3D;Companiepictures.Lidl) {
+      path &#x3D; &quot;../../assets/images/logos/lidl.svg&quot;;
+    }
+    if (cid&#x3D;&#x3D;Companiepictures.Rewe) {
+      path &#x3D; &quot;../../assets/images/logos/rewe.svg&quot;;
+    }
+    if (cid&#x3D;&#x3D;Companiepictures.Kaufland) {
+      path &#x3D; &quot;../../assets/images/logos/kaufland.svg&quot;;
+    }
+    if (cid&#x3D;&#x3D;Companiepictures.AldiNord) {
+      path &#x3D; &quot;../../assets/images/logos/aldiN.svg&quot;;
+    }
+    if (cid&#x3D;&#x3D;Companiepictures.AldiSued) {
+      path &#x3D; &quot;../../assets/images/logos/aldiS.svg&quot;
+    }
+    return path;
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div *ngFor&#x3D;&quot;let favorit of products&quot;&gt;
+    &lt;div class&#x3D;&quot;col-4&quot; style&#x3D;&quot;padding-left: 2px;padding-right: 2px;&quot;&gt;
+        &lt;img src&#x3D;&quot;{{favorit.pic_url}}&quot; style&#x3D;&quot;width:80px;height:80px;object-fit:cover;margin-left: 5px;&quot; (click)&#x3D;&quot;getDetails(favorit.id)&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-3 fs-6&quot; style&#x3D;&quot;padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;&quot;&gt;
+        {{favorit.title}}
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-1&quot; style&#x3D;&quot;padding-left: 2px;padding-right: 2px;&quot;&gt;
+        &lt;img src&#x3D;{{getComopaniePic(favorit.companie)}} style&#x3D;&quot;width:15px;height:15px;object-fit:contain;&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-3&quot;&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div style&#x3D;&quot;position:relative;top:12px;font-size: 12px;&quot;&gt;{{favorit.discount}}&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot; &gt;
+            &lt;div style&#x3D;&quot;position:relative;top:15px;font-size: 14px;&quot;&gt;{{favorit.new_price}}€&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-1 fs-3&quot; style&#x3D;&quot;margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto; padding-left: 2px;padding-right: 2px;&quot;&gt;
+        &lt;!--submenu-cardforfavorits--&gt;
+        &lt;app-submenu-cardforfavorits [id]&#x3D;&quot;favorit.id&quot; [alllists]&#x3D;&quot;alllists&quot; [service_Favorits]&#x3D;&quot;service_managingFavorits&quot;&gt;&lt;/app-submenu-cardforfavorits&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./cards-for-favorits.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div *ngFor="let favorit of products">    <div class="col-4" style="padding-left: 2px;padding-right: 2px;">        <img src="{{favorit.pic_url}}" style="width:80px;height:80px;object-fit:cover;margin-left: 5px;" (click)="getDetails(favorit.id)"/>    </div>    <div class="col-3 fs-6" style="padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;">        {{favorit.title}}    </div>    <div class="col-1" style="padding-left: 2px;padding-right: 2px;">        <img src={{getComopaniePic(favorit.companie)}} style="width:15px;height:15px;object-fit:contain;"/>    </div>    <div class="col-3">        <div class="row">            <div style="position:relative;top:12px;font-size: 12px;">{{favorit.discount}}</div>        </div>        <div class="row" >            <div style="position:relative;top:15px;font-size: 14px;">{{favorit.new_price}}€</div>        </div>    </div>    <div class="col-1 fs-3" style="margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto; padding-left: 2px;padding-right: 2px;">        <!--submenu-cardforfavorits-->        <app-submenu-cardforfavorits [id]="favorit.id" [alllists]="alllists" [service_Favorits]="service_managingFavorits"></app-submenu-cardforfavorits>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CardsForFavoritsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CardsForFavoritsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

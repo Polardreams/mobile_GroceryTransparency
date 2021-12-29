@@ -1,6 +1,25 @@
 import { AfterViewInit, Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ManagingShoppinglistService } from '../_Services/managing-shoppinglist.service';
 
+/**
+ * ParentComponent contain:
+ * none
+ * Main Features are:
+ *  copy shoppingList
+ *  delete shoppingList (include all products references (not products in table groceries themselfe))
+ *  (future plan is to implement sharing function)
+ *  
+ * Dataflow:
+ *  Component between following Services:
+ * 
+ *  Parent between Child
+ *    none
+ * 
+ * Hooks
+ *  life cycles:
+ *    - constructor 
+ *    - AfterViewInit
+ */
 
 @Component({
   selector: 'app-submenu-cardforshoppinglist',
@@ -15,21 +34,35 @@ export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
   isopen:boolean = false;
   service:ManagingShoppinglistService;
 
+  /**
+   * register:
+   * @param _service ManagingShoppinglistService
+   */
   constructor(_service:ManagingShoppinglistService) { 
     this.service = _service;
   }
 
-
+  /**
+   * set individual id for Submenu-button
+   */
   ngAfterViewInit(): void {
     document.getElementById("btn")?.setAttribute("id", "btn"+this.id);
     document.getElementById("btn"+this.id)?.setAttribute("data-bs-target", "#target"+this.id);
     document.getElementById("target")?.setAttribute("id", "target"+this.id);
   }
 
+  /**
+   * delete ShoppingList (include all productreferences)
+   * @param id account id
+   */
   deleteShoppingList (id:number) {
     this.service.removeShoppingListfromDBNSession(id);
   }
 
+  /**
+   * copy shoppinglist (include all productreferences)
+   * @param id shoppinglist id
+   */
   copyShoppingList(id:number) {
     this.service.copyShoppingListintoDBNSession(id);
   }
