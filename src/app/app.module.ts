@@ -18,6 +18,9 @@ import { CardsForFavoritsComponent } from './cards-for-favorits/cards-for-favori
 import { SubmenuCardforfavoritsComponent } from './submenu-cardforfavorits/submenu-cardforfavorits.component';
 import { FavoritsCreateComponent } from './favorits-create/favorits-create.component';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
+
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [
@@ -33,17 +36,19 @@ import { FavoritsCreateComponent } from './favorits-create/favorits-create.compo
     FavoritsScreenComponent,
     CardsForFavoritsComponent,
     SubmenuCardforfavoritsComponent,
-    FavoritsCreateComponent,
+    FavoritsCreateComponent 
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule    
-
+    FormsModule,
+    ModalModule.forRoot(),
+    CollapseModule.forRoot()    
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
