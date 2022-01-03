@@ -13,10 +13,13 @@
   <app-root></app-root>
   
   <!--
-    bootstrap js CDN is used, because the installed variant
-    execute only bootstrap js in code
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    bootstrap js CDN is used, because the installed variant with ng-bootstrap allows js-needed Objects like Modals or Collapse
+    controll in ts code. 
+    https://ng-bootstrap.github.io/#/getting-started
+
+    Too avoid the effort of rebuilding my code, i refer to bootstrap js cdn, because all bootstrap-modifications (scss) are only in html code
   -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
 </body>
 </html>

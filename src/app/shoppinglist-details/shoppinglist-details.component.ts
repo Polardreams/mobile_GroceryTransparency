@@ -47,6 +47,7 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
   router!:Router;
   id!:number;
   products!:ShoppingListProducts[];
+  customText:string="";
 
   /**
    * register: 
@@ -130,7 +131,17 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
    */
   deleteSelectedProducts() {
     this.service_ManageingShoppinglist.removeShoppingListProductsfromSessionNDB(this.id);
-    this.alllists = this.service_ManageingShoppinglist.getTest();
+    
+    this.alllists.Shop.forEach((element) => {
+      if (element.id == this.id) {
+        this.products = element.products;
+      }
+    });
+  }
+
+  addCustomEntry(note:string) {
+    this.service_ManageingShoppinglist.addCustomEntryToShoppingList(this.id, note);
+
     this.alllists.Shop.forEach((element) => {
       if (element.id == this.id) {
         this.products = element.products;

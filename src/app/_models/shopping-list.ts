@@ -13,4 +13,5 @@ export class ShoppingListProducts {
     new_price:number = 0.00;
     discount:string = "";
     cid:number = -1;
+    customentry:string = "";
 }

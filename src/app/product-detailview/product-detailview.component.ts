@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { Companiepictures } from '../companiepictures';
 import { Product } from '../_models/Product';
 import { FetchProductdetailsService } from '../_Services/fetch-productdetails.service';
 
@@ -58,8 +59,32 @@ export class ProductDetailviewComponent implements AfterViewInit{
       response.response.pic_url = pic_url_arr[0];
       this.product = response.response;
     });
-    
   }
 
+  
+  /**
+   * load companie icons
+   * @param cid  companie id
+   * @returns 
+   */
+   getComopaniePic (cid:number) {
+    let path='';
+    if (cid==Companiepictures.Lidl) {
+      path = "../../assets/images/logos/lidl.svg";
+    }
+    if (cid==Companiepictures.Rewe) {
+      path = "../../assets/images/logos/rewe.svg";
+    }
+    if (cid==Companiepictures.Kaufland) {
+      path = "../../assets/images/logos/kaufland.svg";
+    }
+    if (cid==Companiepictures.AldiNord) {
+      path = "../../assets/images/logos/aldiN.svg";
+    }
+    if (cid==Companiepictures.AldiSued) {
+      path = "../../assets/images/logos/aldiS.svg"
+    }
+    return path;
+  }
 
 }

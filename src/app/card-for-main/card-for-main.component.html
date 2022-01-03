@@ -1,22 +1,32 @@
 <div *ngFor="let card of cardcontent">
-    <div class="row border rounded">
-        <div class="col-4" style="padding-left: 2px;padding-right: 2px;">
-            <div *ngIf="card.favflag==true; else elseBlock">
-                <img src="../../assets/images/star_gold.png" style="width:25px;height:25px;margin-left: 5px;"/>
-            </div>
-            <ng-template #elseBlock>
-                <img src="../../assets/images/star_grey.png" style="width:25px;height:25px;margin-left: 5px;"/>
-            </ng-template>
+    <div class="row border rounded ms-1 me-1 mt-1 mb-1">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-1 my-auto" >
+                    <div *ngIf="card.favflag==true; else elseBlock">
+                        <img src="../../assets/images/star_gold.png" style="width:25px;height:25px;"/>
+                    </div>
+                    <ng-template #elseBlock>
+                        <img src="../../assets/images/star_grey.png" style="width:25px;height:25px;"/>
+                    </ng-template>
+                </div>
 
-            <img src="{{card.pic_url}}" loading="lazy" style="width:80px;height:80px;object-fit:cover;margin-left: 5px;" (click)="getDetails(card.id)"/>
+                <div class="col-5  my-auto">
+                    <img src="{{card.pic_url}}" loading="lazy" style="width:80px;height:80px;object-fit:cover;" (click)="getDetails(card.id)"/>
+                </div>
+            </div>
+
         </div>
-        <div class="col-3 fs-6" style="padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;">
+
+        <div class="col-3 fs-6" style="overflow: hidden; text-overflow: ellipsis;">
             {{card.title}}
         </div>
-        <div class="col-1" style="padding-left: 2px;padding-right: 2px;">
+
+        <div class="col-1">
             <img src={{card.pic_companie}} style="width:15px;height:15px;object-fit:contain;"/>
         </div>
-        <div class="col-3">
+
+        <div class="col-2">
             <div class="row">
                 <div style="position:relative;top:12px;font-size: 12px;">{{card.discount}}</div>
             </div>
@@ -24,7 +34,8 @@
                 <div style="position:relative;top:15px;font-size: 14px;">{{card.new_price}}€</div>
             </div>
         </div>
-        <div class="col-1 fs-3" style="margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto; padding-left: 2px;padding-right: 2px;">
+
+        <div class="col-2 fs-3" >
             <app-submenu-cardformain [id]="card.id" [alllists]="alllists" [cardcontent]="cardcontent"></app-submenu-cardformain>
         </div>
     </div>

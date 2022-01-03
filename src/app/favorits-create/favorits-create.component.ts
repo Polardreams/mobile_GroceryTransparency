@@ -37,6 +37,7 @@ export class FavoritsCreateComponent implements AfterViewInit{
   http:HttpClient;
   router!:Router;
   service_Favorits!:ManagingFavoritsService;
+  newProduct:CreateProduct = new CreateProduct();
 
   /**
    * register: 
@@ -79,27 +80,32 @@ export class FavoritsCreateComponent implements AfterViewInit{
    */
   postForm() {
     const sel_cid = document.querySelector("#cid") as HTMLSelectElement;
-    const sel_suffix = document.querySelector("amount_suffix") as HTMLSelectElement;
-    
-    var obj = new CreateProduct();
-    obj.title = document.querySelector("#title")?.getAttribute("value") || "";
-    obj.description = document.querySelector("#description")?.getAttribute("value") || "";
-    obj.hint = document.querySelector("#hint")?.getAttribute("value") || "";
-    obj.amount = document.querySelector("#amount")?.getAttribute("value") || "" +" "+ sel_suffix.value;
-    obj.price_per_amount = document.querySelector("#price_per_amount")?.getAttribute("value") || "";
-    obj.new_price = parseFloat(document.querySelector("#price")?.getAttribute("value") || "");
+    const sel_suffix = document.querySelector("#amount_suffix") as HTMLSelectElement;
+
+    var obj = this.newProduct;
+    obj.amount = obj.amount +" "+ sel_suffix.value;
     obj.cid = parseInt(sel_cid.value);
     obj.pic = this.imageSrc;
     obj.owner = globals.account.prototype.id;
-    
+    obj.new_price.toString().replace(',','.');
     var formData = new FormData();
     formData.append("body", JSON.stringify(obj));
-    formData.append("filename", this.file.name);
-    this.http.post<GT_Response_CreateProduct>(environment.backendUrl+"createProduct.php?",formData).subscribe((res) => {
-      this.service_Favorits.addProductToFavorits(res.responseCreateProduct.id);
-      this.router.navigate(["favorits"]);
-    });
+    if (this.file) {
+      formData.append("filename", this.file.name);  
+      this.http.post<GT_Response_CreateProduct>(environment.backendUrl+"createProduct.php?",formData).subscribe((res) => {
+        this.service_Favorits.addProductToFavorits(res.responseCreateProduct.id);
+        this.router.navigate(["favorits"]);
+      });
+    } else {
+      console.error(`Polardreams[postForm()]: Es wurde kein Bild gefunden.`);
+    }    
+  }
 
+    /**
+   * navigate back to shoppinglist-screen
+   */ 
+  goBack (){
+    this.router.navigate(["favorits"]);
   }
 
 }

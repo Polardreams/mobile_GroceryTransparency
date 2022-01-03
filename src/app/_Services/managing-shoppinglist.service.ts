@@ -210,7 +210,7 @@ export class ManagingShoppinglistService {
   }
   
   /**
-   add Product to  productids
+   copy Product to  productids
    * @param id shoppinglist id
    * @param pid is product id (pid = gid)
    * @returns 
@@ -244,6 +244,36 @@ export class ManagingShoppinglistService {
       this.updateShoppingListsIntoSession();
     });
   }
+
+    /**
+   * add customentry to shoppingList
+   * @param id shoppingList id
+   * @param note customentry text
+   * 
+   * attention!!! 
+   *  all productids-entries with groceryid 110625 are CustomEntries
+   * 
+   * execute updateShoppingListsIntoSession()
+   */
+     addCustomEntryToShoppingList(id:number, note:string) {
+    
+      this.http.get<GT_Response_ShoppingListAddToProducts>(environment.backendUrl+"updateShoppingList.php?id="+globals.account.prototype.id+"&func=7&shlid="+id+"&gid="+110625+"&customentry="+note).subscribe((data) => {
+        console.log(`Polardreams [server]: ${JSON.stringify(data)}`);
+        
+        this.alllists.Shop.filter((list) => {
+        
+          if (id == list.id) {
+            var temp = new ShoppingListProducts();
+            temp.groceryid = 110625;
+            temp.shoppingid = data.responseShoppinglist.shoppingid;
+            temp.customentry = data.responseShoppinglist.customentry;
+            list.products.push(temp); 
+          }
+        });
+         
+        this.updateShoppingListsIntoSession();
+      });
+    }
 
 /**
  * update all datas Check and Amount 

@@ -1,244 +1,269 @@
-<div class="container">
-    <header>
-        <div class="row justify-content-start">
+<nav>
+  <app-navigation></app-navigation>
+</nav>
+
+<header>
+  <!--Search Form-->
+  <form>
+      <div class="row ms-1 me-1">
+          <div class="col-8">
+            <div class="hstack gap-1"> 
+              <input class="form-control" type="Text" placeholder="Produkt, Kategorie" [(ngModel)]="searchterm" [ngModelOptions]="{standalone: true}"/>
+              <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#SearchHelp"><img src="../../assets/images/help.png" width="25px" height="25px"></button>
+            </div>
             
-            <div class="row">
-                <div class="col-10">
-                    <form>
-                        <div class="row">
-                            <div class="col-7"><input class="form-control" type="Text" placeholder="Produkt, Kategorie" [(ngModel)]="searchterm" [ngModelOptions]="{standalone: true}"/></div>
-                            <div class="col-5"><button class="form-control" type="submit" (click)="searchForProducts()">suchen</button></div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-2" ><input type="image" src="../../assets/images/icon_personal.png" /></div>
-            </div>            
-        </div>
+          </div>
+          <div class="col-4"><button class="form-control" type="submit" (click)="searchForProducts()">suchen</button></div>
+      </div>
+  </form>
+  
+  <!--Dialogues-->
+  <div class="row ms-1 me-1">
+    <div class="col-4">
+      <!--Dialogue Sort Settings-->
+      <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#searchModal">Sortieren</button>      
+    </div>  
+    <div class="col-4">
+        <!--Dialogue Discounter Settings-->
+        <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#discounterModal">Discounter</button>
+    </div>
+    <div class="col-4">
+        <!--Dialogue Search Settings-->
+        <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#suchModal">Suche</button>
+    </div> 
+  </div>
 
-        <div class="row justify-content-end">
-            <div class="row">
-                <div class="col-3">
-                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#searchModal">Sortieren</button>
-                    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLable" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="searchModalLable">Sortieroptionen</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <fieldset>
-                                        <legend>Deine Sortieroptionen</legend>
-                                            <input id="sort_price_asc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_price_asc">
-                                            <label for="sort_price_asc">Preis aufsteigend (€)</label><br>
+  <!--Categories-->
+  <div class="ms-1 me-1">
+    <label for="categories">Kategorie auswählen</label><br>
+    <select class="w-75 form-select" id="categories" [(ngModel)]="filterPnp.discounterfilter.categorie" [ngModelOptions]="{standalone: true}" (change)="displaySearchResultWithoutKeyowrd();saveFilterNPolicyintoSessionNDB();">
+        <option [value]="categories.ohneKategorie.index">{{categories.ohneKategorie.name}}</option>
+        <option [value]="categories.dressings.index">{{categories.dressings.name}}</option>
+        <option [value]="categories.getreide.index">{{categories.getreide.name}}</option>
+        <option [value]="categories.desserts.index">{{categories.desserts.name}}</option>
+        <option [value]="categories.salziges.index">{{categories.salziges.name}}</option>
+        <option [value]="categories.fette.index">{{categories.fette.name}}</option>
+        <option [value]="categories.obst.index">{{categories.obst.name}}</option>
+        <option [value]="categories.alkfrei.index">{{categories.alkfrei.name}}</option>
+        <option [value]="categories.alk.index">{{categories.alk.name}}</option>
+        <option [value]="categories.kaffee.index">{{categories.kaffee.name}}</option>
+        <option [value]="categories.fleisch.index">{{categories.fleisch.name}}</option>
+        <option [value]="categories.gefluegel.index">{{categories.gefluegel.name}}</option>
+        <option [value]="categories.fisch.index">{{categories.fisch.name}}</option>
+        <option [value]="categories.milch.index">{{categories.milch.name}}</option>
+        <option [value]="categories.vegan.index">{{categories.vegan.name}}</option>
+        <option [value]="categories.fertig.index">{{categories.fertig.name}}</option>
+        <option [value]="categories.tiere.index">{{categories.tiere.name}}</option>
+        <option [value]="categories.pflanzen.index">{{categories.pflanzen.name}}</option>
+        <option [value]="categories.moebel.index">{{categories.moebel.name}}</option>
+        <option [value]="categories.kosmetik.index">{{categories.kosmetik.name}}</option>
+        <option [value]="categories.geraete.index">{{categories.geraete.name}}</option>
+        <option [value]="categories.medien.index">{{categories.medien.name}}</option>
+        <option [value]="categories.haushalt.index">{{categories.haushalt.name}}</option>
+        <option [value]="categories.kleidung.index">{{categories.kleidung.name}}</option>
+        <option [value]="categories.aufstrich.index">{{categories.aufstrich.name}}</option>
+    </select>
+  </div>   
+  <hr>
+</header>
 
-                                            <input id="sort_price_desc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_price_desc">
-                                            <label for="sort_price_desc">Preis absteigend (€)</label><br>
-                                        
-                                            <input id="sort_discount_asc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_discount_asc">
-                                            <label for="sort_discount_asc">Rabatt aufsteigend (%)</label><br>
 
-                                            <input id="sort_discount_desc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_discount_desc">
-                                            <label for="sort_discount_desc">Rabatt absteigend (%)</label><br>
-                                            
-                                            <input id="group_discounter" name="sort" type="radio" [checked]="filterPnp.sortfilter.group_discounter">
-                                            <label for="group_discounter">nach Discounter gruppieren</label><br>
-                                        </fieldset>
-                                  </form>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">speichern</button>
-                            </div>
-                          </div>
-                        </div>
+<main>
+  <!--card-for-main-->
+  <app-card-for-main [_productlist]="productlist" [alllists]="alllists"></app-card-for-main>
+</main>
+
+
+
+    
+    
+<!--Modal Sort-->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLable" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchModalLable">Sortieroptionen</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form>
+              <fieldset>
+                  <legend>Deine Sortieroptionen</legend>
+                      <input id="sort_price_asc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_price_asc">
+                      <label for="sort_price_asc">Preis aufsteigend (€)</label><br>
+
+                      <input id="sort_price_desc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_price_desc">
+                      <label for="sort_price_desc">Preis absteigend (€)</label><br>
+                  
+                      <input id="sort_discount_asc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_discount_asc">
+                      <label for="sort_discount_asc">Rabatt aufsteigend (%)</label><br>
+
+                      <input id="sort_discount_desc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_discount_desc">
+                      <label for="sort_discount_desc">Rabatt absteigend (%)</label><br>
+                      
+                      <input id="group_discounter" name="sort" type="radio" [checked]="filterPnp.sortfilter.group_discounter">
+                      <label for="group_discounter">nach Discounter gruppieren</label><br>
+                  </fieldset>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">speichern</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Discounter-->
+<div class="modal fade" id="discounterModal" tabindex="-1" aria-labelledby="discounterModalLable" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="discounterModalLable">Discounter</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form>
+              <fieldset>
+                  <legend>ausgewählte Discounter</legend>
+                  <input id="discounter_aldin" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_aldin" [ngModelOptions]="{standalone: true}">
+                  <label for="discounter_aldin">Aldi Nord</label><br>
+                  <input id="discounter_aldis" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_aldis" [ngModelOptions]="{standalone: true}">
+                  <label for="discounter_aldis">Aldi Süd</label><br>
+                  <input id="discounter_kaufland" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_kaufland" [ngModelOptions]="{standalone: true}">
+                  <label for="discounter_kaufland">Kaufland</label><br>
+                  
+                  <ng-template [ngIf]="kauflandstores.length > 0">
+                      
+                      <select id="stores" [(ngModel)]="filterPnp.discounterfilter.discount_kaufland_storeid" [ngModelOptions]="{standalone: true}">
+                          <option value="">Keine Filiale auswählen</option>
+                          <option *ngFor="let store of kauflandstores" [value]="store.index">{{store.name}}</option>
+                      </select><br>
+                  </ng-template>
+                  
+                  
+                  
+                  <input id="discounter_rewe" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_rewe" [ngModelOptions]="{standalone: true}">
+                  <label for="discounter_rewe">Rewe</label><br>
+                  <input id="discounter_lidl" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_lidl" [ngModelOptions]="{standalone: true}">
+                  <label for="discounter_rewe">Lidl</label><br>
+
+              </fieldset>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">speichern</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Search-->
+<div class="modal fade" id="suchModal" tabindex="-1" aria-labelledby="suchModalLable" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="suchModalLable">Suchoptionen</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form>
+              <fieldset>
+                  <input type="range" class="form-range" id="searchRange" max=350 min=2 [(ngModel)]="filterPnp.searchfilter.search_result_count" [ngModelOptions]="{standalone: true}"><br>
+                  <label for="searchRange" class="form-label">{{filterPnp.searchfilter.search_result_count}} Ergebnisse pro Suche</label><br>
+                  
+                  <input id="allweeks" name="search" type="radio" [checked]="filterPnp.searchfilter.allweeks">
+                  <label for="allweeks">alle Angebote durchsuchen</label><br>
+
+                  <input id="currentweeks" name="search" type="radio" [checked]="filterPnp.searchfilter.currentweeks">
+                  <label for="currentweeks">aktuelle Angebote durchsuchen</label><br>
+              </fieldset>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">speichern</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Permission and Policy-->
+ <!--Dialogue Permission and Policy-->
+ <button id="btnpnp" data-bs-toggle="modal" data-bs-target="#pnpModal" hidden></button>
+
+<div class="modal fade" id="pnpModal" tabindex="-1" aria-labelledby="pnpLable" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pnpLable">Berechtigungen&Datenschutz</h5>
+      </div>
+      <div class="modal-body">
+          <div *ngIf="privacyTextflag==false; else elseprivacy">
+              <form>
+                  <fieldset>
+                      <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" id="sw_localisation" [(ngModel)]="filterPnp.permissionNpolicy.localisation" [ngModelOptions]="{standalone: true}">
+                          <label class="form-check-label" for="sw_localisation">Lokalisierung (GPS)</label>
                       </div>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#discounterModal">Discounter</button>
-                    
-                    <div class="modal fade" id="discounterModal" tabindex="-1" aria-labelledby="discounterModalLable" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="discounterModalLable">Discounter</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <fieldset>
-                                        <legend>ausgewählte Discounter</legend>
-                                        <input id="discounter_aldin" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_aldin" [ngModelOptions]="{standalone: true}">
-                                        <label for="discounter_aldin">Aldi Nord</label><br>
-                                        <input id="discounter_aldis" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_aldis" [ngModelOptions]="{standalone: true}">
-                                        <label for="discounter_aldis">Aldi Süd</label><br>
-                                        <input id="discounter_kaufland" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_kaufland" [ngModelOptions]="{standalone: true}">
-                                        <label for="discounter_kaufland">Kaufland</label><br>
-                                        
-                                        <ng-template [ngIf]="kauflandstores.length > 0">
-                                            
-                                            <select id="stores" [(ngModel)]="filterPnp.discounterfilter.discount_kaufland_storeid" [ngModelOptions]="{standalone: true}">
-                                                <option value="">Keine Filiale auswählen</option>
-                                                <option *ngFor="let store of kauflandstores" [value]="store.index">{{store.name}}</option>
-                                            </select><br>
-                                        </ng-template>
-                                        
-                                        
-                                        <!-- select kauflandstores -->
-                                        <input id="discounter_rewe" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_rewe" [ngModelOptions]="{standalone: true}">
-                                        <label for="discounter_rewe">Rewe</label><br>
-                                        <input id="discounter_lidl" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_lidl" [ngModelOptions]="{standalone: true}">
-                                        <label for="discounter_rewe">Lidl</label><br>
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--> 
-                                    </fieldset>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">speichern</button>
-                            </div>
-                          </div>
-                        </div>
+                      <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" id="sw_storage" [(ngModel)]="filterPnp.permissionNpolicy.storage" [ngModelOptions]="{standalone: true}">
+                          <label class="form-check-label" for="sw_storage">Speicherung notweniger Daten</label>
                       </div>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#suchModal">Suche</button>
-
-                    <div class="modal fade" id="suchModal" tabindex="-1" aria-labelledby="suchModalLable" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="suchModalLable">Suchoptionen</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <fieldset>
-                                        <input type="range" class="form-range" id="searchRange" max=350 min=2 [(ngModel)]="filterPnp.searchfilter.search_result_count" [ngModelOptions]="{standalone: true}"><br>
-                                        <label for="searchRange" class="form-label">{{filterPnp.searchfilter.search_result_count}} Ergebnisse pro Suche</label>
-                                        
-                                        <input id="allweeks" name="search" type="radio" [checked]="filterPnp.searchfilter.allweeks">
-                                        <label for="allweeks">alle Angebote durchsuchen</label><br>
-
-                                        <input id="currentweeks" name="search" type="radio" [checked]="filterPnp.searchfilter.currentweeks">
-                                        <label for="currentweeks">aktuelle Angebote durchsuchen</label><br>
-                                    </fieldset>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">speichern</button>
-                            </div>
-                          </div>
-                        </div>
+                      <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" id="sw_camera" [(ngModel)]="filterPnp.permissionNpolicy.camera" [ngModelOptions]="{standalone: true}">
+                          <label class="form-check-label" for="sw_camera">Zugriff auf Kamera</label>
                       </div>
-                </div>
-                <button id="btnpnp" data-bs-toggle="modal" data-bs-target="#pnpModal" hidden></button>
-                <!--Permission&Policy Dialog-->
-                <div class="modal fade" id="pnpModal" tabindex="-1" aria-labelledby="pnpLable" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="pnpLable">Berechtigungen&Datenschutz</h5>
-                        </div>
-                        <div class="modal-body">
-                            <div *ngIf="privacyTextflag==false; else elseprivacy">
-                                <form>
-                                    <fieldset>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="sw_localisation" [(ngModel)]="filterPnp.permissionNpolicy.localisation" [ngModelOptions]="{standalone: true}">
-                                            <label class="form-check-label" for="sw_localisation">Lokalisierung (GPS)</label>
-                                        </div>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="sw_storage" [(ngModel)]="filterPnp.permissionNpolicy.storage" [ngModelOptions]="{standalone: true}">
-                                            <label class="form-check-label" for="sw_storage">Speicherung notweniger Daten</label>
-                                        </div>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="sw_camera" [(ngModel)]="filterPnp.permissionNpolicy.camera" [ngModelOptions]="{standalone: true}">
-                                            <label class="form-check-label" for="sw_camera">Zugriff auf Kamera</label>
-                                        </div>
-                                        <input id="privacyDeclarationCheck" name="pnp" type="checkbox" [(ngModel)]="filterPnp.permissionNpolicy.policy" [ngModelOptions]="{standalone: true}">
-                                        <label for="privacyDeclarationCheck">Ich stimme der Datenschutzerklärung zu.</label><br>
+                      <input id="privacyDeclarationCheck" name="pnp" type="checkbox" [(ngModel)]="filterPnp.permissionNpolicy.policy" [ngModelOptions]="{standalone: true}">
+                      <label for="privacyDeclarationCheck">Ich stimme der Datenschutzerklärung zu.</label><br>
 
-                                        <button class="btn btn-light" (click)="clickPrivacyText()">lesen der Datenschutzerklärung</button>
-                                    </fieldset>
-                                </form>
-                            </div>
-                            <ng-template #elseprivacy>
-                                <span>Datenschutzerklärung</span>
-                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
-
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
-
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
-
-Duis autem vel eum iriure
-                                <button class="btn btn-light" (click)="clickPrivacyText()">zurück</button>
-                            </ng-template>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="acceptAllTerms()">allen zustimmen</button>
-                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">Auswahl speichern</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-            </div>
-        </div>
-        <select id="categories" [(ngModel)]="filterPnp.discounterfilter.categorie" [ngModelOptions]="{standalone: true}" (change)="displaySearchResultWithoutKeyowrd()">
-            <option [value]="categories.ohneKategorie.index">{{categories.ohneKategorie.name}}</option>
-            <option [value]="categories.dressings.index">{{categories.dressings.name}}</option>
-            <option [value]="categories.getreide.index">{{categories.getreide.name}}</option>
-            <option [value]="categories.desserts.index">{{categories.desserts.name}}</option>
-            <option [value]="categories.salziges.index">{{categories.salziges.name}}</option>
-            <option [value]="categories.fette.index">{{categories.fette.name}}</option>
-            <option [value]="categories.obst.index">{{categories.obst.name}}</option>
-            <option [value]="categories.alkfrei.index">{{categories.alkfrei.name}}</option>
-            <option [value]="categories.alk.index">{{categories.alk.name}}</option>
-            <option [value]="categories.kaffee.index">{{categories.kaffee.name}}</option>
-            <option [value]="categories.fleisch.index">{{categories.fleisch.name}}</option>
-            <option [value]="categories.gefluegel.index">{{categories.gefluegel.name}}</option>
-            <option [value]="categories.fisch.index">{{categories.fisch.name}}</option>
-            <option [value]="categories.milch.index">{{categories.milch.name}}</option>
-            <option [value]="categories.vegan.index">{{categories.vegan.name}}</option>
-            <option [value]="categories.fertig.index">{{categories.fertig.name}}</option>
-            <option [value]="categories.tiere.index">{{categories.tiere.name}}</option>
-            <option [value]="categories.pflanzen.index">{{categories.pflanzen.name}}</option>
-            <option [value]="categories.moebel.index">{{categories.moebel.name}}</option>
-            <option [value]="categories.kosmetik.index">{{categories.kosmetik.name}}</option>
-            <option [value]="categories.geraete.index">{{categories.geraete.name}}</option>
-            <option [value]="categories.medien.index">{{categories.medien.name}}</option>
-            <option [value]="categories.haushalt.index">{{categories.haushalt.name}}</option>
-            <option [value]="categories.kleidung.index">{{categories.kleidung.name}}</option>
-            <option [value]="categories.aufstrich.index">{{categories.aufstrich.name}}</option>
-        </select>  
-        <label for="categories">Kategorie</label><br> 
+                      <button class="btn btn-light" (click)="clickPrivacyText()">lesen der Datenschutzerklärung</button>
+                  </fieldset>
+              </form>
+          </div>
+          <ng-template #elseprivacy>
+              <span>Datenschutzerklärung</span>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+              Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
+              Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
+              Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
+              Duis autem vel eum iriure
+              <button class="btn btn-light" (click)="clickPrivacyText()">zurück</button>
+          </ng-template>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="acceptAllTerms()">allen zustimmen</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">Auswahl speichern</button>
+      </div>
+    </div>
+  </div>
+</div>
+      
+<!--Modal SearchHelp-->
+<div class="modal fade" id="SearchHelp" tabindex="-1" aria-labelledby="suchHelpModalLable" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="suchHelpModalLable">Hilfe für die Suche</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="../../assets/images/help/hafer.PNG" width="100%"/>
+        <p>Es werden Produkte mit genau dieser Bezeichnung gesucht</p>
+        <img src="../../assets/images/help/haferflocken.PNG" width="100%" />
+        <p>Es werden Produkte mit dieser oder nachgestellten kombinierten Bezeichnung gesucht</p>
+        <img src="../../assets/images/help/vanille.PNG" width="100%" />
+        <p>Es werden Proukte mit der Bezeichnung Dessert angezeigt und Produkte mit der Bezeichnung  „Schokolade“ ausgeschlossen</p>
         <hr>
-    </header>
-    <main>
-        <!--Card for main-->
-        <app-card-for-main [_productlist]="productlist" [alllists]="alllists"></app-card-for-main>
-    </main>
-    <nav>
-        <hr>
-        <div class="row position-fixed bottom-0 start-0 bg-light">
-            <div class="col-3">
-                <div class="row"><a routerLink="../main"><input type="image"  src="../../assets/images/icon_discount.png" /></a></div>
-                <div class="row"><span >Angebote</span></div>
-            </div>
-            <div class="col-3">
-                <div class="row"><a routerLink="../shoppinglist"><input type="image" src="../../assets/images/icon_shoppinglist.png" /></a></div>
-                <div class="row"><span >Einkauf</span></div>
-            </div>
-            <div class="col-3">
-                <div class="row"><a routerLink="../favorits"><input type="image" src="../../assets/images/icon_favorits.png" /></a></div>
-                <div class="row"><span >Favoriten</span></div>
-            </div>
-            <div class="col-3">
-                <div class="row"><input type="image" src="../../assets/images/icon_setting.png" /></div>
-                <div class="row"><span >Optionen</span></div>
-            </div>
-        </div>
-    </nav>
+
+          <span>Keine Produkte gefunden? Dann probier das…</span>
+          <ol>
+            <li>Wähle: „keine Filiale“ beim Discounter Kaufland</li>
+            <li>Wähle „keine Kategorie“ um alle nicht getaggten Produkte zu suchen</li>
+          </ol>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">verstanden</button>
+      </div>
+    </div>
+  </div>
 </div>

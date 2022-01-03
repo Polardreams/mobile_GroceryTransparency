@@ -1,4 +1,7 @@
 <div class="container">
+    <nav>
+        <app-navigation></app-navigation>
+    </nav>
     <header>
         <h1>Meine Einkaufslisten</h1>
         <hr>
@@ -7,24 +10,4 @@
         <!--card for shoppinglist-->
         <app-card-for-shoppinglist [_alllists]="alllists"></app-card-for-shoppinglist>
     </main>
-    <nav>
-        <div class="row position-fixed bottom-0 start-0 bg-light">
-            <div class="col-3">
-                <div class="row"><a routerLink="../main"><input type="image"  src="../../assets/images/icon_discount.png" /></a></div>
-                <div class="row"><span >Angebote</span></div>
-            </div>
-            <div class="col-3">
-                <div class="row"><a routerLink="../shoppinglist"><input type="image" src="../../assets/images/icon_shoppinglist.png" /></a></div>
-                <div class="row"><span >Einkauf</span></div>
-            </div>
-            <div class="col-3">
-                <div class="row"><a routerLink="../favorits"><input type="image" src="../../assets/images/icon_favorits.png" /></a></div>
-                <div class="row"><span >Favoriten</span></div>
-            </div>
-            <div class="col-3">
-                <div class="row"><input type="image" src="../../assets/images/icon_setting.png" /></div>
-                <div class="row"><span >Optionen</span></div>
-            </div>
-        </div>
-    </nav>
 </div>

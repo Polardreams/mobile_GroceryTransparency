@@ -1,44 +1,45 @@
-<button id="btn" class="btn btn-primary-outline fs-1" style="padding-left: 0px;" type="button" data-bs-toggle="collapse" data-bs-target="target" aria-expanded="false" aria-controls="collapseExample">
+<button id="btn" class="btn btn-primary-outline fs-1" type="button" data-bs-toggle="collapse" data-bs-target="target" aria-expanded="false" aria-controls="collapseExample">
   ...
 </button>
-  <div class="collapse mt-2" id="target">
-    <div class="card border-light" style="padding-left: 0px;">
-      <div class="row">
-          <div class="col" >
-            <button class="btn btn-primary-outline" style="padding-left: 0px;" (click)="addProductToFavorits()">
-                <img src="../../assets/images/icon_favorits.png" width="25px" height="25px"/>
-            </button>
-          </div>
-          <div class="col">
-            <button class="btn btn-primary-outline" style="padding-left: 0px;" id="addShop" data-bs-toggle="modal" data-bs-target="#modal">
-                <img src="../../assets/images/icon_shoppinglist.png" width="25px" height="25px"/>
-            </button>
-        </div>
-        <div class="col">
-            <button class="btn btn-primary-outline" style="padding-left: 0px;">
-                <img src="../../assets/images/teilen.png" width="25px" height="25px"/>
-            </button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="modal" tabindex="-1" id="modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div *ngFor="let item of shoppinglists">
-            <button class="btn btn-light" data-bs-dismiss="modal" (click)="addProductToShoppingList(item.id)" >{{item.name}}</button>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+<div class="collapse mt-1" id="target">
+  <div class="card card-body border-light position-fixed end-0">
+    <div class="row">
+      <div class="col" >
+        <button class="btn btn-primary-outline" (click)="addProductToFavorits()">
+            <img src="../../assets/images/icon_favorits.png" width="25px" height="25px"/>
+        </button>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary-outline" id="addShop" data-bs-toggle="modal" data-bs-target="#modal">
+            <img src="../../assets/images/icon_shoppinglist.png" width="25px" height="25px"/>
+        </button>
+      </div>
+      <div class="col">
+          <button class="btn btn-primary-outline" >
+              <img src="../../assets/images/teilen.png" width="25px" height="25px"/>
+          </button>
       </div>
     </div>
   </div>
-  
+</div>
+
+<!--Dialogue ShoppingList-->
+<div class="modal" tabindex="-1" id="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let item of shoppinglists">
+          <button class="btn btn-light" data-bs-dismiss="modal" (click)="addProductToShoppingList(item.id)" >{{item.name}}</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

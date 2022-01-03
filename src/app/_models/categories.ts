@@ -24,11 +24,11 @@ export class Categories {
     public  fertig = {index:18, name:"Pizza, Torte, Konserven"};
     public  tiere = {index:20, name:"Futter, Hundehütte, Napf, Halsband"};
     public  pflanzen = {index:21, name:"Samen, Zierpflanzen, Setzlinge"};
-    public  moebel = {index:22, name:"Schreibtisch, Schrank, Stehlampe"};
+    public  moebel = {index:22, name:"Möbel - Schreibtisch, Schrank"};
     public  kosmetik = {index:23, name:"Seife, Schampoo, Lippenstift, Deo, Parfum"};
-    public  geraete = {index:24, name:"TV, Laptop, Kopfhörer, USB Stick"};
-    public  medien = {index:25, name:"DVD, Film, VHS, Bücher, Zeitschriften, Kinderspielzeug, Brettspiele"};
-    public  haushalt = {index:27, name:"Bodenreiniger, Backpulver, Büroklammern, Schreibblöcke"};
-    public  kleidung = {index:28, name:"Schuhe, T-Shirts, Reisekoffer, Kosmetikbeutel"};
+    public  geraete = {index:24, name:"Geräte - TV, Laptop, Kopfhörer"};
+    public  medien = {index:25, name:"Medien - DVD, Film, Bücher, Zeitschriften, Kinderspielzeug, Brettspiele"};
+    public  haushalt = {index:27, name:"Haushalt - Bodenreiniger, Backpulver, Büroklammern, Schreibblöcke"};
+    public  kleidung = {index:28, name:"Kleidung - Schuhe, T-Shirts, Reisekoffer"};
     public  aufstrich = {index:29, name:"Marmelade, Honig, Nutella"};
 }

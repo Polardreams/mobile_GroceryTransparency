@@ -69,6 +69,8 @@ export class FetchAllListsService {
             tmp.discount = item.discount;
             tmp.cid = item.cid;
             tmp.ischeck = this.tinyintToBool(item.ischeck);
+            tmp.customentry = item.customentry;
+
             temp.products.push(tmp);
           });
           this.alllists.Shop.push(temp);  

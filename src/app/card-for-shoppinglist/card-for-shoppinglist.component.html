@@ -1,17 +1,17 @@
 <div *ngFor="let card of shoppinglists">
-    <div class="row border rounded">
-        <div class="col-8" style="padding-left: 2px;padding-right: 2px;" >
+    <div class="row border rounded ms-1 me-1 mt-1 mb-1">
+        <div class="col-6" >
             <button class="btn btn-light" id="span_name" data-bs-toggle="collapse" [attr.data-bs-target]="'#targetRename'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">{{card.name}}</button>
-            <div [attr.id]="'targetRename'+card.id" class="collapse">
+            <div [attr.id]="'targetRename'+card.id" class="collapse card-body border-light position-fixed start-0">
                 <input type="text" [(ngModel)]="card.name"> 
                 <button id="btn_close" data-bs-toggle="collapse" [attr.data-bs-target]="'#targetRename'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">X</button>
             </div>
             
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <button class="btn btn-light" (click)="navigateToDetails(card.id)">öffnen</button>
         </div>
-        <div class="col-1 fs-3" style="margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto; padding-left: 2px;padding-right: 2px;">
+        <div class="col-2 fs-3">
             <!--submenu card for shoppinglist-->
             <app-submenu-cardforshoppinglist [id]="card.id"></app-submenu-cardforshoppinglist>
         </div>

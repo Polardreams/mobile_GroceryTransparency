@@ -27,15 +27,7 @@ export class FetchSearchResultsService {
   }
 
   getSearchResults(id:number, searchterm:string, mode:number, categories:number, discounter:string, resultlength:number, sid:string|null) {
-    console.log(environment.backendUrl+'getSearchResults.php?id='+id+'&searchterm='+searchterm+'&mode='+mode+'&categories='+categories+'&discounter='+discounter+'&resultlength='+resultlength+'&sid='+sid);
-    if (sid!=null) {
-      console.log("not null");
-      return this.http.get<GT_Response_List>(environment.backendUrl+'getSearchResults.php?id='+id+'&searchterm='+searchterm+'&mode='+mode+'&categories='+categories+'&discounter='+discounter+'&resultlength='+resultlength+'&sid='+sid);
-    } else {
-      console.log("null");
-      return this.http.get<GT_Response_List>(environment.backendUrl+'getSearchResults.php?id='+id+'&searchterm='+searchterm+'&mode='+mode+'&categories='+categories+'&discounter='+discounter+'&resultlength='+resultlength);
-    }
-   
-   
+    return this.http.get<GT_Response_List>(environment.backendUrl+'getSearchResults.php?id='+id+'&searchterm='+searchterm+'&mode='+mode+'&categories='+categories+'&discounter='+discounter+'&resultlength='+resultlength+'&sid='+sid);      
   }
+
 }

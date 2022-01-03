@@ -7,7 +7,7 @@
 export class CreateProduct {
     public id:number = -1;
     public title:string = "";
-    public new_price:number = -1;
+    public new_price:number = 0;
     public cid:number = -1;
     public description:string ="";
     public amount:string="";

@@ -21,6 +21,8 @@ import { FavoritsCreateComponent } from './favorits-create/favorits-create.compo
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { NavigationComponent } from './navigation/navigation.component';
+import { SettingComponent } from './setting/setting.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     FavoritsScreenComponent,
     CardsForFavoritsComponent,
     SubmenuCardforfavoritsComponent,
-    FavoritsCreateComponent 
+    FavoritsCreateComponent,
+    NavigationComponent,
+    SettingComponent 
     
   ],
   imports: [

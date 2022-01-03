@@ -4,6 +4,7 @@ import { FavoritsCreateComponent } from './favorits-create/favorits-create.compo
 import { FavoritsScreenComponent } from './favorits-screen/favorits-screen.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { ProductDetailviewComponent } from './product-detailview/product-detailview.component';
+import { SettingComponent } from './setting/setting.component';
 import { ShoppinglistDetailsComponent } from './shoppinglist-details/shoppinglist-details.component';
 import { ShoppinglistScreenComponent } from './shoppinglist-screen/shoppinglist-screen.component';
 import { Favorits } from './_models/favorits';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'shoppinglist-details', component:ShoppinglistDetailsComponent},
   {path:'favorits', component:FavoritsScreenComponent},
   {path:'favorits-create', component:FavoritsCreateComponent},
+  {path:'settings', component:SettingComponent},
     // otherwise redirect to home
     { path: '**', redirectTo: 'main' }
 ];
