@@ -75,6 +75,24 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
+   * select first entry in pic_url 
+   * @param pic_url pic_url from products
+   * @returns first pic_url
+   */
+  selectFirstPicturefromPucURL(pic_url:string):string {
+    let pic_url_arr:any = [];
+    if (pic_url.split(',').length>1) {
+      pic_url.split(',').forEach((item) => {
+        pic_url_arr.push(item.slice(0, item.indexOf(' ')));//aus zeitgründen immer für das erste Element entscheiden. eigentlich müsste eine Prüfung erfolgen.
+      });
+    } else {
+      pic_url_arr.push(pic_url);
+    }
+
+    return pic_url_arr[0];
+  }
+
+  /**
    * fetch alllists as Observable
    * pass user id
    * get product informations

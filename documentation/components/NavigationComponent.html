@@ -38,7 +38,7 @@
   <li>Components</li>
   <li
   >
-  AppComponent</li>
+  NavigationComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -64,22 +64,18 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/app.component.ts</code>
+    <code>src/app/navigation/navigation.component.ts</code>
 </p>
 
 
+
+
     <p class="comment">
-        <h3>Description</h3>
+        <h3>Implements</h3>
     </p>
     <p class="comment">
-        <p>Main Modul</p>
-<p>all components are Child from AppComponent</p>
-<p>Feature:
- it check for local Account (deprecated, becaus MVP version)</p>
-
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
-
-
 
 
 <section>
@@ -99,19 +95,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-root</code></td>
+                <td class="col-md-9"><code>app-navigation</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./app.component.css</code></td>
+                <td class="col-md-9"><code>./navigation.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./app.component.html</code></td>
+                <td class="col-md-9"><code>./navigation.component.html</code></td>
             </tr>
 
 
@@ -138,12 +134,29 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#activate" >activate</a>
+                                <a href="#icon_height" >icon_height</a>
+                            </li>
+                            <li>
+                                <a href="#icon_width" >icon_width</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -159,55 +172,15 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(_account: <a href="../injectables/GenerateAccountService.html" target="_self">GenerateAccountService</a>)</code>
+<code>constructor()</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/app.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/navigation/navigation.component.ts:11</a></div>
                             </td>
                         </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>it check, if there is a account id in localStorage
- if yes, then load account id in model globals.account.prototype.id
- if not, generate a new account</p>
-<p>its set activate = true, then *ngIf display Main-Screen</p>
-</div>
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                                    <td>Description</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>_account</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/GenerateAccountService.html" target="_self" >GenerateAccountService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <p>GenerateAccountService</p>
-
-                                                        </td>
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
             </tbody>
         </table>
 </section>
@@ -216,7 +189,49 @@
 
 
 
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/app/navigation/navigation.component.ts:15</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
     <section>
     
     <h3 id="inputs">
@@ -226,27 +241,58 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="activate"></a>
+                    <a name="icon_height"></a>
                     <span class="name">
-                        <span ><b>activate</b></span>
-                        <a href="#activate"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>icon_height</b></span>
+                        <a href="#icon_height"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
+                        <i>Default value : </i><code>45</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/app.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/navigation/navigation.component.ts:11</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="icon_width"></a>
+                    <span class="name">
+                        <span ><b>icon_width</b></span>
+                        <a href="#icon_width"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>45</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/navigation/navigation.component.ts:10</a></div>
                         </td>
                     </tr>
 
@@ -259,69 +305,51 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, OnChanges, SimpleChanges } from &#x27;@angular/core&#x27;;
-import { GenerateAccountService } from &#x27;./_Services/generate-account.service&#x27;;
-import * as globals from &#x27;../global&#x27;;
-
-/**
- * Main Modul
- * 
- * all components are Child from AppComponent
- * 
- * Feature:
- *  it check for local Account (deprecated, becaus MVP version)
- */
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 
 @Component({
-  selector: &#x27;app-root&#x27;,
-  templateUrl: &#x27;./app.component.html&#x27;,
-  styleUrls: [&#x27;./app.component.css&#x27;]
+  selector: &#x27;app-navigation&#x27;,
+  templateUrl: &#x27;./navigation.component.html&#x27;,
+  styleUrls: [&#x27;./navigation.component.css&#x27;]
 })
-export class AppComponent {
-  activate:boolean &#x3D; false;
+export class NavigationComponent implements OnInit {
 
-/**
- * it check, if there is a account id in localStorage
- *  if yes, then load account id in model globals.account.prototype.id
- *  if not, generate a new account
- * 
- * its set activate &#x3D; true, then *ngIf display Main-Screen
- * @param _account GenerateAccountService
- */
-
-  constructor(_account:GenerateAccountService) {
-    let id:number|null &#x3D; _account.checkAccount();
-    if (id&#x3D;&#x3D;null) {
-      _account.generateAccount().subscribe((data) &#x3D;&gt; {
-        var account &#x3D; {id:data.response};
-        localStorage.setItem(&quot;account&quot;, JSON.stringify(account));
-        console.log(&quot;Deine Account wurde mit der ID: &quot; + JSON.stringify(data.response)+&quot; erstellt.&quot;);
-        globals.account.prototype.id &#x3D; data.response;
-        this.activate &#x3D; true;
-      });
-    } else {
-      this.activate &#x3D; true;
-    }
-    
-  }
+  icon_width:number &#x3D; 45;
+  icon_height:number &#x3D; 45;
   
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;activate&#x3D;&#x3D;false; else elseprivacy&quot;&gt;
-    &lt;span&gt;Nutzer Account wird erstellt, bitte warten ...&lt;/span&gt;
-&lt;/div&gt;
-&lt;ng-template #elseprivacy&gt;
-    &lt;router-outlet&gt;&lt;/router-outlet&gt;    
-&lt;/ng-template&gt;
-</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;navbar navbar-light bg-light me-3 mb-1 border-bottom&quot;&gt;
+    &lt;div class&#x3D;&quot;col-3&quot;&gt;
+        &lt;div class&#x3D;&quot;row mx-auto &quot;&gt;&lt;a routerLink&#x3D;&quot;../main&quot;&gt;&lt;img width&#x3D;{{icon_width}} height&#x3D;{{icon_height}} style&#x3D;&quot;object-fit:cover&quot; src&#x3D;&quot;../../assets/images/icon_discount.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class&#x3D;&quot;row &quot;&gt;&lt;span class&#x3D;&quot;text-center&quot;&gt;Angebot&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-3&quot;&gt;
+        &lt;div class&#x3D;&quot;row mx-auto &quot;&gt;&lt;a routerLink&#x3D;&quot;../shoppinglist&quot;&gt;&lt;img width&#x3D;{{icon_width}} height&#x3D;{{icon_height}} style&#x3D;&quot;object-fit:cover&quot; src&#x3D;&quot;../../assets/images/icon_shoppinglist.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class&#x3D;&quot;row &quot;&gt;&lt;span class&#x3D;&quot;text-center&quot;&gt;Einkauf&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-3&quot;&gt;
+        &lt;div class&#x3D;&quot;row mx-auto &quot;&gt;&lt;a routerLink&#x3D;&quot;../favorits&quot;&gt;&lt;img width&#x3D;{{icon_width}} height&#x3D;{{icon_height}} style&#x3D;&quot;object-fit:cover&quot; src&#x3D;&quot;../../assets/images/icon_favorits.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class&#x3D;&quot;row &quot;&gt;&lt;span class&#x3D;&quot;text-center&quot;&gt;Favoriten&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-3&quot;&gt;
+        &lt;div class&#x3D;&quot;row mx-auto &quot;&gt;&lt;a routerLink&#x3D;&quot;../settings&quot;&gt;&lt;img  width&#x3D;{{icon_width}} height&#x3D;{{icon_height}} style&#x3D;&quot;object-fit:cover&quot; src&#x3D;&quot;../../assets/images/icon_setting.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class&#x3D;&quot;row &quot;&gt;&lt;span class&#x3D;&quot;text-center&quot;&gt;Optionen&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
                 <p class="comment">
-                    <code>./app.component.css</code>
+                    <code>./navigation.component.css</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss"></code></pre>
     </div>
@@ -351,10 +379,10 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="activate==false; else elseprivacy">    <span>Nutzer Account wird erstellt, bitte warten ...</span></div><ng-template #elseprivacy>    <router-outlet></router-outlet>    </ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="navbar navbar-light bg-light me-3 mb-1 border-bottom">    <div class="col-3">        <div class="row mx-auto "><a routerLink="../main"><img width={{icon_width}} height={{icon_height}} style="object-fit:cover" src="../../assets/images/icon_discount.png" /></a></div>        <div class="row "><span class="text-center">Angebot</span></div>    </div>    <div class="col-3">        <div class="row mx-auto "><a routerLink="../shoppinglist"><img width={{icon_width}} height={{icon_height}} style="object-fit:cover" src="../../assets/images/icon_shoppinglist.png" /></a></div>        <div class="row "><span class="text-center">Einkauf</span></div>    </div>    <div class="col-3">        <div class="row mx-auto "><a routerLink="../favorits"><img width={{icon_width}} height={{icon_height}} style="object-fit:cover" src="../../assets/images/icon_favorits.png" /></a></div>        <div class="row "><span class="text-center">Favoriten</span></div>    </div>    <div class="col-3">        <div class="row mx-auto "><a routerLink="../settings"><img  width={{icon_width}} height={{icon_height}} style="object-fit:cover" src="../../assets/images/icon_setting.png" /></a></div>        <div class="row "><span class="text-center">Optionen</span></div>    </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'AppComponent'};
+    var ACTUAL_COMPONENT = {'name': 'NavigationComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -398,7 +426,7 @@ export class AppComponent {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'AppComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'NavigationComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

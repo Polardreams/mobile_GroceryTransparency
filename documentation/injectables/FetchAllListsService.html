@@ -293,8 +293,8 @@ it will fetch all Lists for user account and write them into model AND localStor
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="118"
-                            class="link-to-prism">src/app/_Services/fetch-all-lists.service.ts:118</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">src/app/_Services/fetch-all-lists.service.ts:120</a></div>
                 </td>
             </tr>
 
@@ -412,8 +412,8 @@ it&#39;s part of Callback from fetchNwriteintoSession</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">src/app/_Services/fetch-all-lists.service.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/app/_Services/fetch-all-lists.service.ts:91</a></div>
                 </td>
             </tr>
 
@@ -449,8 +449,8 @@ it&#39;s part of Callback from fetchNwriteintoSession</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="104"
-                            class="link-to-prism">src/app/_Services/fetch-all-lists.service.ts:104</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/app/_Services/fetch-all-lists.service.ts:106</a></div>
                 </td>
             </tr>
 
@@ -670,6 +670,8 @@ export class FetchAllListsService {
             tmp.discount &#x3D; item.discount;
             tmp.cid &#x3D; item.cid;
             tmp.ischeck &#x3D; this.tinyintToBool(item.ischeck);
+            tmp.customentry &#x3D; item.customentry;
+
             temp.products.push(tmp);
           });
           this.alllists.Shop.push(temp);  

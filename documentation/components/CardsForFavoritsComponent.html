@@ -875,26 +875,32 @@ export class CardsForFavoritsComponent implements OnChanges {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div *ngFor&#x3D;&quot;let favorit of products&quot;&gt;
-    &lt;div class&#x3D;&quot;col-4&quot; style&#x3D;&quot;padding-left: 2px;padding-right: 2px;&quot;&gt;
-        &lt;img src&#x3D;&quot;{{favorit.pic_url}}&quot; style&#x3D;&quot;width:80px;height:80px;object-fit:cover;margin-left: 5px;&quot; (click)&#x3D;&quot;getDetails(favorit.id)&quot;/&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;col-3 fs-6&quot; style&#x3D;&quot;padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;&quot;&gt;
-        {{favorit.title}}
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;col-1&quot; style&#x3D;&quot;padding-left: 2px;padding-right: 2px;&quot;&gt;
-        &lt;img src&#x3D;{{getComopaniePic(favorit.companie)}} style&#x3D;&quot;width:15px;height:15px;object-fit:contain;&quot;/&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;col-3&quot;&gt;
-        &lt;div class&#x3D;&quot;row&quot;&gt;
-            &lt;div style&#x3D;&quot;position:relative;top:12px;font-size: 12px;&quot;&gt;{{favorit.discount}}&lt;/div&gt;
+    &lt;div class&#x3D;&quot;row rounded ms-1 me-1 mt-1 mb-1&quot;&gt;
+        &lt;div class&#x3D;&quot;col-4&quot;&gt;
+            &lt;img src&#x3D;&quot;{{favorit.pic_url}}&quot; style&#x3D;&quot;width:80px;height:80px;object-fit:cover;&quot; (click)&#x3D;&quot;getDetails(favorit.id)&quot;/&gt;
         &lt;/div&gt;
-        &lt;div class&#x3D;&quot;row&quot; &gt;
-            &lt;div style&#x3D;&quot;position:relative;top:15px;font-size: 14px;&quot;&gt;{{favorit.new_price}}€&lt;/div&gt;
+        
+        &lt;div class&#x3D;&quot;col-4 fs-6&quot; style&#x3D;&quot;overflow: hidden; text-overflow: ellipsis;&quot;&gt;
+            &lt;span &gt;{{favorit.title}}&lt;/span&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;col-1 fs-3&quot; style&#x3D;&quot;margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto; padding-left: 2px;padding-right: 2px;&quot;&gt;
-        &lt;!--submenu-cardforfavorits--&gt;
-        &lt;app-submenu-cardforfavorits [id]&#x3D;&quot;favorit.id&quot; [alllists]&#x3D;&quot;alllists&quot; [service_Favorits]&#x3D;&quot;service_managingFavorits&quot;&gt;&lt;/app-submenu-cardforfavorits&gt;
+        
+        &lt;div class&#x3D;&quot;col-1&quot; &gt;
+            &lt;img class&#x3D;&quot;mx-auto&quot; src&#x3D;{{getComopaniePic(favorit.companie)}} style&#x3D;&quot;width:15px;height:15px;object-fit:contain;&quot;/&gt;
+        &lt;/div&gt;
+        
+        &lt;div class&#x3D;&quot;col-2&quot;&gt;
+            &lt;div class&#x3D;&quot;row ms-3 fs-6&quot;&gt;
+                {{favorit.discount}}
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;row fs-5&quot; &gt;
+                {{favorit.new_price}}€
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class&#x3D;&quot;col-1 fs-3&quot; &gt;
+            &lt;!--submenu-cardforfavorits--&gt;
+            &lt;app-submenu-cardforfavorits [id]&#x3D;&quot;favorit.id&quot; [alllists]&#x3D;&quot;alllists&quot; [service_Favorits]&#x3D;&quot;service_managingFavorits&quot;&gt;&lt;/app-submenu-cardforfavorits&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -932,8 +938,8 @@ export class CardsForFavoritsComponent implements OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngFor="let favorit of products">    <div class="col-4" style="padding-left: 2px;padding-right: 2px;">        <img src="{{favorit.pic_url}}" style="width:80px;height:80px;object-fit:cover;margin-left: 5px;" (click)="getDetails(favorit.id)"/>    </div>    <div class="col-3 fs-6" style="padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;">        {{favorit.title}}    </div>    <div class="col-1" style="padding-left: 2px;padding-right: 2px;">        <img src={{getComopaniePic(favorit.companie)}} style="width:15px;height:15px;object-fit:contain;"/>    </div>    <div class="col-3">        <div class="row">            <div style="position:relative;top:12px;font-size: 12px;">{{favorit.discount}}</div>        </div>        <div class="row" >            <div style="position:relative;top:15px;font-size: 14px;">{{favorit.new_price}}€</div>        </div>    </div>    <div class="col-1 fs-3" style="margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto; padding-left: 2px;padding-right: 2px;">        <!--submenu-cardforfavorits-->        <app-submenu-cardforfavorits [id]="favorit.id" [alllists]="alllists" [service_Favorits]="service_managingFavorits"></app-submenu-cardforfavorits>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
+        var COMPONENT_TEMPLATE = '<div><div *ngFor="let favorit of products">    <div class="row rounded ms-1 me-1 mt-1 mb-1">        <div class="col-4">            <img src="{{favorit.pic_url}}" style="width:80px;height:80px;object-fit:cover;" (click)="getDetails(favorit.id)"/>        </div>                <div class="col-4 fs-6" style="overflow: hidden; text-overflow: ellipsis;">            <span >{{favorit.title}}</span>        </div>                <div class="col-1" >            <img class="mx-auto" src={{getComopaniePic(favorit.companie)}} style="width:15px;height:15px;object-fit:contain;"/>        </div>                <div class="col-2">            <div class="row ms-3 fs-6">                {{favorit.discount}}            </div>            <div class="row fs-5" >                {{favorit.new_price}}€            </div>        </div>                <div class="col-1 fs-3" >            <!--submenu-cardforfavorits-->            <app-submenu-cardforfavorits [id]="favorit.id" [alllists]="alllists" [service_Favorits]="service_managingFavorits"></app-submenu-cardforfavorits>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CardsForFavoritsComponent'};
 </script>

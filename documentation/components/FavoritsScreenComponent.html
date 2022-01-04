@@ -610,33 +610,17 @@ export class FavoritsScreenComponent implements AfterViewInit, OnChanges {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;main&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;nav&gt;
+    &lt;app-navigation&gt;&lt;/app-navigation&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;button class&#x3D;&quot;btn btn-primary position-fixed start-50 bottom-50&quot; routerLink&#x3D;&quot;../favorits-create&quot;&gt;erstelle Favorit&lt;/button&gt;
     &lt;!--cards for favorits--&gt;
     &lt;app-cards-for-favorits [favorits]&#x3D;&quot;favorits&quot; [alllists]&#x3D;&quot;alllists&quot; [service_managingFavorits]&#x3D;&quot;service_managingFavorits&quot;&gt;&lt;/app-cards-for-favorits&gt;
-    &lt;button class&#x3D;&quot;btn btn-primary position-fixed start-50 bottom-50&quot; routerLink&#x3D;&quot;../favorits-create&quot;&gt;erstelle Favorit&lt;/button&gt;
 &lt;/main&gt;
 
-&lt;nav&gt;
-    &lt;hr&gt;
-    &lt;div class&#x3D;&quot;row position-fixed bottom-0 start-0 bg-light&quot;&gt;
-        &lt;div class&#x3D;&quot;col-3&quot;&gt;
-            &lt;div class&#x3D;&quot;row&quot;&gt;&lt;a routerLink&#x3D;&quot;../main&quot;&gt;&lt;input type&#x3D;&quot;image&quot;  src&#x3D;&quot;../../assets/images/icon_discount.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
-            &lt;div class&#x3D;&quot;row&quot;&gt;&lt;span &gt;Angebote&lt;/span&gt;&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class&#x3D;&quot;col-3&quot;&gt;
-            &lt;div class&#x3D;&quot;row&quot;&gt;&lt;a routerLink&#x3D;&quot;../shoppinglist&quot;&gt;&lt;input type&#x3D;&quot;image&quot; src&#x3D;&quot;../../assets/images/icon_shoppinglist.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
-            &lt;div class&#x3D;&quot;row&quot;&gt;&lt;span &gt;Einkauf&lt;/span&gt;&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class&#x3D;&quot;col-3&quot;&gt;
-            &lt;div class&#x3D;&quot;row&quot;&gt;&lt;a routerLink&#x3D;&quot;../favorits&quot;&gt;&lt;input type&#x3D;&quot;image&quot; src&#x3D;&quot;../../assets/images/icon_favorits.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
-            &lt;div class&#x3D;&quot;row&quot;&gt;&lt;span &gt;Favoriten&lt;/span&gt;&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class&#x3D;&quot;col-3&quot;&gt;
-            &lt;div class&#x3D;&quot;row&quot;&gt;&lt;input type&#x3D;&quot;image&quot; src&#x3D;&quot;../../assets/images/icon_setting.png&quot; /&gt;&lt;/div&gt;
-            &lt;div class&#x3D;&quot;row&quot;&gt;&lt;span &gt;Optionen&lt;/span&gt;&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/nav&gt;</code></pre>
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -671,8 +655,8 @@ export class FavoritsScreenComponent implements AfterViewInit, OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><main>    <!--cards for favorits-->    <app-cards-for-favorits [favorits]="favorits" [alllists]="alllists" [service_managingFavorits]="service_managingFavorits"></app-cards-for-favorits>    <button class="btn btn-primary position-fixed start-50 bottom-50" routerLink="../favorits-create">erstelle Favorit</button></main><nav>    <hr>    <div class="row position-fixed bottom-0 start-0 bg-light">        <div class="col-3">            <div class="row"><a routerLink="../main"><input type="image"  src="../../assets/images/icon_discount.png" /></a></div>            <div class="row"><span >Angebote</span></div>        </div>        <div class="col-3">            <div class="row"><a routerLink="../shoppinglist"><input type="image" src="../../assets/images/icon_shoppinglist.png" /></a></div>            <div class="row"><span >Einkauf</span></div>        </div>        <div class="col-3">            <div class="row"><a routerLink="../favorits"><input type="image" src="../../assets/images/icon_favorits.png" /></a></div>            <div class="row"><span >Favoriten</span></div>        </div>        <div class="col-3">            <div class="row"><input type="image" src="../../assets/images/icon_setting.png" /></div>            <div class="row"><span >Optionen</span></div>        </div>    </div></nav></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
+        var COMPONENT_TEMPLATE = '<div><nav>    <app-navigation></app-navigation></nav><main>    <button class="btn btn-primary position-fixed start-50 bottom-50" routerLink="../favorits-create">erstelle Favorit</button>    <!--cards for favorits-->    <app-cards-for-favorits [favorits]="favorits" [alllists]="alllists" [service_managingFavorits]="service_managingFavorits"></app-cards-for-favorits></main></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FavoritsScreenComponent'};
 </script>

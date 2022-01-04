@@ -1,9 +1,5 @@
-<button id="btn" class="btn btn-primary-outline fs-1" style="padding-left: 0px;" type="button" data-bs-toggle="collapse" data-bs-target="#target" aria-expanded="false" aria-controls="collapseExample">
-    ...
-</button>
-
 <div class="collapse mt-2" id="target">
-  <div class="card card-body border-light position-fixed end-0">
+  <div class="card card-body border-light position-absolute end-0 me-5">
     <div class="row">
         <div class="col" >
           <button class="btn btn-primary-outline" style="padding-left: 0px;" (click)="removeProductFromFavoris()">
@@ -23,6 +19,11 @@
     </div>
   </div>
 </div>
+<button id="btn" class="btn btn-primary-outline fs-1" style="padding-left: 0px;" type="button" data-bs-toggle="collapse" data-bs-target="#target" aria-expanded="false" aria-controls="collapseExample">
+    ...
+</button>
+
+
 
 <div class="modal" tabindex="-1" id="modal">
   <div class="modal-dialog">

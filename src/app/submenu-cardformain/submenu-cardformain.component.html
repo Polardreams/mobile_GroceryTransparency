@@ -1,9 +1,5 @@
-<button id="btn" class="btn btn-primary-outline fs-1" type="button" data-bs-toggle="collapse" data-bs-target="target" aria-expanded="false" aria-controls="collapseExample">
-  ...
-</button>
-
 <div class="collapse mt-1" id="target">
-  <div class="card card-body border-light position-fixed end-0">
+  <div class="card card-body border-light position-absolute end-0 me-5">
     <div class="row">
       <div class="col" >
         <button class="btn btn-primary-outline" (click)="addProductToFavorits()">
@@ -24,12 +20,16 @@
   </div>
 </div>
 
+<button id="btn" class="btn btn-primary-outline fs-1" type="button" data-bs-toggle="collapse" data-bs-target="target" aria-expanded="false" aria-controls="collapseExample">
+  ...
+</button>
+
 <!--Dialogue ShoppingList-->
 <div class="modal" tabindex="-1" id="modal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">Zur Einkaufsliste hinzufügen</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

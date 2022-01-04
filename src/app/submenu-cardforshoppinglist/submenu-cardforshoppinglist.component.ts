@@ -46,8 +46,9 @@ export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
    * set individual id for Submenu-button
    */
   ngAfterViewInit(): void {
+    document.getElementById("btn")?.setAttribute("data-bs-target", "#target"+this.id);
     document.getElementById("btn")?.setAttribute("id", "btn"+this.id);
-    document.getElementById("btn"+this.id)?.setAttribute("data-bs-target", "#target"+this.id);
+    
     document.getElementById("target")?.setAttribute("id", "target"+this.id);
   }
 

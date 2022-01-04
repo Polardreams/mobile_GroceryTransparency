@@ -384,17 +384,9 @@ export class FetchSearchResultsService {
   }
 
   getSearchResults(id:number, searchterm:string, mode:number, categories:number, discounter:string, resultlength:number, sid:string|null) {
-    console.log(environment.backendUrl+&#x27;getSearchResults.php?id&#x3D;&#x27;+id+&#x27;&amp;searchterm&#x3D;&#x27;+searchterm+&#x27;&amp;mode&#x3D;&#x27;+mode+&#x27;&amp;categories&#x3D;&#x27;+categories+&#x27;&amp;discounter&#x3D;&#x27;+discounter+&#x27;&amp;resultlength&#x3D;&#x27;+resultlength+&#x27;&amp;sid&#x3D;&#x27;+sid);
-    if (sid!&#x3D;null) {
-      console.log(&quot;not null&quot;);
-      return this.http.get&lt;GT_Response_List&gt;(environment.backendUrl+&#x27;getSearchResults.php?id&#x3D;&#x27;+id+&#x27;&amp;searchterm&#x3D;&#x27;+searchterm+&#x27;&amp;mode&#x3D;&#x27;+mode+&#x27;&amp;categories&#x3D;&#x27;+categories+&#x27;&amp;discounter&#x3D;&#x27;+discounter+&#x27;&amp;resultlength&#x3D;&#x27;+resultlength+&#x27;&amp;sid&#x3D;&#x27;+sid);
-    } else {
-      console.log(&quot;null&quot;);
-      return this.http.get&lt;GT_Response_List&gt;(environment.backendUrl+&#x27;getSearchResults.php?id&#x3D;&#x27;+id+&#x27;&amp;searchterm&#x3D;&#x27;+searchterm+&#x27;&amp;mode&#x3D;&#x27;+mode+&#x27;&amp;categories&#x3D;&#x27;+categories+&#x27;&amp;discounter&#x3D;&#x27;+discounter+&#x27;&amp;resultlength&#x3D;&#x27;+resultlength);
-    }
-   
-   
+    return this.http.get&lt;GT_Response_List&gt;(environment.backendUrl+&#x27;getSearchResults.php?id&#x3D;&#x27;+id+&#x27;&amp;searchterm&#x3D;&#x27;+searchterm+&#x27;&amp;mode&#x3D;&#x27;+mode+&#x27;&amp;categories&#x3D;&#x27;+categories+&#x27;&amp;discounter&#x3D;&#x27;+discounter+&#x27;&amp;resultlength&#x3D;&#x27;+resultlength+&#x27;&amp;sid&#x3D;&#x27;+sid);      
   }
+
 }
 </code></pre>
     </div>

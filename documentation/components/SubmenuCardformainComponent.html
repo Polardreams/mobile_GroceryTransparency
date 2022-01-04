@@ -872,50 +872,51 @@ export class SubmenuCardformainComponent implements AfterViewInit, OnChanges {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;button id&#x3D;&quot;btn&quot; class&#x3D;&quot;btn btn-primary-outline fs-1&quot; style&#x3D;&quot;padding-left: 0px;&quot; type&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;collapse&quot; data-bs-target&#x3D;&quot;target&quot; aria-expanded&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;collapseExample&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;button id&#x3D;&quot;btn&quot; class&#x3D;&quot;btn btn-primary-outline fs-1&quot; type&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;collapse&quot; data-bs-target&#x3D;&quot;target&quot; aria-expanded&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;collapseExample&quot;&gt;
   ...
 &lt;/button&gt;
-  &lt;div class&#x3D;&quot;collapse mt-2&quot; id&#x3D;&quot;target&quot;&gt;
-    &lt;div class&#x3D;&quot;card border-light&quot; style&#x3D;&quot;padding-left: 0px;&quot;&gt;
-      &lt;div class&#x3D;&quot;row&quot;&gt;
-          &lt;div class&#x3D;&quot;col&quot; &gt;
-            &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; style&#x3D;&quot;padding-left: 0px;&quot; (click)&#x3D;&quot;addProductToFavorits()&quot;&gt;
-                &lt;img src&#x3D;&quot;../../assets/images/icon_favorits.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
-            &lt;/button&gt;
-          &lt;/div&gt;
-          &lt;div class&#x3D;&quot;col&quot;&gt;
-            &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; style&#x3D;&quot;padding-left: 0px;&quot; id&#x3D;&quot;addShop&quot; data-bs-toggle&#x3D;&quot;modal&quot; data-bs-target&#x3D;&quot;#modal&quot;&gt;
-                &lt;img src&#x3D;&quot;../../assets/images/icon_shoppinglist.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
-            &lt;/button&gt;
-        &lt;/div&gt;
-        &lt;div class&#x3D;&quot;col&quot;&gt;
-            &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; style&#x3D;&quot;padding-left: 0px;&quot;&gt;
-                &lt;img src&#x3D;&quot;../../assets/images/teilen.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
-            &lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
 
-  &lt;div class&#x3D;&quot;modal&quot; tabindex&#x3D;&quot;-1&quot; id&#x3D;&quot;modal&quot;&gt;
-    &lt;div class&#x3D;&quot;modal-dialog&quot;&gt;
-      &lt;div class&#x3D;&quot;modal-content&quot;&gt;
-        &lt;div class&#x3D;&quot;modal-header&quot;&gt;
-          &lt;h5 class&#x3D;&quot;modal-title&quot;&gt;Modal title&lt;/h5&gt;
-          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-close&quot; data-bs-dismiss&#x3D;&quot;modal&quot; aria-label&#x3D;&quot;Close&quot;&gt;&lt;/button&gt;
-        &lt;/div&gt;
-        &lt;div class&#x3D;&quot;modal-body&quot;&gt;
-          &lt;div *ngFor&#x3D;&quot;let item of shoppinglists&quot;&gt;
-            &lt;button class&#x3D;&quot;btn btn-light&quot; data-bs-dismiss&#x3D;&quot;modal&quot; (click)&#x3D;&quot;addProductToShoppingList(item.id)&quot; &gt;{{item.name}}&lt;/button&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
-          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary&quot; data-bs-dismiss&#x3D;&quot;modal&quot;&gt;Close&lt;/button&gt;
-        &lt;/div&gt;
+&lt;div class&#x3D;&quot;collapse mt-1&quot; id&#x3D;&quot;target&quot;&gt;
+  &lt;div class&#x3D;&quot;card card-body border-light position-fixed end-0&quot;&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;div class&#x3D;&quot;col&quot; &gt;
+        &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; (click)&#x3D;&quot;addProductToFavorits()&quot;&gt;
+            &lt;img src&#x3D;&quot;../../assets/images/icon_favorits.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col&quot;&gt;
+        &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; id&#x3D;&quot;addShop&quot; data-bs-toggle&#x3D;&quot;modal&quot; data-bs-target&#x3D;&quot;#modal&quot;&gt;
+            &lt;img src&#x3D;&quot;../../assets/images/icon_shoppinglist.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col&quot;&gt;
+          &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; &gt;
+              &lt;img src&#x3D;&quot;../../assets/images/teilen.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
+          &lt;/button&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  </code></pre>
+&lt;/div&gt;
+
+&lt;!--Dialogue ShoppingList--&gt;
+&lt;div class&#x3D;&quot;modal&quot; tabindex&#x3D;&quot;-1&quot; id&#x3D;&quot;modal&quot;&gt;
+  &lt;div class&#x3D;&quot;modal-dialog&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+      &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+        &lt;h5 class&#x3D;&quot;modal-title&quot;&gt;Modal title&lt;/h5&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-close&quot; data-bs-dismiss&#x3D;&quot;modal&quot; aria-label&#x3D;&quot;Close&quot;&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+        &lt;div *ngFor&#x3D;&quot;let item of shoppinglists&quot;&gt;
+          &lt;button class&#x3D;&quot;btn btn-light&quot; data-bs-dismiss&#x3D;&quot;modal&quot; (click)&#x3D;&quot;addProductToShoppingList(item.id)&quot; &gt;{{item.name}}&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary&quot; data-bs-dismiss&#x3D;&quot;modal&quot;&gt;Close&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -950,8 +951,8 @@ export class SubmenuCardformainComponent implements AfterViewInit, OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><button id="btn" class="btn btn-primary-outline fs-1" style="padding-left: 0px;" type="button" data-bs-toggle="collapse" data-bs-target="target" aria-expanded="false" aria-controls="collapseExample">  ...</button>  <div class="collapse mt-2" id="target">    <div class="card border-light" style="padding-left: 0px;">      <div class="row">          <div class="col" >            <button class="btn btn-primary-outline" style="padding-left: 0px;" (click)="addProductToFavorits()">                <img src="../../assets/images/icon_favorits.png" width="25px" height="25px"/>            </button>          </div>          <div class="col">            <button class="btn btn-primary-outline" style="padding-left: 0px;" id="addShop" data-bs-toggle="modal" data-bs-target="#modal">                <img src="../../assets/images/icon_shoppinglist.png" width="25px" height="25px"/>            </button>        </div>        <div class="col">            <button class="btn btn-primary-outline" style="padding-left: 0px;">                <img src="../../assets/images/teilen.png" width="25px" height="25px"/>            </button>        </div>      </div>    </div>  </div>  <div class="modal" tabindex="-1" id="modal">    <div class="modal-dialog">      <div class="modal-content">        <div class="modal-header">          <h5 class="modal-title">Modal title</h5>          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>        </div>        <div class="modal-body">          <div *ngFor="let item of shoppinglists">            <button class="btn btn-light" data-bs-dismiss="modal" (click)="addProductToShoppingList(item.id)" >{{item.name}}</button>          </div>        </div>        <div class="modal-footer">          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>        </div>      </div>    </div>  </div>  </div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
+        var COMPONENT_TEMPLATE = '<div><button id="btn" class="btn btn-primary-outline fs-1" type="button" data-bs-toggle="collapse" data-bs-target="target" aria-expanded="false" aria-controls="collapseExample">  ...</button><div class="collapse mt-1" id="target">  <div class="card card-body border-light position-fixed end-0">    <div class="row">      <div class="col" >        <button class="btn btn-primary-outline" (click)="addProductToFavorits()">            <img src="../../assets/images/icon_favorits.png" width="25px" height="25px"/>        </button>      </div>      <div class="col">        <button class="btn btn-primary-outline" id="addShop" data-bs-toggle="modal" data-bs-target="#modal">            <img src="../../assets/images/icon_shoppinglist.png" width="25px" height="25px"/>        </button>      </div>      <div class="col">          <button class="btn btn-primary-outline" >              <img src="../../assets/images/teilen.png" width="25px" height="25px"/>          </button>      </div>    </div>  </div></div><!--Dialogue ShoppingList--><div class="modal" tabindex="-1" id="modal">  <div class="modal-dialog">    <div class="modal-content">      <div class="modal-header">        <h5 class="modal-title">Modal title</h5>        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>      </div>      <div class="modal-body">        <div *ngFor="let item of shoppinglists">          <button class="btn btn-light" data-bs-dismiss="modal" (click)="addProductToShoppingList(item.id)" >{{item.name}}</button>        </div>      </div>      <div class="modal-footer">        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SubmenuCardformainComponent'};
 </script>

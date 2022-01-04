@@ -5,12 +5,12 @@
         <span class="display-12">{{product.validity}}</span>
         <button class="btn btn-primary-outline ">
             <img class="border rounded-circle" src="../../assets/images/icon_favorits.png" width="35px" height="35px"/>
-            <span style="position: relative; left:-22px;">{{product.favCount}}</span> <!--style="position: relative; top:-30px;"-->
+            <span style="position: relative; top:-30px;">{{product.favCount}}</span> <!--style="position: relative; top:-30px;"-->
         </button>
 
     </div>
 
-    <img src="{{product.pic_url}}" width="100%" height="auto" style="object-fit: contain;">
+    <img src="{{selectFirstPicturefromPucURL(product.pic_url)}}" width="250px" height="250px" style="object-fit: contain;">
     <p>{{product.description}}</p>
     <p>
         {{product.hint}}<br/>

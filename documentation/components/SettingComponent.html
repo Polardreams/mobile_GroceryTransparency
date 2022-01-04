@@ -1,0 +1,943 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>grocery-transparency documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">grocery-transparency documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  SettingComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/setting/setting.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-setting</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./setting.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./setting.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filterPnp" >filterPnp</a>
+                            </li>
+                            <li>
+                                <a href="#http" >http</a>
+                            </li>
+                            <li>
+                                <a href="#privacyTextflag" >privacyTextflag</a>
+                            </li>
+                            <li>
+                                <a href="#service_managingFilterNPolicy" >service_managingFilterNPolicy</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#acceptAllTerms" >acceptAllTerms</a>
+                            </li>
+                            <li>
+                                <a href="#checkNUpdateGpsPermission" >checkNUpdateGpsPermission</a>
+                            </li>
+                            <li>
+                                <a href="#clickPrivacyText" >clickPrivacyText</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#positionFromStorageExist" >positionFromStorageExist</a>
+                            </li>
+                            <li>
+                                <a href="#saveFilterNPolicyintoSessionNDB" >saveFilterNPolicyintoSessionNDB</a>
+                            </li>
+                            <li>
+                                <a href="#updateGpsPosition" >updateGpsPosition</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, _serviceManagingFilterNPolicy: <a href="../injectables/ManagingFiltersNPolicyService.html" target="_self">ManagingFiltersNPolicyService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/setting/setting.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_serviceManagingFilterNPolicy</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ManagingFiltersNPolicyService.html" target="_self" >ManagingFiltersNPolicyService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="acceptAllTerms"></a>
+                    <span class="name">
+                        <span ><b>acceptAllTerms</b></span>
+                        <a href="#acceptAllTerms"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>acceptAllTerms()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/setting/setting.component.ts:43</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>set all permissions and policy true
+and save thios into localStorage and database</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkNUpdateGpsPermission"></a>
+                    <span class="name">
+                        <span ><b>checkNUpdateGpsPermission</b></span>
+                        <a href="#checkNUpdateGpsPermission"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkNUpdateGpsPermission()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/setting/setting.component.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>send request to browser navigator API
+browser will ask for permission</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickPrivacyText"></a>
+                    <span class="name">
+                        <span ><b>clickPrivacyText</b></span>
+                        <a href="#clickPrivacyText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickPrivacyText()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/setting/setting.component.ts:35</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>show privacy text</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/setting/setting.component.ts:26</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="positionFromStorageExist"></a>
+                    <span class="name">
+                        <span ><b>positionFromStorageExist</b></span>
+                        <a href="#positionFromStorageExist"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>positionFromStorageExist()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/app/setting/setting.component.ts:105</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>check if location ist exist on localeStorage</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>boolean</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveFilterNPolicyintoSessionNDB"></a>
+                    <span class="name">
+                        <span ><b>saveFilterNPolicyintoSessionNDB</b></span>
+                        <a href="#saveFilterNPolicyintoSessionNDB"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveFilterNPolicyintoSessionNDB()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/setting/setting.component.ts:55</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>post policy into localStorage and database</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateGpsPosition"></a>
+                    <span class="name">
+                        <span ><b>updateGpsPosition</b></span>
+                        <a href="#updateGpsPosition"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateGpsPosition()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/setting/setting.component.ts:87</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>save current location to localeStorage</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterPnp"></a>
+                    <span class="name">
+                        <span ><b>filterPnp</b></span>
+                        <a href="#filterPnp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/FilterNpolicy.html" target="_self" >FilterNpolicy</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FilterNpolicy()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/setting/setting.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="http"></a>
+                    <span class="name">
+                        <span ><b>http</b></span>
+                        <a href="#http"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/setting/setting.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="privacyTextflag"></a>
+                    <span class="name">
+                        <span ><b>privacyTextflag</b></span>
+                        <a href="#privacyTextflag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/setting/setting.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="service_managingFilterNPolicy"></a>
+                    <span class="name">
+                        <span ><b>service_managingFilterNPolicy</b></span>
+                        <a href="#service_managingFilterNPolicy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ManagingFiltersNPolicyService.html" target="_self" >ManagingFiltersNPolicyService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/setting/setting.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { AfterViewInit, Component, OnInit } from &#x27;@angular/core&#x27;;
+import { environment } from &#x27;src/environments/environment&#x27;;
+import { FilterNpolicy } from &#x27;../_models/filter-npolicy&#x27;;
+import * as globals from &#x27;../../global&#x27;;
+import { ManagingFiltersNPolicyService } from &#x27;../_Services/managing-filters-npolicy.service&#x27;;
+
+@Component({
+  selector: &#x27;app-setting&#x27;,
+  templateUrl: &#x27;./setting.component.html&#x27;,
+  styleUrls: [&#x27;./setting.component.css&#x27;]
+})
+export class SettingComponent implements AfterViewInit {
+  privacyTextflag:boolean &#x3D; false;
+  filterPnp:FilterNpolicy &#x3D; new FilterNpolicy();
+  http!:HttpClient;
+  service_managingFilterNPolicy!:ManagingFiltersNPolicyService;
+
+  constructor(_http:HttpClient, private _serviceManagingFilterNPolicy:ManagingFiltersNPolicyService) { 
+    this.http &#x3D; _http;
+    this.service_managingFilterNPolicy &#x3D; _serviceManagingFilterNPolicy;
+    this.service_managingFilterNPolicy &#x3D; _serviceManagingFilterNPolicy;
+    this.service_managingFilterNPolicy.fetchNwriteFilterNPolicyintoSession(globals.account.prototype.id);
+  }
+  
+  ngAfterViewInit(): void {
+    this.service_managingFilterNPolicy.getFiltersNPolicy().subscribe((fpnp) &#x3D;&gt; {
+      this.filterPnp &#x3D; fpnp;
+      });
+  }
+
+    /**
+   * show privacy text
+   */
+     clickPrivacyText() {
+      this.privacyTextflag &#x3D; !this.privacyTextflag;
+    }
+
+    /**
+ * set all permissions and policy true 
+ * and save thios into localStorage and database
+ */
+  acceptAllTerms () {
+    this.filterPnp.permissionNpolicy.camera &#x3D; true;
+    this.filterPnp.permissionNpolicy.localisation &#x3D; true;
+    this.filterPnp.permissionNpolicy.storage &#x3D; true;
+    this.filterPnp.permissionNpolicy.policy &#x3D; true;
+    this.checkNUpdateGpsPermission();
+    this.saveFilterNPolicyintoSessionNDB();
+  }
+
+  /**
+   * post policy into localStorage and database
+   */
+   saveFilterNPolicyintoSessionNDB() {   
+      this.http.get(environment.backendUrl+&quot;updatepnp.php?id&#x3D;&quot;+globals.account.prototype.id).subscribe(() &#x3D;&gt; {
+
+    
+        if (this.filterPnp.permissionNpolicy.localisation) {
+          this.checkNUpdateGpsPermission();
+        }
+        this.service_managingFilterNPolicy.writeFilterNPolicyintoSession(this.filterPnp);
+        this.service_managingFilterNPolicy.readNpostFilterintoDB(globals.account.prototype.id);
+        this.service_managingFilterNPolicy.readNpostPolicyintoDB(globals.account.prototype.id);
+    
+      });
+
+  }
+
+  /**
+   * send request to browser navigator API
+   * browser will ask for permission
+   */
+   checkNUpdateGpsPermission () {
+    navigator.geolocation.getCurrentPosition(
+      () &#x3D;&gt; {
+        this.updateGpsPosition()
+      }, 
+      () &#x3D;&gt; {
+        console.error(&quot;Polardreams [error]: navigator.geolocation hat ein Problem festgestellt. Es gibt keine GPS-Freigabe.&quot;);
+      });      
+}
+
+  /**
+   * save current location to localeStorage
+   */
+   updateGpsPosition() {
+    navigator.geolocation.getCurrentPosition((pos) &#x3D;&gt; {
+      var temp;
+      if (!this.positionFromStorageExist()) {
+        temp &#x3D; {latitude: 0, longitude: 0};
+      } else {
+        temp &#x3D; JSON.parse(localStorage.getItem(&quot;storePos&quot;) || &quot;&quot;);
+      }
+      if (!(temp.latitude&#x3D;&#x3D;pos.coords.latitude &amp;&amp; temp.longitude&#x3D;&#x3D;pos.coords.longitude)) {
+        localStorage.setItem(&quot;storePos&quot;, JSON.stringify({latitude: pos.coords.latitude, longitude: pos.coords.longitude}));
+      }
+    });
+  }
+
+   /**
+   * check if location ist exist on localeStorage
+   * @returns boolean
+   */
+    positionFromStorageExist ():boolean {
+      let flag;
+      if (typeof(Storage) !&#x3D;&#x3D; &quot;undefined&quot;) {
+          if (localStorage.getItem(&quot;storePos&quot;)!&#x3D;null) {
+            flag &#x3D; true;
+          } else {
+            flag &#x3D; false;
+          }
+      } else {
+          flag &#x3D; false;
+      }
+      return flag;
+    }
+  
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-navigation&gt;&lt;/app-navigation&gt;
+&lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div *ngIf&#x3D;&quot;privacyTextflag&#x3D;&#x3D;false; else elseprivacy&quot;&gt;
+        &lt;form&gt;
+            &lt;fieldset&gt;
+                &lt;div class&#x3D;&quot;form-check form-switch&quot;&gt;
+                    &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;sw_localisation&quot; [(ngModel)]&#x3D;&quot;filterPnp.permissionNpolicy.localisation&quot; [ngModelOptions]&#x3D;&quot;{standalone: true}&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;sw_localisation&quot;&gt;Lokalisierung (GPS)&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;form-check form-switch&quot;&gt;
+                    &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;sw_storage&quot; [(ngModel)]&#x3D;&quot;filterPnp.permissionNpolicy.storage&quot; [ngModelOptions]&#x3D;&quot;{standalone: true}&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;sw_storage&quot;&gt;Speicherung notweniger Daten&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;form-check form-switch&quot;&gt;
+                    &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;sw_camera&quot; [(ngModel)]&#x3D;&quot;filterPnp.permissionNpolicy.camera&quot; [ngModelOptions]&#x3D;&quot;{standalone: true}&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;sw_camera&quot;&gt;Zugriff auf Kamera&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;input id&#x3D;&quot;privacyDeclarationCheck&quot; name&#x3D;&quot;pnp&quot; type&#x3D;&quot;checkbox&quot; [(ngModel)]&#x3D;&quot;filterPnp.permissionNpolicy.policy&quot; [ngModelOptions]&#x3D;&quot;{standalone: true}&quot;&gt;
+                &lt;label for&#x3D;&quot;privacyDeclarationCheck&quot;&gt;Ich stimme der Datenschutzerklärung zu.&lt;/label&gt;&lt;br&gt;
+
+                &lt;button class&#x3D;&quot;btn btn-light&quot; (click)&#x3D;&quot;clickPrivacyText()&quot;&gt;lesen der Datenschutzerklärung&lt;/button&gt;
+            &lt;/fieldset&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;ng-template #elseprivacy&gt;
+        &lt;span&gt;Datenschutzerklärung&lt;/span&gt;
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
+        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
+        Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
+        Duis autem vel eum iriure
+        &lt;button class&#x3D;&quot;btn btn-light&quot; (click)&#x3D;&quot;clickPrivacyText()&quot;&gt;zurück&lt;/button&gt;
+    &lt;/ng-template&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;container hstack gap-2&quot;&gt;
+&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot;  (click)&#x3D;&quot;acceptAllTerms()&quot;&gt;allen zustimmen&lt;/button&gt;
+&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot;  (click)&#x3D;&quot;saveFilterNPolicyintoSessionNDB()&quot;&gt;Auswahl speichern&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./setting.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-navigation></app-navigation><div class="container">    <div *ngIf="privacyTextflag==false; else elseprivacy">        <form>            <fieldset>                <div class="form-check form-switch">                    <input class="form-check-input" type="checkbox" id="sw_localisation" [(ngModel)]="filterPnp.permissionNpolicy.localisation" [ngModelOptions]="{standalone: true}">                    <label class="form-check-label" for="sw_localisation">Lokalisierung (GPS)</label>                </div>                <div class="form-check form-switch">                    <input class="form-check-input" type="checkbox" id="sw_storage" [(ngModel)]="filterPnp.permissionNpolicy.storage" [ngModelOptions]="{standalone: true}">                    <label class="form-check-label" for="sw_storage">Speicherung notweniger Daten</label>                </div>                <div class="form-check form-switch">                    <input class="form-check-input" type="checkbox" id="sw_camera" [(ngModel)]="filterPnp.permissionNpolicy.camera" [ngModelOptions]="{standalone: true}">                    <label class="form-check-label" for="sw_camera">Zugriff auf Kamera</label>                </div>                <input id="privacyDeclarationCheck" name="pnp" type="checkbox" [(ngModel)]="filterPnp.permissionNpolicy.policy" [ngModelOptions]="{standalone: true}">                <label for="privacyDeclarationCheck">Ich stimme der Datenschutzerklärung zu.</label><br>                <button class="btn btn-light" (click)="clickPrivacyText()">lesen der Datenschutzerklärung</button>            </fieldset>        </form>    </div>    <ng-template #elseprivacy>        <span>Datenschutzerklärung</span>        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.           Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.           Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.           Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.           Duis autem vel eum iriure        <button class="btn btn-light" (click)="clickPrivacyText()">zurück</button>    </ng-template></div><div class="container hstack gap-2"><button type="button" class="btn btn-primary"  (click)="acceptAllTerms()">allen zustimmen</button><button type="button" class="btn btn-primary"  (click)="saveFilterNPolicyintoSessionNDB()">Auswahl speichern</button></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SettingComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SettingComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1028,24 +1028,34 @@ export class CardForMainComponent implements OnChanges{
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div *ngFor&#x3D;&quot;let card of cardcontent&quot;&gt;
-    &lt;div class&#x3D;&quot;row border rounded&quot;&gt;
-        &lt;div class&#x3D;&quot;col-4&quot; style&#x3D;&quot;padding-left: 2px;padding-right: 2px;&quot;&gt;
-            &lt;div *ngIf&#x3D;&quot;card.favflag&#x3D;&#x3D;true; else elseBlock&quot;&gt;
-                &lt;img src&#x3D;&quot;../../assets/images/star_gold.png&quot; style&#x3D;&quot;width:25px;height:25px;margin-left: 5px;&quot;/&gt;
-            &lt;/div&gt;
-            &lt;ng-template #elseBlock&gt;
-                &lt;img src&#x3D;&quot;../../assets/images/star_grey.png&quot; style&#x3D;&quot;width:25px;height:25px;margin-left: 5px;&quot;/&gt;
-            &lt;/ng-template&gt;
+    &lt;div class&#x3D;&quot;row border rounded ms-1 me-1 mt-1 mb-1&quot;&gt;
+        &lt;div class&#x3D;&quot;col-4&quot;&gt;
+            &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;div class&#x3D;&quot;col-1 my-auto&quot; &gt;
+                    &lt;div *ngIf&#x3D;&quot;card.favflag&#x3D;&#x3D;true; else elseBlock&quot;&gt;
+                        &lt;img src&#x3D;&quot;../../assets/images/star_gold.png&quot; style&#x3D;&quot;width:25px;height:25px;&quot;/&gt;
+                    &lt;/div&gt;
+                    &lt;ng-template #elseBlock&gt;
+                        &lt;img src&#x3D;&quot;../../assets/images/star_grey.png&quot; style&#x3D;&quot;width:25px;height:25px;&quot;/&gt;
+                    &lt;/ng-template&gt;
+                &lt;/div&gt;
 
-            &lt;img src&#x3D;&quot;{{card.pic_url}}&quot; loading&#x3D;&quot;lazy&quot; style&#x3D;&quot;width:80px;height:80px;object-fit:cover;margin-left: 5px;&quot; (click)&#x3D;&quot;getDetails(card.id)&quot;/&gt;
+                &lt;div class&#x3D;&quot;col-5  my-auto&quot;&gt;
+                    &lt;img src&#x3D;&quot;{{card.pic_url}}&quot; loading&#x3D;&quot;lazy&quot; style&#x3D;&quot;width:80px;height:80px;object-fit:cover;&quot; (click)&#x3D;&quot;getDetails(card.id)&quot;/&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
         &lt;/div&gt;
-        &lt;div class&#x3D;&quot;col-3 fs-6&quot; style&#x3D;&quot;padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;&quot;&gt;
+
+        &lt;div class&#x3D;&quot;col-3 fs-6&quot; style&#x3D;&quot;overflow: hidden; text-overflow: ellipsis;&quot;&gt;
             {{card.title}}
         &lt;/div&gt;
-        &lt;div class&#x3D;&quot;col-1&quot; style&#x3D;&quot;padding-left: 2px;padding-right: 2px;&quot;&gt;
+
+        &lt;div class&#x3D;&quot;col-1&quot;&gt;
             &lt;img src&#x3D;{{card.pic_companie}} style&#x3D;&quot;width:15px;height:15px;object-fit:contain;&quot;/&gt;
         &lt;/div&gt;
-        &lt;div class&#x3D;&quot;col-3&quot;&gt;
+
+        &lt;div class&#x3D;&quot;col-2&quot;&gt;
             &lt;div class&#x3D;&quot;row&quot;&gt;
                 &lt;div style&#x3D;&quot;position:relative;top:12px;font-size: 12px;&quot;&gt;{{card.discount}}&lt;/div&gt;
             &lt;/div&gt;
@@ -1053,7 +1063,8 @@ export class CardForMainComponent implements OnChanges{
                 &lt;div style&#x3D;&quot;position:relative;top:15px;font-size: 14px;&quot;&gt;{{card.new_price}}€&lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-        &lt;div class&#x3D;&quot;col-1 fs-3&quot; style&#x3D;&quot;margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto; padding-left: 2px;padding-right: 2px;&quot;&gt;
+
+        &lt;div class&#x3D;&quot;col-2 fs-3&quot; &gt;
             &lt;app-submenu-cardformain [id]&#x3D;&quot;card.id&quot; [alllists]&#x3D;&quot;alllists&quot; [cardcontent]&#x3D;&quot;cardcontent&quot;&gt;&lt;/app-submenu-cardformain&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -1093,8 +1104,8 @@ export class CardForMainComponent implements OnChanges{
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngFor="let card of cardcontent">    <div class="row border rounded">        <div class="col-4" style="padding-left: 2px;padding-right: 2px;">            <div *ngIf="card.favflag==true; else elseBlock">                <img src="../../assets/images/star_gold.png" style="width:25px;height:25px;margin-left: 5px;"/>            </div>            <ng-template #elseBlock>                <img src="../../assets/images/star_grey.png" style="width:25px;height:25px;margin-left: 5px;"/>            </ng-template>            <img src="{{card.pic_url}}" loading="lazy" style="width:80px;height:80px;object-fit:cover;margin-left: 5px;" (click)="getDetails(card.id)"/>        </div>        <div class="col-3 fs-6" style="padding-left:2px;padding-right:2px;margin-top: auto;margin-bottom: auto;overflow: hidden; text-overflow: ellipsis;">            {{card.title}}        </div>        <div class="col-1" style="padding-left: 2px;padding-right: 2px;">            <img src={{card.pic_companie}} style="width:15px;height:15px;object-fit:contain;"/>        </div>        <div class="col-3">            <div class="row">                <div style="position:relative;top:12px;font-size: 12px;">{{card.discount}}</div>            </div>            <div class="row" >                <div style="position:relative;top:15px;font-size: 14px;">{{card.new_price}}€</div>            </div>        </div>        <div class="col-1 fs-3" style="margin-top: auto; margin-bottom: auto; margin-left: auto; margin-right: auto; padding-left: 2px;padding-right: 2px;">            <app-submenu-cardformain [id]="card.id" [alllists]="alllists" [cardcontent]="cardcontent"></app-submenu-cardformain>        </div>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
+        var COMPONENT_TEMPLATE = '<div><div *ngFor="let card of cardcontent">    <div class="row border rounded ms-1 me-1 mt-1 mb-1">        <div class="col-4">            <div class="row">                <div class="col-1 my-auto" >                    <div *ngIf="card.favflag==true; else elseBlock">                        <img src="../../assets/images/star_gold.png" style="width:25px;height:25px;"/>                    </div>                    <ng-template #elseBlock>                        <img src="../../assets/images/star_grey.png" style="width:25px;height:25px;"/>                    </ng-template>                </div>                <div class="col-5  my-auto">                    <img src="{{card.pic_url}}" loading="lazy" style="width:80px;height:80px;object-fit:cover;" (click)="getDetails(card.id)"/>                </div>            </div>        </div>        <div class="col-3 fs-6" style="overflow: hidden; text-overflow: ellipsis;">            {{card.title}}        </div>        <div class="col-1">            <img src={{card.pic_companie}} style="width:15px;height:15px;object-fit:contain;"/>        </div>        <div class="col-2">            <div class="row">                <div style="position:relative;top:12px;font-size: 12px;">{{card.discount}}</div>            </div>            <div class="row" >                <div style="position:relative;top:15px;font-size: 14px;">{{card.new_price}}€</div>            </div>        </div>        <div class="col-2 fs-3" >            <app-submenu-cardformain [id]="card.id" [alllists]="alllists" [cardcontent]="cardcontent"></app-submenu-cardformain>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CardForMainComponent'};
 </script>

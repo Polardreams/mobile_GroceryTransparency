@@ -1,31 +1,44 @@
+<div class="hstack gap-2">
+    <button class="btn btn-secondary" (click)="goBack()">zurück</button>
+    <button class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#ShopDetailMenu">hinzufügen</button>
+    <button class="btn btn-primary" (click)="deleteSelectedProducts()">löschen</button><br>    
+</div>
+
+<div id="ShopDetailMenu" class="collapse position-fixed bg-white">
+    <div class="vstack gap-2">
+        <button class="btn btn-light" routerLink="main">wählen aus Angeboten</button>
+        <button class="btn btn-light" routerLink="../favorits">wählen aus Favoriten</button>
+        <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#customModal">Schnellnotiz</button>
+    </div>
+</div>
 
 <div *ngFor="let card of products">
     <div *ngIf="card.groceryid==110625; else elsecustom">
         <div class="row border rounded my-auto">
-            <div class="col-4 border" >
+            <div class="col-4 " >
                 <div class="hstack gap-1">
                     <input class="form-check-input" type="checkbox" [(ngModel)]="card.ischeck" [ngModelOptions]="{standalone: true}">
                     <input class="form-number-input"type="number" style="width: 60px;" min=1 [(ngModel)]="card.amount" name="shopListCheck" [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
-            <div class="col-8 border fs-6" style="overflow: hidden; text-overflow: ellipsis;">
+            <div class="col-8  fs-6" style="overflow: hidden; text-overflow: ellipsis;">
                 {{card.customentry}}
             </div>
         </div>
     </div>
     <ng-template #elsecustom>
-        <div class="row border rounded my-auto">
-            <div class="col-6 border" >
+        <div class="row  rounded my-auto">
+            <div class="col-6 " >
                 <div class="hstack gap-1">
                     <input class="form-check-input" type="checkbox" [(ngModel)]="card.ischeck" [ngModelOptions]="{standalone: true}">
                     <input class="form-number-input"type="number" style="width: 60px;" min=1 [(ngModel)]="card.amount" name="shopListCheck" [ngModelOptions]="{standalone: true}">
-                    <img src="{{card.pic_url}}" style="width:80px;height:80px;object-fit:cover;" />
+                    <img src="{{selectFirstPicturefromPucURL(card.pic_url)}}" style="width:80px;height:80px;object-fit:cover;" />
                 </div>
             </div>
-            <div class="col-3 border fs-6" style="overflow: hidden; text-overflow: ellipsis;">
+            <div class="col-3  fs-6" style="overflow: hidden; text-overflow: ellipsis;">
                 {{card.title}}
             </div>
-            <div class="col-1 border" >
+            <div class="col-1 " >
                 <img src={{getComopaniePic(card.cid)}} style="width:15px;height:15px;object-fit:contain;"/>
             </div>
             
@@ -39,20 +52,7 @@
     </ng-template>
 </div>
 
-<div class="position-fixed start-50 top-50">
-    <button class="btn btn-primary" (click)="deleteSelectedProducts()">löschen</button><br>
-    <button class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#ShopDetailMenu">hinzufügen</button>
-    <div id="ShopDetailMenu" class="collapse">
-        <button class="btn btn-light" routerLink="main">wählen aus Angeboten</button>
-        <button class="btn btn-light" routerLink="../favorits">wählen aus Favoriten</button>
-        <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#customModal">Schnellnotiz</button>
-        
-    </div>
-</div>
 
-<div class="position-fixed start-0 top-50"> 
-    <button class="btn btn-secondary" (click)="goBack()">zurück</button>
-</div>
 
 <!--Modal Custom-->
 <div class="modal fade" id="customModal" tabindex="-1" aria-labelledby="customModalLable" aria-hidden="true">

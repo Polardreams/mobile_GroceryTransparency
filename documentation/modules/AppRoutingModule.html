@@ -78,6 +78,7 @@ import { FavoritsCreateComponent } from &#x27;./favorits-create/favorits-create.
 import { FavoritsScreenComponent } from &#x27;./favorits-screen/favorits-screen.component&#x27;;
 import { MainScreenComponent } from &#x27;./main-screen/main-screen.component&#x27;;
 import { ProductDetailviewComponent } from &#x27;./product-detailview/product-detailview.component&#x27;;
+import { SettingComponent } from &#x27;./setting/setting.component&#x27;;
 import { ShoppinglistDetailsComponent } from &#x27;./shoppinglist-details/shoppinglist-details.component&#x27;;
 import { ShoppinglistScreenComponent } from &#x27;./shoppinglist-screen/shoppinglist-screen.component&#x27;;
 import { Favorits } from &#x27;./_models/favorits&#x27;;
@@ -89,6 +90,7 @@ const routes: Routes &#x3D; [
   {path:&#x27;shoppinglist-details&#x27;, component:ShoppinglistDetailsComponent},
   {path:&#x27;favorits&#x27;, component:FavoritsScreenComponent},
   {path:&#x27;favorits-create&#x27;, component:FavoritsCreateComponent},
+  {path:&#x27;settings&#x27;, component:SettingComponent},
     // otherwise redirect to home
     { path: &#x27;**&#x27;, redirectTo: &#x27;main&#x27; }
 ];
