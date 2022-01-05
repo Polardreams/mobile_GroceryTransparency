@@ -69,6 +69,7 @@ export class MainScreenComponent implements AfterViewInit{
   searchterm:string="";
   alllists!:Alllists;
   http!:HttpClient;
+  searchScopeText:string="";
   
 /**
  * pass the following Libs and services
@@ -88,8 +89,9 @@ export class MainScreenComponent implements AfterViewInit{
     this.service_search = _service_search;
     this.service_alllists = _service_alllists;
     this.service_alllists.fetchNwriteintoSession(globals.account.prototype.id);
-    this.http = _http;  
+    this.http = _http;
   }
+
 
   /**
    * check if sid is load and execute getcurrentProduct
@@ -262,6 +264,14 @@ export class MainScreenComponent implements AfterViewInit{
   }
 
   /**
+   * set label for searchScope Toggle Button
+   */
+  lableForsearchScopeText() {
+    if (this.filterPnp.searchfilter.currentweeks) this.searchScopeText="Es werden aktuelle Angebote angezeigt."; else  this.searchScopeText="Es werden alle Angebote angezeigt.";
+  }
+
+
+  /**
    * get Filter and Polcy from database (service_managingFilterNPolicy.getFiltersNPolicy())
    * getCurrentProducts()
    * fetch Alllists
@@ -269,11 +279,15 @@ export class MainScreenComponent implements AfterViewInit{
   ngAfterViewInit(): void {
    this.service_managingFilterNPolicy.getFiltersNPolicy().subscribe((fpnp) => {
    this.filterPnp = fpnp;
-   this.getcurrentProducts(this.filterPnp.discounterfilter.discount_kaufland_storeid);
-   this.service_alllists.getAlllists().subscribe((datas) => {
-    this.alllists = datas;
+   
+    this.service_alllists.getAlllists().subscribe((datas) => {
+      this.alllists = datas;
+      this.lableForsearchScopeText();
+      this.searchScopeChange();
+    });
    });
-   });
+
+
 
    setTimeout(() => {
     var btn = document.getElementById("btnpnp") as HTMLButtonElement;
@@ -340,6 +354,24 @@ export class MainScreenComponent implements AfterViewInit{
 
         });
       });
+  }
+
+  /**
+   * switch mode between display current weekly offers and all products
+   */
+  searchScopeChange() {
+    var toggle = document.getElementById('searchScope') as HTMLInputElement;
+    if (toggle.checked) {
+      this.filterPnp.searchfilter.currentweeks = true;
+      this.filterPnp.searchfilter.allweeks = false;
+      if (this.filterPnp.discounterfilter.discount_kaufland_storeid=="") this.getcurrentProducts(null); else this.getcurrentProducts(this.filterPnp.discounterfilter.discount_kaufland_storeid);
+      this.filterPnp.discounterfilter.categorie=1;
+    } else {
+      this.filterPnp.searchfilter.currentweeks = false;
+      this.filterPnp.searchfilter.allweeks = true;
+      this.searchForProducts();
+    }
+    this.lableForsearchScopeText();
   }
 
 /**

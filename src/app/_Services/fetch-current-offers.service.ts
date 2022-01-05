@@ -22,6 +22,7 @@ export class FetchCurrentOffersService {
   }
 
   getcurrentProduct(sid:string|null) {
+    console.log("sid: " + sid);
     if (sid!=null) {
       return this.http.get<GT_Response_List>(environment.backendUrl+'getCurrentProducts.php?sid='+sid);
     } else {
