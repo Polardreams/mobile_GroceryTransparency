@@ -180,6 +180,9 @@ none</p>
                             <li>
                                 <a href="#ngAfterViewInit" >ngAfterViewInit</a>
                             </li>
+                            <li>
+                                <a href="#selectFirstPicturefromPucURL" >selectFirstPicturefromPucURL</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -279,8 +282,8 @@ and ini Product Object</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="70"
-                            class="link-to-prism">src/app/product-detailview/product-detailview.component.ts:70</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/product-detailview/product-detailview.component.ts:87</a></div>
                 </td>
             </tr>
 
@@ -368,6 +371,83 @@ and ini Product Object</p>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectFirstPicturefromPucURL"></a>
+                    <span class="name">
+                        <span ><b>selectFirstPicturefromPucURL</b></span>
+                        <a href="#selectFirstPicturefromPucURL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectFirstPicturefromPucURL(pic_url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/app/product-detailview/product-detailview.component.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>select first entry in pic_url</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pic_url</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>pic_url from products</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>first pic_url</p>
 
                     </div>
                 </td>
@@ -501,7 +581,24 @@ export class ProductDetailviewComponent implements AfterViewInit{
     });
   }
 
-  
+      /**
+   * select first entry in pic_url 
+   * @param pic_url pic_url from products
+   * @returns first pic_url
+   */
+       selectFirstPicturefromPucURL(pic_url:string):string {
+        let pic_url_arr:any &#x3D; [];
+        if (pic_url.split(&#x27;,&#x27;).length&gt;1) {
+          pic_url.split(&#x27;,&#x27;).forEach((item) &#x3D;&gt; {
+            pic_url_arr.push(item.slice(0, item.indexOf(&#x27; &#x27;)));//aus zeitgründen immer für das erste Element entscheiden. eigentlich müsste eine Prüfung erfolgen.
+          });
+        } else {
+          pic_url_arr.push(pic_url);
+        }
+    
+        return pic_url_arr[0];
+      }
+      
   /**
    * load companie icons
    * @param cid  companie id
@@ -539,12 +636,12 @@ export class ProductDetailviewComponent implements AfterViewInit{
         &lt;span class&#x3D;&quot;display-12&quot;&gt;{{product.validity}}&lt;/span&gt;
         &lt;button class&#x3D;&quot;btn btn-primary-outline &quot;&gt;
             &lt;img class&#x3D;&quot;border rounded-circle&quot; src&#x3D;&quot;../../assets/images/icon_favorits.png&quot; width&#x3D;&quot;35px&quot; height&#x3D;&quot;35px&quot;/&gt;
-            &lt;span style&#x3D;&quot;position: relative; left:-22px;&quot;&gt;{{product.favCount}}&lt;/span&gt; &lt;!--style&#x3D;&quot;position: relative; top:-30px;&quot;--&gt;
+            &lt;span style&#x3D;&quot;position: relative; top:-30px;&quot;&gt;{{product.favCount}}&lt;/span&gt; &lt;!--style&#x3D;&quot;position: relative; top:-30px;&quot;--&gt;
         &lt;/button&gt;
 
     &lt;/div&gt;
 
-    &lt;img src&#x3D;&quot;{{product.pic_url}}&quot; width&#x3D;&quot;100%&quot; height&#x3D;&quot;auto&quot; style&#x3D;&quot;object-fit: contain;&quot;&gt;
+    &lt;img src&#x3D;&quot;{{selectFirstPicturefromPucURL(product.pic_url)}}&quot; width&#x3D;&quot;250px&quot; height&#x3D;&quot;250px&quot; style&#x3D;&quot;object-fit: contain;&quot;&gt;
     &lt;p&gt;{{product.description}}&lt;/p&gt;
     &lt;p&gt;
         {{product.hint}}&lt;br/&gt;
@@ -602,7 +699,7 @@ export class ProductDetailviewComponent implements AfterViewInit{
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container text-center position-absolute start-50 translate-middle-x">    <h1 class="display-1">{{product.title}}</h1>    <div class="hstack gap-2">        <span class="display-12">{{product.validity}}</span>        <button class="btn btn-primary-outline ">            <img class="border rounded-circle" src="../../assets/images/icon_favorits.png" width="35px" height="35px"/>            <span style="position: relative; left:-22px;">{{product.favCount}}</span> <!--style="position: relative; top:-30px;"-->        </button>    </div>    <img src="{{product.pic_url}}" width="100%" height="auto" style="object-fit: contain;">    <p>{{product.description}}</p>    <p>        {{product.hint}}<br/>        {{product.price_per_amount}}<br/>        {{product.amount}}<br/>    </p>    <div class="row">        <div class="col-4">            <img class="border" src={{getComopaniePic(product.companie)}} width="95px" height="95px" style="object-fit: contain;">        </div>        <div class="col-8">            <p class="mt-4">                <span class="fs-6">{{product.discount}}</span><br/>                {{product.new_price}}€<br/>                <span class="fs-6">alter Preis: {{product.old_price}}€</span>            </p>        </div>    </div></div><div class="row position-absolute bottom-0 start-50 translate-middle-x" style="margin-left: 0px;margin-right: 0px;">    <button class="btn btn-primary " routerLink="main">zurück</button></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container text-center position-absolute start-50 translate-middle-x">    <h1 class="display-1">{{product.title}}</h1>    <div class="hstack gap-2">        <span class="display-12">{{product.validity}}</span>        <button class="btn btn-primary-outline ">            <img class="border rounded-circle" src="../../assets/images/icon_favorits.png" width="35px" height="35px"/>            <span style="position: relative; top:-30px;">{{product.favCount}}</span> <!--style="position: relative; top:-30px;"-->        </button>    </div>    <img src="{{selectFirstPicturefromPucURL(product.pic_url)}}" width="250px" height="250px" style="object-fit: contain;">    <p>{{product.description}}</p>    <p>        {{product.hint}}<br/>        {{product.price_per_amount}}<br/>        {{product.amount}}<br/>    </p>    <div class="row">        <div class="col-4">            <img class="border" src={{getComopaniePic(product.companie)}} width="95px" height="95px" style="object-fit: contain;">        </div>        <div class="col-8">            <p class="mt-4">                <span class="fs-6">{{product.discount}}</span><br/>                {{product.new_price}}€<br/>                <span class="fs-6">alter Preis: {{product.old_price}}€</span>            </p>        </div>    </div></div><div class="row position-absolute bottom-0 start-50 translate-middle-x" style="margin-left: 0px;margin-right: 0px;">    <button class="btn btn-primary " routerLink="main">zurück</button></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ProductDetailviewComponent'};

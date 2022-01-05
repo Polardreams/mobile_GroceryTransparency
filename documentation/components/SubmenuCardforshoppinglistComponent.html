@@ -322,8 +322,8 @@ Main Features are:
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:67</a></div>
                 </td>
             </tr>
 
@@ -398,8 +398,8 @@ Main Features are:
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="58"
-                            class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:58</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:59</a></div>
                 </td>
             </tr>
 
@@ -662,8 +662,9 @@ export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
    * set individual id for Submenu-button
    */
   ngAfterViewInit(): void {
+    document.getElementById(&quot;btn&quot;)?.setAttribute(&quot;data-bs-target&quot;, &quot;#target&quot;+this.id);
     document.getElementById(&quot;btn&quot;)?.setAttribute(&quot;id&quot;, &quot;btn&quot;+this.id);
-    document.getElementById(&quot;btn&quot;+this.id)?.setAttribute(&quot;data-bs-target&quot;, &quot;#target&quot;+this.id);
+    
     document.getElementById(&quot;target&quot;)?.setAttribute(&quot;id&quot;, &quot;target&quot;+this.id);
   }
 
@@ -688,32 +689,33 @@ export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;button id&#x3D;&quot;btn&quot; class&#x3D;&quot;btn btn-primary-outline fs-1&quot; type&#x3D;&quot;button&quot; data-bs-target&#x3D;&quot;#target&quot; data-bs-toggle&#x3D;&quot;collapse&quot; aria-expanded&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;collapseExample&quot;&gt;
-    ...
-  &lt;/button&gt;
-  &lt;!--Collapse--&gt;
-    &lt;div class&#x3D;&quot;collapse mt-2&quot; id&#x3D;&quot;target&quot;&gt;
-      &lt;div class&#x3D;&quot;card card-body border-light position-fixed end-0&quot;&gt;
-        &lt;div class&#x3D;&quot;row&quot;&gt;
-            &lt;div class&#x3D;&quot;col&quot; &gt;
-              &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; (click)&#x3D;&quot;deleteShoppingList(id)&quot;&gt;
-                  &lt;img src&#x3D;&quot;../../assets/images/bin.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
-              &lt;/button&gt;
-            &lt;/div&gt;
-            &lt;div class&#x3D;&quot;col&quot;&gt;
-              &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; (click)&#x3D;&quot;copyShoppingList(id)&quot;&gt;
-                  &lt;img src&#x3D;&quot;../../assets/images/copy.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
-              &lt;/button&gt;
+        <pre class="line-numbers"><code class="language-html">  &lt;!--Collapse--&gt;
+  &lt;div class&#x3D;&quot;collapse mt-2&quot; id&#x3D;&quot;target&quot;&gt;
+    &lt;div class&#x3D;&quot;card card-body border-light position-absolute end-0 me-5&quot;&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col&quot; &gt;
+            &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; (click)&#x3D;&quot;deleteShoppingList(id)&quot;&gt;
+                &lt;img src&#x3D;&quot;../../assets/images/bin.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
+            &lt;/button&gt;
           &lt;/div&gt;
           &lt;div class&#x3D;&quot;col&quot;&gt;
-              &lt;button class&#x3D;&quot;btn btn-primary-outline&quot;&gt;
-                  &lt;img src&#x3D;&quot;../../assets/images/teilen.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
-              &lt;/button&gt;
-          &lt;/div&gt;
+            &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; (click)&#x3D;&quot;copyShoppingList(id)&quot;&gt;
+                &lt;img src&#x3D;&quot;../../assets/images/copy.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;button class&#x3D;&quot;btn btn-primary-outline&quot;&gt;
+                &lt;img src&#x3D;&quot;../../assets/images/teilen.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
+            &lt;/button&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    </code></pre>
+  &lt;/div&gt;
+  
+&lt;button id&#x3D;&quot;btn&quot; class&#x3D;&quot;btn btn-primary-outline fs-1&quot; type&#x3D;&quot;button&quot; data-bs-target&#x3D;&quot;#target&quot; data-bs-toggle&#x3D;&quot;collapse&quot; aria-expanded&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;collapseExample&quot;&gt;
+    ...
+  &lt;/button&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -748,7 +750,7 @@ export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><button id="btn" class="btn btn-primary-outline fs-1" type="button" data-bs-target="#target" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">    ...  </button>  <!--Collapse-->    <div class="collapse mt-2" id="target">      <div class="card card-body border-light position-fixed end-0">        <div class="row">            <div class="col" >              <button class="btn btn-primary-outline" (click)="deleteShoppingList(id)">                  <img src="../../assets/images/bin.png" width="25px" height="25px"/>              </button>            </div>            <div class="col">              <button class="btn btn-primary-outline" (click)="copyShoppingList(id)">                  <img src="../../assets/images/copy.png" width="25px" height="25px"/>              </button>          </div>          <div class="col">              <button class="btn btn-primary-outline">                  <img src="../../assets/images/teilen.png" width="25px" height="25px"/>              </button>          </div>        </div>      </div>    </div>    </div>'
+        var COMPONENT_TEMPLATE = '<div>  <!--Collapse-->  <div class="collapse mt-2" id="target">    <div class="card card-body border-light position-absolute end-0 me-5">      <div class="row">          <div class="col" >            <button class="btn btn-primary-outline" (click)="deleteShoppingList(id)">                <img src="../../assets/images/bin.png" width="25px" height="25px"/>            </button>          </div>          <div class="col">            <button class="btn btn-primary-outline" (click)="copyShoppingList(id)">                <img src="../../assets/images/copy.png" width="25px" height="25px"/>            </button>        </div>        <div class="col">            <button class="btn btn-primary-outline">                <img src="../../assets/images/teilen.png" width="25px" height="25px"/>            </button>        </div>      </div>    </div>  </div>  <button id="btn" class="btn btn-primary-outline fs-1" type="button" data-bs-target="#target" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">    ...  </button></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SubmenuCardforshoppinglistComponent'};

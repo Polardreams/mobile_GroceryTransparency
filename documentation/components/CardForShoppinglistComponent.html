@@ -823,7 +823,8 @@ export class CardForShoppinglistComponent implements OnChanges {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div *ngFor&#x3D;&quot;let card of shoppinglists&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;button class&#x3D;&quot;btn btn-light bg-light&quot; (click)&#x3D;&quot;createShoppingList()&quot;&gt;Einkaufsliste erstellen&lt;/button&gt;
+&lt;div *ngFor&#x3D;&quot;let card of shoppinglists&quot;&gt;
     &lt;div class&#x3D;&quot;row border rounded ms-1 me-1 mt-1 mb-1&quot;&gt;
         &lt;div class&#x3D;&quot;col-6&quot; &gt;
             &lt;button class&#x3D;&quot;btn btn-light&quot; id&#x3D;&quot;span_name&quot; data-bs-toggle&#x3D;&quot;collapse&quot; [attr.data-bs-target]&#x3D;&quot;&#x27;#targetRename&#x27;+card.id&quot; (click)&#x3D;&quot;renameShoppingListNwriteIntoSession(card.id)&quot;&gt;{{card.name}}&lt;/button&gt;
@@ -843,7 +844,7 @@ export class CardForShoppinglistComponent implements OnChanges {
         
     &lt;/div&gt;
 &lt;/div&gt;
-&lt;button class&#x3D;&quot;btn btn-light position-fixed top-50 start-50 bg-light&quot; (click)&#x3D;&quot;createShoppingList()&quot;&gt;Einkaufsliste erstellen&lt;/button&gt;
+
 </code></pre>
     </div>
 
@@ -879,7 +880,7 @@ export class CardForShoppinglistComponent implements OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngFor="let card of shoppinglists">    <div class="row border rounded ms-1 me-1 mt-1 mb-1">        <div class="col-6" >            <button class="btn btn-light" id="span_name" data-bs-toggle="collapse" [attr.data-bs-target]="\'#targetRename\'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">{{card.name}}</button>            <div [attr.id]="\'targetRename\'+card.id" class="collapse card-body border-light position-fixed start-0">                <input type="text" [(ngModel)]="card.name">                 <button id="btn_close" data-bs-toggle="collapse" [attr.data-bs-target]="\'#targetRename\'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">X</button>            </div>                    </div>        <div class="col-4">            <button class="btn btn-light" (click)="navigateToDetails(card.id)">öffnen</button>        </div>        <div class="col-2 fs-3">            <!--submenu card for shoppinglist-->            <app-submenu-cardforshoppinglist [id]="card.id"></app-submenu-cardforshoppinglist>        </div>            </div></div><button class="btn btn-light position-fixed top-50 start-50 bg-light" (click)="createShoppingList()">Einkaufsliste erstellen</button></div>'
+        var COMPONENT_TEMPLATE = '<div><button class="btn btn-light bg-light" (click)="createShoppingList()">Einkaufsliste erstellen</button><div *ngFor="let card of shoppinglists">    <div class="row border rounded ms-1 me-1 mt-1 mb-1">        <div class="col-6" >            <button class="btn btn-light" id="span_name" data-bs-toggle="collapse" [attr.data-bs-target]="\'#targetRename\'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">{{card.name}}</button>            <div [attr.id]="\'targetRename\'+card.id" class="collapse card-body border-light position-fixed start-0">                <input type="text" [(ngModel)]="card.name">                 <button id="btn_close" data-bs-toggle="collapse" [attr.data-bs-target]="\'#targetRename\'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">X</button>            </div>                    </div>        <div class="col-4">            <button class="btn btn-light" (click)="navigateToDetails(card.id)">öffnen</button>        </div>        <div class="col-2 fs-3">            <!--submenu card for shoppinglist-->            <app-submenu-cardforshoppinglist [id]="card.id"></app-submenu-cardforshoppinglist>        </div>            </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CardForShoppinglistComponent'};

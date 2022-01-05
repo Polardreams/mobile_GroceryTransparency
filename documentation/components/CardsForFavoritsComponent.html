@@ -192,6 +192,9 @@ submenu cardforfavorits</p>
                             <li>
                                 <a href="#ngOnChanges" >ngOnChanges</a>
                             </li>
+                            <li>
+                                <a href="#selectFirstPicturefromPucURL" >selectFirstPicturefromPucURL</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -390,8 +393,8 @@ submenu cardforfavorits</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:94</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:111</a></div>
                 </td>
             </tr>
 
@@ -468,8 +471,8 @@ submenu cardforfavorits</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:102</a></div>
                 </td>
             </tr>
 
@@ -594,6 +597,83 @@ also fetch Allists as Observable</p>
                     </div>
                     <div class="io-description">
                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectFirstPicturefromPucURL"></a>
+                    <span class="name">
+                        <span ><b>selectFirstPicturefromPucURL</b></span>
+                        <a href="#selectFirstPicturefromPucURL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectFirstPicturefromPucURL(pic_url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/app/cards-for-favorits/cards-for-favorits.component.ts:86</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>select first entry in pic_url</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pic_url</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>pic_url from products</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>first pic_url</p>
+
                     </div>
                 </td>
             </tr>
@@ -836,6 +916,23 @@ export class CardsForFavoritsComponent implements OnChanges {
   
   }
 
+    /**
+   * select first entry in pic_url 
+   * @param pic_url pic_url from products
+   * @returns first pic_url
+   */
+     selectFirstPicturefromPucURL(pic_url:string):string {
+      let pic_url_arr:any &#x3D; [];
+      if (pic_url.split(&#x27;,&#x27;).length&gt;1) {
+        pic_url.split(&#x27;,&#x27;).forEach((item) &#x3D;&gt; {
+          pic_url_arr.push(item.slice(0, item.indexOf(&#x27; &#x27;)));//aus zeitgründen immer für das erste Element entscheiden. eigentlich müsste eine Prüfung erfolgen.
+        });
+      } else {
+        pic_url_arr.push(pic_url);
+      }
+  
+      return pic_url_arr[0];
+    }
   /**
    * 
    * @param id navigate to product details view
@@ -877,7 +974,7 @@ export class CardsForFavoritsComponent implements OnChanges {
         <pre class="line-numbers"><code class="language-html">&lt;div *ngFor&#x3D;&quot;let favorit of products&quot;&gt;
     &lt;div class&#x3D;&quot;row rounded ms-1 me-1 mt-1 mb-1&quot;&gt;
         &lt;div class&#x3D;&quot;col-4&quot;&gt;
-            &lt;img src&#x3D;&quot;{{favorit.pic_url}}&quot; style&#x3D;&quot;width:80px;height:80px;object-fit:cover;&quot; (click)&#x3D;&quot;getDetails(favorit.id)&quot;/&gt;
+            &lt;img src&#x3D;&quot;{{selectFirstPicturefromPucURL(favorit.pic_url)}}&quot; style&#x3D;&quot;width:80px;height:80px;object-fit:cover;&quot; (click)&#x3D;&quot;getDetails(favorit.id)&quot;/&gt;
         &lt;/div&gt;
         
         &lt;div class&#x3D;&quot;col-4 fs-6&quot; style&#x3D;&quot;overflow: hidden; text-overflow: ellipsis;&quot;&gt;
@@ -938,7 +1035,7 @@ export class CardsForFavoritsComponent implements OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngFor="let favorit of products">    <div class="row rounded ms-1 me-1 mt-1 mb-1">        <div class="col-4">            <img src="{{favorit.pic_url}}" style="width:80px;height:80px;object-fit:cover;" (click)="getDetails(favorit.id)"/>        </div>                <div class="col-4 fs-6" style="overflow: hidden; text-overflow: ellipsis;">            <span >{{favorit.title}}</span>        </div>                <div class="col-1" >            <img class="mx-auto" src={{getComopaniePic(favorit.companie)}} style="width:15px;height:15px;object-fit:contain;"/>        </div>                <div class="col-2">            <div class="row ms-3 fs-6">                {{favorit.discount}}            </div>            <div class="row fs-5" >                {{favorit.new_price}}€            </div>        </div>                <div class="col-1 fs-3" >            <!--submenu-cardforfavorits-->            <app-submenu-cardforfavorits [id]="favorit.id" [alllists]="alllists" [service_Favorits]="service_managingFavorits"></app-submenu-cardforfavorits>        </div>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div *ngFor="let favorit of products">    <div class="row rounded ms-1 me-1 mt-1 mb-1">        <div class="col-4">            <img src="{{selectFirstPicturefromPucURL(favorit.pic_url)}}" style="width:80px;height:80px;object-fit:cover;" (click)="getDetails(favorit.id)"/>        </div>                <div class="col-4 fs-6" style="overflow: hidden; text-overflow: ellipsis;">            <span >{{favorit.title}}</span>        </div>                <div class="col-1" >            <img class="mx-auto" src={{getComopaniePic(favorit.companie)}} style="width:15px;height:15px;object-fit:contain;"/>        </div>                <div class="col-2">            <div class="row ms-3 fs-6">                {{favorit.discount}}            </div>            <div class="row fs-5" >                {{favorit.new_price}}€            </div>        </div>                <div class="col-1 fs-3" >            <!--submenu-cardforfavorits-->            <app-submenu-cardforfavorits [id]="favorit.id" [alllists]="alllists" [service_Favorits]="service_managingFavorits"></app-submenu-cardforfavorits>        </div>    </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CardsForFavoritsComponent'};
