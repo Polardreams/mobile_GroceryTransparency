@@ -350,8 +350,6 @@ export class MainScreenComponent implements AfterViewInit{
 
   displaySearchResultWithoutKeyowrd () {
     if (this.filterPnp.searchfilter.allweeks) {
-      if (this.searchterm=="") 
-      this.searchterm = "*";
       this.searchForProducts();
     } else {
       this.getcurrentProducts(this.filterPnp.discounterfilter.discount_kaufland_storeid);

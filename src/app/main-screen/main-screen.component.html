@@ -34,6 +34,7 @@
   </div>
 
   <!--Categories-->
+  <div *ngIf="!filterPnp.searchfilter.allweeks==false">
   <div class="ms-1 me-1">
     <label for="categories">Kategorie auswählen</label><br>
     <select class="w-75 form-select" id="categories" [(ngModel)]="filterPnp.discounterfilter.categorie" [ngModelOptions]="{standalone: true}" (change)="displaySearchResultWithoutKeyowrd();saveFilterNPolicyintoSessionNDB();">
@@ -63,7 +64,8 @@
         <option [value]="categories.kleidung.index">{{categories.kleidung.name}}</option>
         <option [value]="categories.aufstrich.index">{{categories.aufstrich.name}}</option>
     </select>
-  </div>   
+  </div>
+</div>   
   <hr>
 </header>
 
