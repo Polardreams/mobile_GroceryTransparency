@@ -14,12 +14,47 @@
           <div class="hstack gap-1">
             <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#SearchHelp"><img src="../../assets/images/help.png" width="25px" height="25px"></button>
             <div class="form-switch">
-              <input id="searchScope" class="form-check-input" type="checkbox" role="switch" (change)="searchScopeChange()" checked> <span>{{searchScopeText}}</span>
+              <input id="searchScope" class="form-check-input" type="checkbox" role="switch" [(ngModel)]="filterPnp.searchfilter.currentweeks" [ngModelOptions]="{standalone: true}" (change)="searchScopeChange()" checked> <span>{{searchScopeText}}</span>
             </div>
           </div>
       </div>
   </form>
   
+  <div class="border rounded">
+    <form>
+      <div class="row ms-1 me-1">
+        <div class="col ps-0">
+          <div class="vstack">
+            <div class="hstack gap-1">
+            <input id="sort_price_asc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_price_asc" (change)="saveFilterNPolicyintoSessionNDB()">
+            <label for="sort_price_asc">Preis aufsteigend</label><br>
+          </div>
+          <div class="hstack gap-1">
+            <input id="sort_price_desc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_price_desc" (change)="saveFilterNPolicyintoSessionNDB()">
+            <label for="sort_price_desc">Preis absteigend</label><br>
+          </div>
+          </div>    
+        </div>
+        <div class="col ps-0">
+          <div class="vstack">
+            <div class="hstack gap-1">
+              <input id="sort_discount_asc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_discount_asc" (change)="saveFilterNPolicyintoSessionNDB()">
+              <label for="sort_discount_asc">Rabatt aufsteigend</label><br>
+            </div>
+            <div class="hstack gap-1">
+              <input id="sort_discount_desc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_discount_desc" (change)="saveFilterNPolicyintoSessionNDB()">
+              <label for="sort_discount_desc">Rabatt absteigend</label><br>
+            </div>
+          </div>  
+        </div>
+      </div>  
+
+      <div class="text-center">
+        <input id="group_discounter" name="sort" type="radio" [checked]="filterPnp.sortfilter.group_discounter" (change)="saveFilterNPolicyintoSessionNDB()">
+        <label class="ms-1" for="group_discounter">nach Discounter gruppieren</label>
+      </div>          
+    </form>
+  </div>
 
 
   <!--Categories-->
@@ -64,119 +99,6 @@
   <app-card-for-main [_productlist]="productlist" [alllists]="alllists"></app-card-for-main>
 </main>
 
-
-
-    
-    
-<!--Modal Sort-->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLable" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="searchModalLable">Sortieroptionen</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <form>
-              <fieldset>
-                  <legend>Deine Sortieroptionen</legend>
-                      <input id="sort_price_asc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_price_asc">
-                      <label for="sort_price_asc">Preis aufsteigend (€)</label><br>
-
-                      <input id="sort_price_desc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_price_desc">
-                      <label for="sort_price_desc">Preis absteigend (€)</label><br>
-                  
-                      <input id="sort_discount_asc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_discount_asc">
-                      <label for="sort_discount_asc">Rabatt aufsteigend (%)</label><br>
-
-                      <input id="sort_discount_desc" name="sort" type="radio" [checked]="filterPnp.sortfilter.sort_discount_desc">
-                      <label for="sort_discount_desc">Rabatt absteigend (%)</label><br>
-                      
-                      <input id="group_discounter" name="sort" type="radio" [checked]="filterPnp.sortfilter.group_discounter">
-                      <label for="group_discounter">nach Discounter gruppieren</label><br>
-                  </fieldset>
-            </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">speichern</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--Modal Discounter-->
-<div class="modal fade" id="discounterModal" tabindex="-1" aria-labelledby="discounterModalLable" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="discounterModalLable">Discounter</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <form>
-              <fieldset>
-                  <legend>ausgewählte Discounter</legend>
-                  <input id="discounter_aldin" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_aldin" [ngModelOptions]="{standalone: true}">
-                  <label for="discounter_aldin">Aldi Nord</label><br>
-                  <input id="discounter_aldis" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_aldis" [ngModelOptions]="{standalone: true}">
-                  <label for="discounter_aldis">Aldi Süd</label><br>
-                  <input id="discounter_kaufland" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_kaufland" [ngModelOptions]="{standalone: true}">
-                  <label for="discounter_kaufland">Kaufland</label><br>
-                  
-                  <ng-template [ngIf]="kauflandstores.length > 0">
-                      
-                      <select id="stores" [(ngModel)]="filterPnp.discounterfilter.discount_kaufland_storeid" [ngModelOptions]="{standalone: true}">
-                          <option value="">Keine Filiale auswählen</option>
-                          <option *ngFor="let store of kauflandstores" [value]="store.index">{{store.name}}</option>
-                      </select><br>
-                  </ng-template>
-                  
-                  
-                  
-                  <input id="discounter_rewe" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_rewe" [ngModelOptions]="{standalone: true}">
-                  <label for="discounter_rewe">Rewe</label><br>
-                  <input id="discounter_lidl" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_lidl" [ngModelOptions]="{standalone: true}">
-                  <label for="discounter_rewe">Lidl</label><br>
-
-              </fieldset>
-          </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">speichern</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--Modal Search-->
-<div class="modal fade" id="suchModal" tabindex="-1" aria-labelledby="suchModalLable" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="suchModalLable">Suchoptionen</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <form>
-              <fieldset>
-                  <input type="range" class="form-range" id="searchRange" max=350 min=2 [(ngModel)]="filterPnp.searchfilter.search_result_count" [ngModelOptions]="{standalone: true}"><br>
-                  <label for="searchRange" class="form-label">{{filterPnp.searchfilter.search_result_count}} Ergebnisse pro Suche</label><br>
-                  
-                  <input id="allweeks" name="search" type="radio" [checked]="filterPnp.searchfilter.allweeks">
-                  <label for="allweeks">alle Angebote durchsuchen</label><br>
-
-                  <input id="currentweeks" name="search" type="radio" [checked]="filterPnp.searchfilter.currentweeks">
-                  <label for="currentweeks">aktuelle Angebote durchsuchen</label><br>
-              </fieldset>
-          </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">speichern</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!--Modal Permission and Policy-->
  <!--Dialogue Permission and Policy-->
  <button id="btnpnp" data-bs-toggle="modal" data-bs-target="#pnpModal" hidden></button>
@@ -200,8 +122,10 @@
                           <label class="form-check-label" for="sw_storage">Speicherung notweniger Daten</label>
                       </div>
                       <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" id="sw_camera" [(ngModel)]="filterPnp.permissionNpolicy.camera" [ngModelOptions]="{standalone: true}">
-                          <label class="form-check-label" for="sw_camera">Zugriff auf Kamera</label>
+                        <!--
+                        <input class="form-check-input" type="checkbox" id="sw_camera" [(ngModel)]="filterPnp.permissionNpolicy.camera" [ngModelOptions]="{standalone: true}">
+                        <label class="form-check-label" for="sw_camera">Zugriff auf Kamera</label>
+                        -->  
                       </div>
                       <input id="privacyDeclarationCheck" name="pnp" type="checkbox" [(ngModel)]="filterPnp.permissionNpolicy.policy" [ngModelOptions]="{standalone: true}">
                       <label for="privacyDeclarationCheck">Ich stimme der Datenschutzerklärung zu.</label><br>
@@ -238,11 +162,9 @@
       </div>
       <div class="modal-body">
         <img src="../../assets/images/help/hafer.PNG" width="100%"/>
-        <p><i>Es werden Produkte mit genau dieser Bezeichnung gesucht</i></p>
+        <p><i>Es werden Produkte mit dieser oder vor- oder nachgestellten kombinierten Bezeichnung gesucht</i></p>
         <img src="../../assets/images/help/haferflocken.PNG" width="100%" />
         <p><i>Es werden Produkte mit dieser oder nachgestellten kombinierten Bezeichnung gesucht</i></p>
-        <img src="../../assets/images/help/fern.PNG" width="100%" />
-        <p><i>Es werden Produkte mit dieser Phrase gesucht</i></p>
         <img src="../../assets/images/help/vanille.PNG" width="100%" />
         <p><i>Es werden Proukte mit der Bezeichnung Dessert angezeigt und Produkte mit der Bezeichnung  „Vanille“ ausgeschlossen</i></p>
         <hr>

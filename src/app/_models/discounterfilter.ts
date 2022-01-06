@@ -7,7 +7,7 @@ export class Discounterfilter {
     discount_aldin:boolean=true;
     discount_aldis:boolean=true;
     discount_kaufland:boolean=false;
-    discount_kaufland_storeid:string="";
+    discount_kaufland_storeid:string="DE2790";
     discount_rewe:boolean=true;
     discount_lidl:boolean=true;
     categorie:number=1;

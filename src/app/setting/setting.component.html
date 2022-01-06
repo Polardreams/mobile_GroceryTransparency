@@ -1,38 +1,124 @@
 <app-navigation></app-navigation>
 <div class="container">
-    <div *ngIf="privacyTextflag==false; else elseprivacy">
-        <form>
-            <fieldset>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="sw_localisation" [(ngModel)]="filterPnp.permissionNpolicy.localisation" [ngModelOptions]="{standalone: true}">
-                    <label class="form-check-label" for="sw_localisation">Lokalisierung (GPS)</label>
-                </div>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="sw_storage" [(ngModel)]="filterPnp.permissionNpolicy.storage" [ngModelOptions]="{standalone: true}">
-                    <label class="form-check-label" for="sw_storage">Speicherung notweniger Daten</label>
-                </div>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="sw_camera" [(ngModel)]="filterPnp.permissionNpolicy.camera" [ngModelOptions]="{standalone: true}">
-                    <label class="form-check-label" for="sw_camera">Zugriff auf Kamera</label>
-                </div>
-                <input id="privacyDeclarationCheck" name="pnp" type="checkbox" [(ngModel)]="filterPnp.permissionNpolicy.policy" [ngModelOptions]="{standalone: true}">
-                <label for="privacyDeclarationCheck">Ich stimme der Datenschutzerklärung zu.</label><br>
+    <div class="accordion" id="accordionSettings">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingPnP">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePnP" aria-expanded="true" aria-controls="collapsePnP">
+              Datenschutz&Berechtigungen
+            </button>
+          </h2>
+          <div id="collapsePnP" class="accordion-collapse collapse" aria-labelledby="headingPnP" data-bs-parent="#accordionSettings">
+            <div class="accordion-body">
+              <!--Datenschutz und Berechtigungen-->
+              <div *ngIf="privacyTextflag==false; else elseprivacy">
+                <form>
+                    <fieldset>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="sw_localisation" [(ngModel)]="filterPnp.permissionNpolicy.localisation" [ngModelOptions]="{standalone: true}">
+                            <label class="form-check-label" for="sw_localisation">Lokalisierung (GPS)</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="sw_storage" [(ngModel)]="filterPnp.permissionNpolicy.storage" [ngModelOptions]="{standalone: true}">
+                            <label class="form-check-label" for="sw_storage">Speicherung notweniger Daten</label>
+                        </div>
+                        <input id="privacyDeclarationCheck" name="pnp" type="checkbox" [(ngModel)]="filterPnp.permissionNpolicy.policy" [ngModelOptions]="{standalone: true}">
+                        <label for="privacyDeclarationCheck">Ich stimme der Datenschutzerklärung zu.</label><br>
+        
+                        <button class="btn btn-light" (click)="clickPrivacyText()">lesen der Datenschutzerklärung</button>
+                    </fieldset>
+                </form>
+            </div>
+            <ng-template #elseprivacy>
+                <span>Datenschutzerklärung</span>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+                Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
+                Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
+                Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
+                Duis autem vel eum iriure
+                <button class="btn btn-light" (click)="clickPrivacyText()">zurück</button>
+            </ng-template>
+        </div>
+        <div class="container hstack gap-2">
+        <button type="button" class="btn btn-primary"  (click)="acceptAllTerms()">allen zustimmen</button>
+        <button type="button" class="btn btn-primary"  (click)="saveFilterNPolicyintoSessionNDB()">Auswahl speichern</button>
+            </div>
+          </div>
+        </div>
 
-                <button class="btn btn-light" (click)="clickPrivacyText()">lesen der Datenschutzerklärung</button>
-            </fieldset>
-        </form>
-    </div>
-    <ng-template #elseprivacy>
-        <span>Datenschutzerklärung</span>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
-        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
-        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
-        Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
-        Duis autem vel eum iriure
-        <button class="btn btn-light" (click)="clickPrivacyText()">zurück</button>
-    </ng-template>
-</div>
-<div class="container hstack gap-2">
-<button type="button" class="btn btn-primary"  (click)="acceptAllTerms()">allen zustimmen</button>
-<button type="button" class="btn btn-primary"  (click)="saveFilterNPolicyintoSessionNDB()">Auswahl speichern</button>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingDiscounter">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDiscounter" aria-expanded="true" aria-controls="collapseDiscounter">
+                Discounterauswahl
+              </button>
+            </h2>
+            <div id="collapseDiscounter" class="accordion-collapse collapse" aria-labelledby="headingDiscounter" data-bs-parent="#accordionSettings">
+              <div class="accordion-body">
+                <!--Discounter Auswahl-->
+                <form>
+                    <fieldset>
+                        <legend>ausgewählte Discounter</legend>
+                        <input id="discounter_aldin" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_aldin" [ngModelOptions]="{standalone: true}">
+                        <label for="discounter_aldin">Aldi Nord</label><br>
+                        <input id="discounter_aldis" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_aldis" [ngModelOptions]="{standalone: true}">
+                        <label for="discounter_aldis">Aldi Süd</label><br>
+                        <input id="discounter_kaufland" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_kaufland" [ngModelOptions]="{standalone: true}">
+                        <label for="discounter_kaufland">Kaufland</label><br>
+                        
+                        <ng-template [ngIf]="kauflandstores.length > 0">
+                            
+                            <select id="stores" [(ngModel)]="filterPnp.discounterfilter.discount_kaufland_storeid" [ngModelOptions]="{standalone: true}">
+                                <option value="">Keine Filiale auswählen</option>
+                                <option *ngFor="let store of kauflandstores" [value]="store.index">{{store.name}}</option>
+                            </select><br>
+                        </ng-template>
+                        
+                        
+                        
+                        <input id="discounter_rewe" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_rewe" [ngModelOptions]="{standalone: true}">
+                        <label for="discounter_rewe">Rewe</label><br>
+                        <input id="discounter_lidl" name="discounter" type="checkbox" [(ngModel)]="filterPnp.discounterfilter.discount_lidl" [ngModelOptions]="{standalone: true}">
+                        <label for="discounter_rewe">Lidl</label><br>
+      
+                    </fieldset>
+                    <button type="button" class="btn btn-primary" (click)="saveFilterNPolicyintoSessionNDB()">speichern</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSearch">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
+                Sucheinstellungen
+              </button>
+            </h2>
+            <div id="collapseSearch" class="accordion-collapse collapse" aria-labelledby="headingSearch" data-bs-parent="#accordionSettings">
+              <div class="accordion-body">
+                <form>
+                    <fieldset>
+                        <input type="range" class="form-range" id="searchRange" max=350 min=2 [(ngModel)]="filterPnp.searchfilter.search_result_count" [ngModelOptions]="{standalone: true}"><br>
+                        <label for="searchRange" class="form-label">{{filterPnp.searchfilter.search_result_count}} Ergebnisse pro Suche</label><br>
+                        
+                        <input id="allweeks" name="search" type="radio" [checked]="filterPnp.searchfilter.allweeks">
+                        <label for="allweeks">alle Angebote durchsuchen</label><br>
+      
+                        <input id="currentweeks" name="search" type="radio" [checked]="filterPnp.searchfilter.currentweeks">
+                        <label for="currentweeks">aktuelle Angebote durchsuchen</label><br>
+                    </fieldset>
+                    <button type="button" class="btn btn-primary" (click)="saveFilterNPolicyintoSessionNDB()">speichern</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        
+      </div>
+
+
+
+
+
+    
+
+
+
 </div>

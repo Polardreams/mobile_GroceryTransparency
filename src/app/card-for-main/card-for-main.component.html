@@ -4,10 +4,10 @@
             <div class="row">
                 <div class="col-1 my-auto" >
                     <div *ngIf="card.favflag==true; else elseBlock">
-                        <img src="../../assets/images/star_gold.png" style="width:25px;height:25px;"/>
+                        <img src="../../assets/images/star_gold.png" loading="lazy" style="width:25px;height:25px;"/>
                     </div>
                     <ng-template #elseBlock>
-                        <img src="../../assets/images/star_grey.png" style="width:25px;height:25px;"/>
+                        <img src="../../assets/images/star_grey.png" loading="lazy" style="width:25px;height:25px;"/>
                     </ng-template>
                 </div>
 
@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-1">
-            <img src={{card.pic_companie}} style="width:15px;height:15px;object-fit:contain;"/>
+            <img src={{card.pic_companie}} loading="lazy" style="width:15px;height:15px;object-fit:contain;"/>
         </div>
 
         <div class="col-2">

@@ -10,9 +10,11 @@ import { FetchSearchResultsService } from '../_Services/fetch-search-results.ser
 import { FetchAllListsService } from '../_Services/fetch-all-lists.service';
 import { Alllists } from '../_models/alllists';
 import * as globals from '../../global';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, JsonpClientBackend } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { GenerateAccountService } from '../_Services/generate-account.service';
+import { Router } from '@angular/router';
+
 
 /**
  * ParentComponent contain:
@@ -70,6 +72,7 @@ export class MainScreenComponent implements AfterViewInit{
   alllists!:Alllists;
   http!:HttpClient;
   searchScopeText:string="";
+  router!:Router;
   
 /**
  * pass the following Libs and services
@@ -82,16 +85,51 @@ export class MainScreenComponent implements AfterViewInit{
  * fetch and write Filter and Policy into Session from user account
  * fetch and write Alllists into Session
  */
-  constructor(private _http:HttpClient, private _service:FetchCurrentOffersService, private _serviceManagingFilterNPolicy:ManagingFiltersNPolicyService, _service_search:FetchSearchResultsService, _service_alllists:FetchAllListsService) { 
+  constructor(private _route:Router, private _http:HttpClient, private _service:FetchCurrentOffersService, private _serviceManagingFilterNPolicy:ManagingFiltersNPolicyService, _service_search:FetchSearchResultsService, _service_alllists:FetchAllListsService) { 
     this.service_managingFilterNPolicy = _serviceManagingFilterNPolicy;
     this.service_managingFilterNPolicy.fetchNwriteFilterNPolicyintoSession(globals.account.prototype.id);
-    this.service = _service;
-    this.service_search = _service_search;
     this.service_alllists = _service_alllists;
     this.service_alllists.fetchNwriteintoSession(globals.account.prototype.id);
+    
     this.http = _http;
+    this.router = _route;
+    this.service = _service;
+    this.service_search = _service_search;
   }
 
+  /**
+   * get Filter and Polcy from database (service_managingFilterNPolicy.getFiltersNPolicy())
+   * getCurrentProducts()
+   * fetch Alllists
+   * 
+   * refresh browser tab for receiving allists and filters
+   */
+   ngAfterViewInit(): void {
+    this.service_managingFilterNPolicy.getFiltersNPolicy().subscribe((fpnp) => {
+      this.filterPnp = fpnp;
+      this.service_alllists.getAlllists().subscribe((datas) => {
+        this.alllists = datas;
+        console.log('Polardreams[ngAfterViewInit]: alllists are received.');
+        this.lableForsearchScopeText();
+        this.searchScopeChange();
+      });
+    });
+ 
+    setTimeout(() => {
+     var btn = document.getElementById("btnpnp") as HTMLButtonElement;
+     if (this.filterPnp.permissionNpolicy.policy==null) { 
+       this.filterPnp = new FilterNpolicy();
+       btn.click();
+     } else {
+       if (this.searchScopeText=="") { 
+         if (this.countingRefreshing()) location.reload();//reload if http request for filters are failed
+       } else {
+         sessionStorage.setItem("refreshSession", JSON.stringify({refreshCount : 0}));
+       }
+       
+     }
+    }, 2000);//display after 2 secounds
+   }
 
   /**
    * check if sid is load and execute getcurrentProduct
@@ -165,7 +203,7 @@ export class MainScreenComponent implements AfterViewInit{
    */
   sort_price_desc () {
     var temp = this.productlist;
-    temp.sort((a:Product, b:Product) => a.new_price + b.new_price);
+    temp.sort((b:Product, a:Product) => a.new_price - b.new_price);
     this.productlist = [];
     temp.forEach((item, index, array) => {
       this.productlist.push(item);
@@ -267,39 +305,33 @@ export class MainScreenComponent implements AfterViewInit{
    * set label for searchScope Toggle Button
    */
   lableForsearchScopeText() {
+    console.log("this.filterPnp.searchfilter.currentweeks: " + this.filterPnp.searchfilter.currentweeks);
     if (this.filterPnp.searchfilter.currentweeks) this.searchScopeText="Es werden aktuelle Angebote angezeigt."; else  this.searchScopeText="Es werden alle Angebote angezeigt.";
   }
 
 
+
+
   /**
-   * get Filter and Polcy from database (service_managingFilterNPolicy.getFiltersNPolicy())
-   * getCurrentProducts()
-   * fetch Alllists
+   * check if refreshing allowed
+   * if that fail, than got an message on toggle button
+   * @returns boolean
    */
-  ngAfterViewInit(): void {
-   this.service_managingFilterNPolicy.getFiltersNPolicy().subscribe((fpnp) => {
-   this.filterPnp = fpnp;
-   
-    this.service_alllists.getAlllists().subscribe((datas) => {
-      this.alllists = datas;
-      this.lableForsearchScopeText();
-      this.searchScopeChange();
-    });
-   });
-
-
-
-   setTimeout(() => {
-    var btn = document.getElementById("btnpnp") as HTMLButtonElement;
-    if (this.filterPnp.permissionNpolicy.policy==null) { 
-      this.filterPnp = new FilterNpolicy();
-      btn.click();
+  countingRefreshing ():boolean {
+    var count:any = JSON.parse(sessionStorage.getItem("refreshSession") || JSON.stringify({refreshCount : 0}));
+    console.log(count);
+    if (count.refreshCount<2) {
+      count.refreshCount++;
+      sessionStorage.setItem("refreshSession", JSON.stringify({refreshCount : count.refreshCount}));
+      return true;
     } else {
-      if (this.filterPnp.permissionNpolicy.localisation) {
-        this.checkNUpdateGpsPermission();
-      }
+      count.refreshCount = 0;
+      sessionStorage.setItem("refreshSession", JSON.stringify({refreshCount : count.refreshCount}));
+      this.searchScopeText = "Es ist ein Fehler aufgetreten. Bitte betätigen Sie diesen Schalter.";
+      return false;
     }
-   }, 2000);//display after 2 secounds
+    
+    
   }
 
  /**
@@ -321,39 +353,28 @@ export class MainScreenComponent implements AfterViewInit{
    * post filters and policy into localStorage and database
    */
   saveFilterNPolicyintoSessionNDB() {
-    
-    this.http.get(environment.backendUrl+"updatefilters.php?id="+globals.account.prototype.id).subscribe(() => {     
-        this.http.get(environment.backendUrl+"updatepnp.php?id="+globals.account.prototype.id).subscribe(() => {
-          var temp = null; 
-          temp = document.getElementById("sort_price_asc") as HTMLInputElement;
-          if (temp.checked) this.filterPnp.sortfilter.sort_price_asc=true; else this.filterPnp.sortfilter.sort_price_asc=false;
-          temp = document.getElementById("sort_price_desc") as HTMLInputElement;
-          if (temp.checked) this.filterPnp.sortfilter.sort_price_desc=true; else this.filterPnp.sortfilter.sort_price_desc=false;
-          temp = document.getElementById("sort_discount_asc") as HTMLInputElement;
-          if (temp.checked) this.filterPnp.sortfilter.sort_discount_asc=true; else this.filterPnp.sortfilter.sort_discount_asc=false;
-           temp = document.getElementById("sort_discount_desc") as HTMLInputElement;
-          if (temp.checked) this.filterPnp.sortfilter.sort_discount_desc=true; else this.filterPnp.sortfilter.sort_discount_desc=false;
-           temp = document.getElementById("group_discounter") as HTMLInputElement;
-          if (temp.checked) this.filterPnp.sortfilter.group_discounter=true; else this.filterPnp.sortfilter.group_discounter=false;
-      
-          temp = document.getElementById("allweeks") as HTMLInputElement;
-          if (temp.checked) this.filterPnp.searchfilter.allweeks=true; else this.filterPnp.searchfilter.allweeks=false;
-          temp = document.getElementById("currentweeks") as HTMLInputElement;
-          if (temp.checked) this.filterPnp.searchfilter.currentweeks=true; else this.filterPnp.searchfilter.currentweeks=false;
-      
-          if (this.filterPnp.permissionNpolicy.localisation) {
-            this.checkNUpdateGpsPermission();
-          }
-          this.updateProductList();
-          this.service_managingFilterNPolicy.writeFilterNPolicyintoSession(this.filterPnp);
-          this.service_managingFilterNPolicy.readNpostFilterintoDB(globals.account.prototype.id);
-          this.service_managingFilterNPolicy.readNpostPolicyintoDB(globals.account.prototype.id);
-      
-          //Suche ohne Keyword
-          this.displaySearchResultWithoutKeyowrd();
+  this.http.get(environment.backendUrl+"updatefilters.php?id="+globals.account.prototype.id).subscribe(() => {     
+    this.http.get(environment.backendUrl+"updatepnp.php?id="+globals.account.prototype.id).subscribe(() => {
+      var temp = null; 
+      temp = document.getElementById("sort_price_asc") as HTMLInputElement;
+      if (temp.checked) this.filterPnp.sortfilter.sort_price_asc=true; else this.filterPnp.sortfilter.sort_price_asc=false;
+      temp = document.getElementById("sort_price_desc") as HTMLInputElement;
+      if (temp.checked) this.filterPnp.sortfilter.sort_price_desc=true; else this.filterPnp.sortfilter.sort_price_desc=false;
+      temp = document.getElementById("sort_discount_asc") as HTMLInputElement;
+      if (temp.checked) this.filterPnp.sortfilter.sort_discount_asc=true; else this.filterPnp.sortfilter.sort_discount_asc=false;
+        temp = document.getElementById("sort_discount_desc") as HTMLInputElement;
+      if (temp.checked) this.filterPnp.sortfilter.sort_discount_desc=true; else this.filterPnp.sortfilter.sort_discount_desc=false;
+        temp = document.getElementById("group_discounter") as HTMLInputElement;
+      if (temp.checked) this.filterPnp.sortfilter.group_discounter=true; else this.filterPnp.sortfilter.group_discounter=false;
 
-        });
-      });
+      this.service_managingFilterNPolicy.writeFilterNPolicyintoSession(this.filterPnp);
+      this.service_managingFilterNPolicy.readNpostFilterintoDB(globals.account.prototype.id);
+      this.service_managingFilterNPolicy.readNpostPolicyintoDB(globals.account.prototype.id);
+
+      //Suche ohne Keyword
+      this.displaySearchResultWithoutKeyowrd();
+    });
+  });
   }
 
   /**
@@ -371,7 +392,6 @@ export class MainScreenComponent implements AfterViewInit{
       this.filterPnp.searchfilter.allweeks = true;
       this.searchForProducts();
     }
-    this.lableForsearchScopeText();
   }
 
 /**
@@ -397,43 +417,11 @@ export class MainScreenComponent implements AfterViewInit{
     this.filterPnp.permissionNpolicy.localisation = true;
     this.filterPnp.permissionNpolicy.storage = true;
     this.filterPnp.permissionNpolicy.policy = true;
-    this.updateProductList();
-    this.checkNUpdateGpsPermission();
     this.saveFilterNPolicyintoSessionNDB();
+    
   }
 
-  /**
-   * send request to browser navigator API
-   * browser will ask for permission
-   */
-  checkNUpdateGpsPermission () {
-      navigator.geolocation.getCurrentPosition(
-        () => {
-          this.updateGpsPosition()
-        }, 
-        () => {
-          console.error("Polardreams [error]: navigator.geolocation hat ein Problem festgestellt. Es gibt keine GPS-Freigabe.");
-        });      
-  }
-
-  /**
-   * save current location to localeStorage
-   */
-  updateGpsPosition() {
-    navigator.geolocation.getCurrentPosition((pos) => {
-      var temp;
-      if (!this.positionFromStorageExist()) {
-        temp = {latitude: 0, longitude: 0};
-      } else {
-        temp = JSON.parse(localStorage.getItem("storePos") || "");
-      }
-      if (!(temp.latitude==pos.coords.latitude && temp.longitude==pos.coords.longitude) || this.kauflandstores.length==0) {
-        localStorage.setItem("storePos", JSON.stringify({latitude: pos.coords.latitude, longitude: pos.coords.longitude}));
-        this.loadNmatchKauflandStores();
-      }
-    });
-  }
-
+ 
   /**
    * show privacy text
    */
@@ -441,137 +429,7 @@ export class MainScreenComponent implements AfterViewInit{
     this.privacyTextflag = !this.privacyTextflag;
   }
 
-  /**
-   * check if location ist exist on localeStorage
-   * @returns boolean
-   */
-  positionFromStorageExist ():boolean {
-		let flag;
-		if (typeof(Storage) !== "undefined") {
-			  if (localStorage.getItem("storePos")!=null) {
-				  flag = true;
-			  } else {
-				  flag = false;
-			  }
-		} else {
-			  flag = false;
-		}
-		return flag;
-	}
-
-  /**
-   * calculate distance between two locations
-   * @param lat1 
-   * @param lon1 
-   * @param lat2 
-   * @param lon2 
-   * @param unit 
-   * @returns 
-   */
-  distance(lat1:number, lon1:number, lat2:number, lon2:number, unit:string):number {
-		/**
-		https://www.geodatasource.com/developers/javascript
-		*/
-		if ((lat1 == lat2) && (lon1 == lon2)) {
-			return 0;
-		}
-		else {
-			var radlat1 = Math.PI * lat1/180;
-			var radlat2 = Math.PI * lat2/180;
-			var theta = lon1-lon2;
-			var radtheta = Math.PI * theta/180;
-			var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-			if (dist > 1) {
-				dist = 1;
-			}
-			dist = Math.acos(dist);
-			dist = dist * 180/Math.PI;
-			dist = dist * 60 * 1.1515;
-			if (unit=="K") { dist = dist * 1.609344 }
-			if (unit=="N") { dist = dist * 0.8684 }
-			return dist;
-		}
-	}
-	
-  /**
-   * find nearest Kaufland store based on location (GPS)
-   */
-	loadNmatchKauflandStores() {
-		//lade alle Stores von Kaufland
-		
-		if (!this.positionFromStorageExist()) {
-			fetch('https://www.vergleichdiscounter.de/Stores/kaufland_stores.json')//production
-	  			.then(response => response.json())
-			 	.then(result => {
-			 		this.stores = result;
-					//lese die Client-Position
-					if (navigator.geolocation)  {
-						navigator.geolocation.getCurrentPosition(this.matchingStoresNPosition);
-					}
-			 	})
-		} else {
-			fetch('https://www.vergleichdiscounter.de/Stores/kaufland_stores.json')//production
-  			.then(response => response.json())
-		 	.then(result => {
-        this.stores = result;
-				//lese die Client-Position
-		 		this.matchingStoresNPosition(null);
-		 	})
-		}
-	}
-
-  /**
-   * 
-   * @param pos get all Kauflandstores in distance of 30 km
-   */
-  matchingStoresNPosition (pos:any | null) {
-		//setze pos in storage
-		
-		if (pos != null) {	
-			pos = pos.coords;
-		} else {
-			this.coords = JSON.parse(localStorage.getItem("storePos")||"");
-			pos = {latitude:this.coords.latitude, longitude:this.coords.longitude}
-		}
-
-		//Finde ein Match
-	  let dis = -1;
-		let i = -1;
-		this.nextStores = [];
-    var currentDis = -1;
- 		this.stores.forEach((item, index, array) =>{
- 			if (i == null || dis == null) {
- 				i = index;
- 				dis = this.distance(pos.latitude, pos.longitude, item.lat, item.lng, "K");
- 				
- 				
- 			} else {
- 				currentDis = this.distance(pos.latitude, pos.longitude, item.lat, item.lng, "K"); 
- 				if (currentDis < dis) {
- 					i = index;
- 	 				dis = currentDis; 
- 				}
- 			}
- 			
- 			let tmp_dis = this.distance(pos.latitude, pos.longitude, item.lat, item.lng, "K");
- 			if (tmp_dis < 30) {//30 KM
-        this.nextStores.push(index);
-			}
- 		});
- 	
-    this.nextStores.forEach ((item, index, array) => {
-	 		/**
-        * n = id
-        * cn = Ortsname der Kaufglandfiliale
-        */
-      
-      if (i != item) {
-			  console.log(`Mögliche Kauflandfiliale mit der ID: ${this.stores[item].n}, befindet sich in ${this.stores[item].cn}`);
-        this.kauflandstores.push(new Kauflandstores(this.stores[item].n, this.stores[item].cn));
-      }	
- 		});
-	}
-
+ 
   /**
    * search for products with keyword
    */
