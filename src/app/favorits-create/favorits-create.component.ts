@@ -64,6 +64,12 @@ export class FavoritsCreateComponent implements AfterViewInit{
    * @param event 
    */
   preview(event:any) {
+    var pic = document.getElementById("preview") as HTMLElement;
+    pic.hidden = false;
+
+    var icon = document.getElementById("preview_icon") as HTMLElement;
+    icon.hidden = true;
+
     const reader = new FileReader();
     if(event.target.files && event.target.files.length) {
       this.file = event.target.files[0];

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, Inject, Input, OnChanges, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Companiepictures } from '../companiepictures';
 import { Alllists } from '../_models/alllists';
@@ -7,7 +7,7 @@ import { ShoppingListProducts } from '../_models/shopping-list';
 import { FetchAllListsService } from '../_Services/fetch-all-lists.service';
 import { ManagingShoppinglistService } from '../_Services/managing-shoppinglist.service';
 import * as globals from '../../global';
-
+import { DOCUMENT } from '@angular/common';
 /**
  * ParentComponent contain:
  *  none 
@@ -33,13 +33,13 @@ import * as globals from '../../global';
  *    - AfterViewInit
  *    - OnDestroy
  */
-
-@Component({
+ @Component({
   selector: 'app-shoppinglist-details',
   templateUrl: './shoppinglist-details.component.html',
   styleUrls: ['./shoppinglist-details.component.css']
 })
 export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
+  
 
   alllists!:Alllists;
   service_fetchalllists:FetchAllListsService;
@@ -48,6 +48,8 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
   id!:number;
   products!:ShoppingListProducts[];
   customText:string="";
+  ModeSwtitcherText!:string;
+  doc:any;
 
   /**
    * register: 
@@ -57,11 +59,12 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
    * 
    * fetch and write Allists into localStorage
    */
-  constructor(_service_fetchalllists:FetchAllListsService, _service_ManageingShoppinglist:ManagingShoppinglistService, _router:Router) { 
+  constructor(_service_fetchalllists:FetchAllListsService, _service_ManageingShoppinglist:ManagingShoppinglistService, _router:Router,@Inject(DOCUMENT) private docLib: any) { 
     this.service_fetchalllists = _service_fetchalllists;
     this.service_fetchalllists.fetchNwriteintoSession(globals.account.prototype.id);
     this.service_ManageingShoppinglist = _service_ManageingShoppinglist;
     this.router = _router;
+    
   }
 /**
  * set Alllists after close this Component
@@ -71,7 +74,65 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
   
   ngOnDestroy(): void {
       this.service_ManageingShoppinglist.setAlllist(this.alllists);//ist das an der Stelle sinnvoll??? Weil der Service stirbt auch mit der Componente. Er wird auch nicht weitergereicht durch das ParentComponent
-      this.service_ManageingShoppinglist.postShoppingListCheckNAmountIntoDB(this.id);
+  }
+
+  switchDisplayMode() {
+    var el = document.getElementById("modeswitcher") as HTMLInputElement;
+    var back = document.getElementById("back") as HTMLInputElement;
+    var add = document.getElementById("add") as HTMLInputElement;
+    var del = document.getElementById("del") as HTMLInputElement;
+    if (el.checked) {
+      this.ModeSwtitcherText = "Einkaufsmodus";
+      this.openFullscreen();
+      back.disabled = true;
+      add.disabled = true;
+      del.disabled = true;
+    } else {
+      this.ModeSwtitcherText = "Entwurfsmodus";
+      back.disabled = false;
+      add.disabled = false;
+      del.disabled = false;
+      this.closeFullscreen();
+    }
+  }
+
+  /**
+   * open fullscreen mode
+   * https://imvikaskohli.medium.com/how-to-implement-fullscreen-mode-in-angular-fb9f55c24f67
+   */
+  openFullscreen() {
+    if (this.doc.requestFullscreen) {
+      this.doc.requestFullscreen();
+    } else if (this.doc.mozRequestFullScreen) {
+      /* Firefox */
+      this.doc.mozRequestFullScreen();
+    } else if (this.doc.webkitRequestFullscreen) {
+      /* Chrome, Safari and Opera */
+      this.doc.webkitRequestFullscreen();
+    } else if (this.doc.msRequestFullscreen) {
+      /* IE/Edge */
+      this.doc.msRequestFullscreen();
+    }
+  }
+  
+  /* Close fullscreen */
+  closeFullscreen() {
+    if (this.docLib.exitFullscreen) {
+      this.docLib.exitFullscreen();
+    } else if (this.docLib.mozCancelFullScreen) {
+      /* Firefox */
+      this.docLib.mozCancelFullScreen();
+    } else if (this.docLib.webkitExitFullscreen) {
+      /* Chrome, Safari and Opera */
+      this.docLib.webkitExitFullscreen();
+    } else if (this.docLib.msExitFullscreen) {
+      /* IE/Edge */
+      this.docLib.msExitFullscreen();
+    }
+  }
+
+  postAllChecksNAmountsToDB() {
+    this.service_ManageingShoppinglist.postShoppingListCheckNAmountIntoDB(this.id)
   }
 
   /**
@@ -103,12 +164,13 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
       this.service_ManageingShoppinglist.setAlllist(this.alllists);
       this.service_ManageingShoppinglist.setAlllist(this.alllists);
       this.id = history.state.data;
-      
+      this.switchDisplayMode();
       this.alllists.Shop.filter((item) => {
         if (item.id == this.id) {
           this.products = item.products;
         }
       });
+      this.doc = document.documentElement;
     });
   }
 

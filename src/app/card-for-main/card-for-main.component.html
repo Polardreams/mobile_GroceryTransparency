@@ -1,5 +1,5 @@
 <div *ngFor="let card of cardcontent">
-    <div class="row border rounded ms-1 me-1 mt-1 mb-1">
+    <div class="row border rounded ms-1 me-1 mt-1 mb-1" id="{{card.id}}">
         <div class="col-4">
             <div class="row">
                 <div class="col-1 my-auto" >
@@ -18,7 +18,7 @@
 
         </div>
 
-        <div class="col-3 fs-6" style="overflow: hidden; text-overflow: ellipsis;">
+        <div id="txt{{card.id}}" class="col-3 fs-6 overflow-hidden" (click)='showText("txt"+card.id)'><!--style="overflow: hidden; text-overflow: ellipsis;"-->
             {{card.title}}
         </div>
 

@@ -1,16 +1,19 @@
-<button class="btn btn-light bg-light" (click)="createShoppingList()">Einkaufsliste erstellen</button>
+<button class="btn btn-primary" (click)="createShoppingList()">Einkaufsliste erstellen</button><br>
 <div *ngFor="let card of shoppinglists">
     <div class="row border rounded ms-1 me-1 mt-1 mb-1">
-        <div class="col-6" >
-            <button class="btn btn-light" id="span_name" data-bs-toggle="collapse" [attr.data-bs-target]="'#targetRename'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">{{card.name}}</button>
+        <div class="col-6 my-auto" >
+            <button class="btn btn-light bg-white" id="span_name" data-bs-toggle="collapse" [attr.data-bs-target]="'#targetRename'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">{{card.name}}</button>
+            
             <div [attr.id]="'targetRename'+card.id" class="collapse card-body border-light position-fixed start-0">
-                <input type="text" [(ngModel)]="card.name"> 
-                <button id="btn_close" data-bs-toggle="collapse" [attr.data-bs-target]="'#targetRename'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">X</button>
+                <div class="hstack gap-1">
+                    <input class="form-control" type="text" [(ngModel)]="card.name"> 
+                    <button class="btn btn-outline-dark ms-1 bg-white" id="btn_close" data-bs-toggle="collapse" [attr.data-bs-target]="'#targetRename'+card.id" (click)="renameShoppingListNwriteIntoSession(card.id)">X</button>
+                </div>
             </div>
             
         </div>
-        <div class="col-4">
-            <button class="btn btn-light" (click)="navigateToDetails(card.id)">öffnen</button>
+        <div class="col-4 my-auto">
+            <button class="btn btn-outline-dark" (click)="navigateToDetails(card.id)">öffnen</button>
         </div>
         <div class="col-2 fs-3">
             <!--submenu card for shoppinglist-->

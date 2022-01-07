@@ -1,4 +1,4 @@
-import { AfterViewInit, Component} from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component} from '@angular/core';
 import {FetchCurrentOffersService} from '../_Services/fetch-current-offers.service';
 import {Product} from '../_models/Product';
 import { ManagingFiltersNPolicyService } from '../_Services/managing-filters-npolicy.service';
@@ -53,7 +53,7 @@ import { Router } from '@angular/router';
   templateUrl: './main-screen.component.html',
   styleUrls: ['./main-screen.component.css']
 })
-export class MainScreenComponent implements AfterViewInit{
+export class MainScreenComponent implements AfterViewInit, AfterViewChecked{
   service_managingFilterNPolicy!:ManagingFiltersNPolicyService;
   service!:FetchCurrentOffersService;
   service_search!:FetchSearchResultsService;
@@ -130,6 +130,23 @@ export class MainScreenComponent implements AfterViewInit{
      }
     }, 2000);//display after 2 secounds
    }
+
+   
+   /**
+    * scroll to last view
+    */
+    ngAfterViewChecked() {
+      var anchor!:any;
+      anchor = JSON.parse(sessionStorage.getItem("anchor") || "{}");
+      if ( JSON.stringify(anchor) != "{}") {
+        document.getElementById(anchor.id.toString())?.scrollIntoView();
+      }
+     }
+
+     toTop() {
+      sessionStorage.removeItem("anchor"); 
+      document.getElementById("totop")?.scrollIntoView();
+     }
 
   /**
    * check if sid is load and execute getcurrentProduct
@@ -305,7 +322,6 @@ export class MainScreenComponent implements AfterViewInit{
    * set label for searchScope Toggle Button
    */
   lableForsearchScopeText() {
-    console.log("this.filterPnp.searchfilter.currentweeks: " + this.filterPnp.searchfilter.currentweeks);
     if (this.filterPnp.searchfilter.currentweeks) this.searchScopeText="Es werden aktuelle Angebote angezeigt."; else  this.searchScopeText="Es werden alle Angebote angezeigt.";
   }
 
@@ -346,7 +362,6 @@ export class MainScreenComponent implements AfterViewInit{
     if (this.filterPnp.sortfilter.sort_price_desc) this.sort_price_desc();
     if (this.filterPnp.sortfilter.group_discounter) this.sort_group();
     this.setproductLimit();
-     
   }
 
   /**

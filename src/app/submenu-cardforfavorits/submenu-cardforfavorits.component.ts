@@ -78,7 +78,7 @@ export class SubmenuCardforfavoritsComponent implements AfterViewInit, OnChanges
     this.service_Favorits.getAllLists().subscribe((datas) => {
       this.alllists = datas;
     });
-
+    this.closeCollpase();
   }
   
   /**
@@ -88,6 +88,11 @@ export class SubmenuCardforfavoritsComponent implements AfterViewInit, OnChanges
   addProductToShoppingList(sid:number) {
     this.service.setAlllist(this.alllists);
     this.service.addProductToShoppingList(sid, this.id);
+    this.closeCollpase();
+  }
+
+  closeCollpase() {
+    document.getElementById('target'+this.id)?.setAttribute("class", "collapse mt-2");
   }
 
 }

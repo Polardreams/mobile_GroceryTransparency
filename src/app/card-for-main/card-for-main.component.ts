@@ -43,6 +43,7 @@ export class CardForMainComponent implements OnChanges{
 
   _service_getAllLists!:FetchAllListsService;
   _router!:Router;
+  flag:boolean = false;
 
   
   /**
@@ -68,11 +69,15 @@ export class CardForMainComponent implements OnChanges{
     this.createCards();
   }
 
+
   /**
    * navigate to product details view
+   * save id for scolling when comming back
    * @param id product id
    */
   public getDetails(id:number) {
+    sessionStorage.removeItem("anchor");
+    sessionStorage.setItem("anchor", JSON.stringify({id:id}))
     this._router.navigate(["productdetail"], {state: {data:id}});
   }
 
@@ -152,6 +157,19 @@ export class CardForMainComponent implements OnChanges{
     });
   }
 
+  /**
+   * make text visible when overflow hidden
+   */
+
+  showText (id:string) {
+    
+    this.flag=!this.flag;
+    if(this.flag) {
+      document.getElementById(id)?.setAttribute("class", "col-3 fs-6 overflow-visible");      
+    } else {
+      document.getElementById(id)?.setAttribute("class", "col-3 fs-6 overflow-hidden");
+    }    
+  }
   
 }
   

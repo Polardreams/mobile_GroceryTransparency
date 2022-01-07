@@ -1,9 +1,15 @@
 <div class="container">
+    <div class="hstack gap-1">
+        <h1>Favoriten erstellen</h1>
+        <img src="../../assets/images/icon_favorits.png" width="50px" height="50px">
+    </div>
+    
+    <hr>
 <form id="formCreate needs-validation" method="post" enctype="multipart/form-data" >
     <strong>bitte keine Bilder größer als 3 MB hochladen</strong>
-    <input id="PicDialog" class="form-control" type="file" size=3000000 name="picture" (change)="preview($event)"/>
-    <img src="../../assets/images/camera.png" style="width:50px;height:50px">
-    <img id="preview" [src]="imageSrc" style="width:150px;height:150px"/>
+    <input id="PicDialog" class="form-control mt-2" type="file" size=3000000 name="picture" (change)="preview($event)"/>
+    <img id="preview_icon" src="../../assets/images/camera.png" style="width:50px;height:50px">
+    <img class=" mt-2" id="preview" [src]="imageSrc" style="width:150px;height:150px" hidden>
     <label for="cid">Welcher Discounter bietet das Produkt an?</label>
     <select class="form-select" id="cid" >
         <option value=1>Lidl</option>
@@ -28,9 +34,9 @@
     </select>
     <input class="form-control" type="text" id="price_per_amount" placeholder="100g für 1.55€" [(ngModel)]="newProduct.price_per_amount" [ngModelOptions]="{standalone: true}">
     <input class="form-control" type="text" id="hint" placeholder="Dein Hinweis" [(ngModel)]="newProduct.hint" [ngModelOptions]="{standalone: true}">
-    <button (click)="postForm()" >erstelle Favorit</button>
+    <button class="btn btn-primary me-2" (click)="postForm()" >erstelle Favorit</button>
      
-    <button class="btn btn-secondary" (click)="goBack()">zurück</button>
+    <button class="btn btn-outline-dark" (click)="goBack()">zurück</button>
     
 </form>
 </div>

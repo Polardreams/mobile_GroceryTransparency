@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Alllists } from '../_models/alllists';
 import { CardContent } from '../_models/CardContent';
 import { Shoppinglist } from '../_models/shoppinglists';
@@ -48,15 +49,17 @@ export class SubmenuCardformainComponent implements AfterViewInit, OnChanges {
   service!:ManagingShoppinglistService;
   service_Favorits!:ManagingFavoritsService;
   shoppinglists:Shoppinglist[] = [];
+  router!:Router;
 
   /**
    * register the following services:
    * @param _service ManagingShoppinglistService
    * @param _service_Favorits ManagingFavoritsService
    */
-  constructor(_service:ManagingShoppinglistService, _service_Favorits:ManagingFavoritsService) { 
+  constructor(_router:Router, _service:ManagingShoppinglistService, _service_Favorits:ManagingFavoritsService) { 
     this.service = _service;
     this.service_Favorits = _service_Favorits;
+    this.router = _router;
   }
 
   /**
@@ -68,6 +71,11 @@ export class SubmenuCardformainComponent implements AfterViewInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.shoppinglists = this.alllists.Shop;//kann das funktionieren? wird hier nicht ein Observable benötigt
     this.service_Favorits.setAlllist(this.alllists);
+  }
+
+  public getDetails() {
+    this.closeCollpase();
+    this.router.navigate(["productdetail"], {state: {data:this.id}});
   }
 
   /**
@@ -90,6 +98,7 @@ export class SubmenuCardformainComponent implements AfterViewInit, OnChanges {
   addProductToShoppingList(sid:number) {
     this.service.setAlllist(this.alllists);
     this.service.addProductToShoppingList(sid, this.id);
+    this.closeCollpase();
   }
 
   /**
@@ -103,7 +112,11 @@ export class SubmenuCardformainComponent implements AfterViewInit, OnChanges {
       }
       return item;
     });
-    
+    this.closeCollpase();
+  }
+
+  closeCollpase() {
+    document.getElementById('target'+this.id)?.setAttribute("class", "collapse mt-1");
   }
 
 }

@@ -44,7 +44,7 @@ export class CardsForFavoritsComponent implements OnChanges {
   products:Product[] = [];
   flag:boolean = true;
 
-  test:number = 0;
+  flagtxt:boolean = false;
 
   /**
    * register following services:
@@ -127,5 +127,19 @@ export class CardsForFavoritsComponent implements OnChanges {
     }
     return path;
   }
+
+    /**
+   * make text visible when overflow hidden
+   */
+
+     showText (id:string) {
+    
+      this.flagtxt=!this.flagtxt;
+      if(this.flagtxt) {
+        document.getElementById(id)?.setAttribute("class", "col-8 fs-6 overflow-visible");      
+      } else {
+        document.getElementById(id)?.setAttribute("class", "col-4 fs-6 overflow-hidden");
+      }    
+    }
 
 }

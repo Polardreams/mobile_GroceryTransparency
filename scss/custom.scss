@@ -1,16 +1,18 @@
+/**
 $theme-colors: (
   "primary": #EB2660,
   "success":#4DD51D
 );
-
+**/
 
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-/**
-* {
-  border-style: solid;
-  border-width: 1px;
-  color: red;
+@font-face {
+  font-family: "Capriola";
+  src:local("Capriola"), URL("./assets/font/Capriola-Regular.ttf") format("truetype")
 }
-**/
+
+body {
+  font-family: "Capriola";
+}

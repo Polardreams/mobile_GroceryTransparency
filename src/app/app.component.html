@@ -1,6 +1,12 @@
+
+<div class="text-center">
+    <h1>GroceryTransparency Beta</h1>
+    <hr>
+</div>
 <div *ngIf="activate==false; else elseprivacy">
     <span>Nutzer Account wird erstellt, bitte warten ...</span>
 </div>
+
 <ng-template #elseprivacy>
     <router-outlet></router-outlet>    
 </ng-template>

@@ -1,4 +1,11 @@
 <app-navigation></app-navigation>
+
+<div class="w-100" class="text-center">
+  <img class="my-2" width="75px" height="75px" style="object-fit:cover" src="../../assets/images/icon_setting.png"/>
+  <hr>
+</div>
+
+
 <div class="container">
     <div class="accordion" id="accordionSettings">
         <div class="accordion-item">
@@ -39,8 +46,8 @@
             </ng-template>
         </div>
         <div class="container hstack gap-2">
-        <button type="button" class="btn btn-primary"  (click)="acceptAllTerms()">allen zustimmen</button>
-        <button type="button" class="btn btn-primary"  (click)="saveFilterNPolicyintoSessionNDB()">Auswahl speichern</button>
+        <button type="button" class="btn btn-success"  (click)="acceptAllTerms()">allen zustimmen</button>
+        <button type="button" class="btn btn-secondary"  (click)="saveFilterNPolicyintoSessionNDB()">Auswahl speichern</button>
             </div>
           </div>
         </div>
@@ -66,7 +73,7 @@
                         
                         <ng-template [ngIf]="kauflandstores.length > 0">
                             
-                            <select id="stores" [(ngModel)]="filterPnp.discounterfilter.discount_kaufland_storeid" [ngModelOptions]="{standalone: true}">
+                            <select class="form-select" id="stores" [(ngModel)]="filterPnp.discounterfilter.discount_kaufland_storeid" [ngModelOptions]="{standalone: true}">
                                 <option value="">Keine Filiale auswählen</option>
                                 <option *ngFor="let store of kauflandstores" [value]="store.index">{{store.name}}</option>
                             </select><br>
@@ -96,7 +103,7 @@
               <div class="accordion-body">
                 <form>
                     <fieldset>
-                        <input type="range" class="form-range" id="searchRange" max=350 min=2 [(ngModel)]="filterPnp.searchfilter.search_result_count" [ngModelOptions]="{standalone: true}"><br>
+                        <input type="range" class="form-range" id="searchRange" max=2000 min=2 [(ngModel)]="filterPnp.searchfilter.search_result_count" [ngModelOptions]="{standalone: true}"><br>
                         <label for="searchRange" class="form-label">{{filterPnp.searchfilter.search_result_count}} Ergebnisse pro Suche</label><br>
                         
                         <input id="allweeks" name="search" type="radio" [checked]="filterPnp.searchfilter.allweeks">

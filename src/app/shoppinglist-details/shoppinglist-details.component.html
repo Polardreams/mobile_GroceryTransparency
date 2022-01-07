@@ -1,37 +1,37 @@
-<div class="hstack gap-2">
-    <button class="btn btn-secondary" (click)="goBack()">zurück</button>
-    <button class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#ShopDetailMenu">hinzufügen</button>
-    <button class="btn btn-primary" (click)="deleteSelectedProducts()">löschen</button><br>    
+<div class="hstack gap-4 ms-2">
+    <button id = "back" class="btn btn-outline-dark mt-1 mb-2" (click)="goBack()">zurück</button>
+    <button id = "add" class="btn btn-primary mt-1 mb-2" data-bs-toggle="collapse" data-bs-target="#ShopDetailMenu">hinzufügen</button>
+    <button id = "del" class="btn btn-danger mt-1 mb-2" (click)="deleteSelectedProducts()">löschen</button><br>    
 </div>
 
 <div id="ShopDetailMenu" class="collapse position-fixed bg-white">
     <div class="vstack gap-2">
-        <button class="btn btn-light" routerLink="main">wählen aus Angeboten</button>
-        <button class="btn btn-light" routerLink="../favorits">wählen aus Favoriten</button>
+        <button class="btn btn-light" routerLink="main">wählen aus Angeboten <img width="25px" height="25px" src="../../assets/images/icon_discount.png"></button>
+        <button class="btn btn-light" routerLink="../favorits">wählen aus Favoriten <img width="25px" height="25px" src="../../assets/images/icon_favorits.png"></button>
         <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#customModal">Schnellnotiz</button>
     </div>
 </div>
 
 <div *ngFor="let card of products">
     <div *ngIf="card.groceryid==110625; else elsecustom">
-        <div class="row border rounded my-auto">
-            <div class="col-3 " >
+        <div class="row ms-1 me-1 rounded my-auto">
+            <div class="col-4" >
                 <div class="hstack gap-1">
-                    <input class="form-check-input" style="width:25px;height: 25px;" type="checkbox" [(ngModel)]="card.ischeck" [ngModelOptions]="{standalone: true}">
-                    <input class="form-number-input"type="number" style="width: 40px;" min=1 [(ngModel)]="card.amount" name="shopListCheck" [ngModelOptions]="{standalone: true}">
+                    <input class="form-check-input" style="width:25px;height: 25px;" type="checkbox" [(ngModel)]="card.ischeck" [ngModelOptions]="{standalone: true}" (change)="postAllChecksNAmountsToDB()">
+                    <input class="form-number-input"type="number" style="width: 40px;" min=1 [(ngModel)]="card.amount" name="shopListCheck" [ngModelOptions]="{standalone: true}" (change)="postAllChecksNAmountsToDB()">
                 </div>
             </div>
-            <div class="col-8  fs-6" style="overflow: hidden; text-overflow: ellipsis;">
-                {{card.customentry}}
+            <div class="col-8 fs-6" style="overflow: hidden; text-overflow: ellipsis;">
+                <span>{{card.customentry}}</span>
             </div>
         </div>
     </div>
     <ng-template #elsecustom>
-        <div class="row  rounded my-auto">
+        <div class="row border ms-1 me-1 rounded my-auto">
             <div class="col-6 " >
                 <div class="hstack gap-1">
-                    <input class="form-check-input" style="width:25px;height: 25px;" type="checkbox" [(ngModel)]="card.ischeck" [ngModelOptions]="{standalone: true}">
-                    <input class="form-number-input"type="number" style="width: 40px;" min=1 [(ngModel)]="card.amount" name="shopListCheck" [ngModelOptions]="{standalone: true}">
+                    <input class="form-check-input" style="width:35px;height: 25px;" type="checkbox" [(ngModel)]="card.ischeck" [ngModelOptions]="{standalone: true}" (change)="postAllChecksNAmountsToDB()">
+                    <input class="form-number-input"type="number" style="width: 40px;" min=1 [(ngModel)]="card.amount" name="shopListCheck" [ngModelOptions]="{standalone: true}" (change)="postAllChecksNAmountsToDB()">
                     <img src="{{selectFirstPicturefromPucURL(card.pic_url)}}" style="width:80px;height:80px;object-fit:cover;" />
                 </div>
             </div>
@@ -72,3 +72,6 @@
     </div>
   </div>
 
+<div class="form-switch position-fixed bottom-0 mb-2 ms-2">
+    <input id="modeswitcher" class="form-check-input" type="checkbox" role="switch" (click)="switchDisplayMode()" > {{ModeSwtitcherText}}
+</div>

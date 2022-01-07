@@ -57,6 +57,7 @@ export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
    * @param id account id
    */
   deleteShoppingList (id:number) {
+    this.closeCollpase();
     this.service.removeShoppingListfromDBNSession(id);
   }
 
@@ -65,7 +66,12 @@ export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
    * @param id shoppinglist id
    */
   copyShoppingList(id:number) {
+    this.closeCollpase();
     this.service.copyShoppingListintoDBNSession(id);
+  }
+
+  closeCollpase() {
+    document.getElementById('target'+this.id)?.setAttribute("class", "collapse mt-2");
   }
 
 }

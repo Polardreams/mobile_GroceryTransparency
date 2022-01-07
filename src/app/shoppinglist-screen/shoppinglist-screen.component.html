@@ -1,13 +1,13 @@
-<div class="container">
-    <nav>
-        <app-navigation></app-navigation>
-    </nav>
-    <header>
-        <h1>Meine Einkaufslisten</h1>
-        <hr>
-    </header>
-    <main>
-        <!--card for shoppinglist-->
-        <app-card-for-shoppinglist [_alllists]="alllists"></app-card-for-shoppinglist>
-    </main>
+<nav>
+    <app-navigation></app-navigation>
+</nav>
+
+<div class="w-100" class="text-center">
+    <img class="my-2" width="75px" height="75px" style="object-fit:cover" src="../../assets/images/icon_shoppinglist.png"/>
+    <hr>
 </div>
+
+<main>
+    <!--card for shoppinglist-->
+    <app-card-for-shoppinglist [_alllists]="alllists"></app-card-for-shoppinglist>
+</main>

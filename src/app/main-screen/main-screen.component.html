@@ -2,25 +2,30 @@
   <app-navigation></app-navigation>
 </nav>
 
-<header>
+<header id="totop">
+  <div class="w-100" class="text-center">
+    <img class="my-2" width="75px" height="75px" style="object-fit:cover" src="../../assets/images/icon_discount.png" />
+    <hr>
+  </div>
+  
   <!--Search Form-->
   <form>
       <div class="row ms-1 me-1">
             <div class="hstack gap-1"> 
-              <input class="form-control" type="Text" placeholder="Produkt, Kategorie" [(ngModel)]="searchterm" [ngModelOptions]="{standalone: true}" />
-              <button id="searchButton" class="form-control w-25" type="submit" (click)="searchForProducts()">suchen</button>
+              <input class="form-control" type="Text" placeholder="Schokolade" [(ngModel)]="searchterm" [ngModelOptions]="{standalone: true}" />
+              <button id="searchButton" class="btn btn-outline-dark w-25" type="submit" (click)="searchForProducts()">suchen</button>
             </div>
             
           <div class="hstack gap-1">
-            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#SearchHelp"><img src="../../assets/images/help.png" width="25px" height="25px"></button>
             <div class="form-switch">
-              <input id="searchScope" class="form-check-input" type="checkbox" role="switch" [(ngModel)]="filterPnp.searchfilter.currentweeks" [ngModelOptions]="{standalone: true}" (change)="searchScopeChange()" checked> <span>{{searchScopeText}}</span>
+              <input id="searchScope" class="form-check-input" type="checkbox" role="switch" [(ngModel)]="filterPnp.searchfilter.currentweeks" [ngModelOptions]="{standalone: true}" (change)="searchScopeChange()" checked> <b>{{searchScopeText}}</b>
             </div>
+            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#SearchHelp"><img src="../../assets/images/help.png" width="25px" height="25px"></button>
           </div>
       </div>
   </form>
   
-  <div class="border rounded">
+  <div class="border rounded ms-1 me-1">
     <form>
       <div class="row ms-1 me-1">
         <div class="col ps-0">
@@ -90,11 +95,10 @@
     </select>
   </div>
 </div>   
-  <hr>
 </header>
 
 
-<main>
+<main >
   <!--card-for-main-->
   <app-card-for-main [_productlist]="productlist" [alllists]="alllists"></app-card-for-main>
 </main>
@@ -130,7 +134,7 @@
                       <input id="privacyDeclarationCheck" name="pnp" type="checkbox" [(ngModel)]="filterPnp.permissionNpolicy.policy" [ngModelOptions]="{standalone: true}">
                       <label for="privacyDeclarationCheck">Ich stimme der Datenschutzerklärung zu.</label><br>
 
-                      <button class="btn btn-light" (click)="clickPrivacyText()">lesen der Datenschutzerklärung</button>
+                      <button class="btn btn-outline-dark" (click)="clickPrivacyText()">lesen der Datenschutzerklärung</button>
                   </fieldset>
               </form>
           </div>
@@ -145,8 +149,13 @@
           </ng-template>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success text-white" data-bs-dismiss="modal" (click)="acceptAllTerms()">allen zustimmen</button>
-        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" (click)="saveFilterNPolicyintoSessionNDB()">Auswahl speichern</button>
+
+        <button type="button" class="btn btn-success text-white" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#Help" (click)="acceptAllTerms()">allen zustimmen</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#Help" (click)="saveFilterNPolicyintoSessionNDB()">Auswahl speichern</button>
+
+        <!-- Debug
+        <button type="button" class="btn btn-success text-white" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#Help" >allen zustimmen</button>
+        -->
       </div>
     </div>
   </div>
@@ -177,8 +186,46 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">verstanden</button>
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">verstanden</button>
       </div>
     </div>
   </div>
 </div>
+
+<!--Modal Help-->
+<div class="modal fade" id="Help" tabindex="-1" aria-labelledby="HelpModalLable" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="HelpModalLable">Kurz gesagt ...</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="vstack gap-4">
+          <div class="hstack">
+            <img class="border bordered-circle me-4" src="../../assets/images/icon_discount.png" width="50px" height="50px">
+            <b>... suche nach Discounterangeboten</b>
+          </div>
+          <div class="hstack">
+            <img class="border bordered-circle me-4" src="../../assets/images/icon_shoppinglist.png" width="50px" height="50px">
+            <b>... schreibe deine Einkaufslisten</b>
+          </div>
+          <div class="hstack">
+            <img class="border bordered-circle me-4" src="../../assets/images/icon_favorits.png" width="50px" height="50px">
+            <b>... schaue oder erstelle Dir deine Favoriten</b>
+          </div>
+          <div class="hstack">
+            <img class="border bordered-circle me-4" src="../../assets/images/icon_setting.png" width="50px" height="50px">
+            <b>... wähle deine Discounter aus</b>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">verstanden</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button class="btn btn-outline-light rounded-circle position-fixed top-50 start-25" id="ToTop" (click)="toTop()"><img src="../../assets/images/up-arrow.png" width="35px" height="35px"></button>

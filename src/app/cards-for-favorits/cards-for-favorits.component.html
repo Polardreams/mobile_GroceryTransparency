@@ -4,7 +4,7 @@
             <img src="{{selectFirstPicturefromPucURL(favorit.pic_url)}}" style="width:80px;height:80px;object-fit:cover;" (click)="getDetails(favorit.id)"/>
         </div>
         
-        <div class="col-4 fs-6" style="overflow: hidden; text-overflow: ellipsis;">
+        <div id="txt{{favorit.id}}" class="col-4 fs-6 overflow-hidden" (click)='showText("txt"+favorit.id)'><!--style="overflow: hidden; text-overflow: ellipsis;"-->
             <span >{{favorit.title}}</span>
         </div>
         
