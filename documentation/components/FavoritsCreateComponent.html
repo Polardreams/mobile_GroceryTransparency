@@ -325,8 +325,8 @@ and ini owner = 0 (user id = 0)</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="107"
-                            class="link-to-prism">src/app/favorits-create/favorits-create.component.ts:107</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">src/app/favorits-create/favorits-create.component.ts:113</a></div>
                 </td>
             </tr>
 
@@ -403,8 +403,8 @@ and ini owner = 0 (user id = 0)</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">src/app/favorits-create/favorits-create.component.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/favorits-create/favorits-create.component.ts:87</a></div>
                 </td>
             </tr>
 
@@ -758,6 +758,12 @@ export class FavoritsCreateComponent implements AfterViewInit{
    * @param event 
    */
   preview(event:any) {
+    var pic &#x3D; document.getElementById(&quot;preview&quot;) as HTMLElement;
+    pic.hidden &#x3D; false;
+
+    var icon &#x3D; document.getElementById(&quot;preview_icon&quot;) as HTMLElement;
+    icon.hidden &#x3D; true;
+
     const reader &#x3D; new FileReader();
     if(event.target.files &amp;&amp; event.target.files.length) {
       this.file &#x3D; event.target.files[0];
@@ -808,11 +814,17 @@ export class FavoritsCreateComponent implements AfterViewInit{
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div class&#x3D;&quot;hstack gap-1&quot;&gt;
+        &lt;h1&gt;Favoriten erstellen&lt;/h1&gt;
+        &lt;img src&#x3D;&quot;../../assets/images/icon_favorits.png&quot; width&#x3D;&quot;50px&quot; height&#x3D;&quot;50px&quot;&gt;
+    &lt;/div&gt;
+    
+    &lt;hr&gt;
 &lt;form id&#x3D;&quot;formCreate needs-validation&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart/form-data&quot; &gt;
     &lt;strong&gt;bitte keine Bilder größer als 3 MB hochladen&lt;/strong&gt;
-    &lt;input id&#x3D;&quot;PicDialog&quot; class&#x3D;&quot;form-control&quot; type&#x3D;&quot;file&quot; size&#x3D;3000000 name&#x3D;&quot;picture&quot; (change)&#x3D;&quot;preview($event)&quot;/&gt;
-    &lt;img src&#x3D;&quot;../../assets/images/camera.png&quot; style&#x3D;&quot;width:50px;height:50px&quot;&gt;
-    &lt;img id&#x3D;&quot;preview&quot; [src]&#x3D;&quot;imageSrc&quot; style&#x3D;&quot;width:150px;height:150px&quot;/&gt;
+    &lt;input id&#x3D;&quot;PicDialog&quot; class&#x3D;&quot;form-control mt-2&quot; type&#x3D;&quot;file&quot; size&#x3D;3000000 name&#x3D;&quot;picture&quot; (change)&#x3D;&quot;preview($event)&quot;/&gt;
+    &lt;img id&#x3D;&quot;preview_icon&quot; src&#x3D;&quot;../../assets/images/camera.png&quot; style&#x3D;&quot;width:50px;height:50px&quot;&gt;
+    &lt;img class&#x3D;&quot; mt-2&quot; id&#x3D;&quot;preview&quot; [src]&#x3D;&quot;imageSrc&quot; style&#x3D;&quot;width:150px;height:150px&quot; hidden&gt;
     &lt;label for&#x3D;&quot;cid&quot;&gt;Welcher Discounter bietet das Produkt an?&lt;/label&gt;
     &lt;select class&#x3D;&quot;form-select&quot; id&#x3D;&quot;cid&quot; &gt;
         &lt;option value&#x3D;1&gt;Lidl&lt;/option&gt;
@@ -837,9 +849,9 @@ export class FavoritsCreateComponent implements AfterViewInit{
     &lt;/select&gt;
     &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;price_per_amount&quot; placeholder&#x3D;&quot;100g für 1.55€&quot; [(ngModel)]&#x3D;&quot;newProduct.price_per_amount&quot; [ngModelOptions]&#x3D;&quot;{standalone: true}&quot;&gt;
     &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;hint&quot; placeholder&#x3D;&quot;Dein Hinweis&quot; [(ngModel)]&#x3D;&quot;newProduct.hint&quot; [ngModelOptions]&#x3D;&quot;{standalone: true}&quot;&gt;
-    &lt;button (click)&#x3D;&quot;postForm()&quot; &gt;erstelle Favorit&lt;/button&gt;
+    &lt;button class&#x3D;&quot;btn btn-primary me-2&quot; (click)&#x3D;&quot;postForm()&quot; &gt;erstelle Favorit&lt;/button&gt;
      
-    &lt;button class&#x3D;&quot;btn btn-secondary&quot; (click)&#x3D;&quot;goBack()&quot;&gt;zurück&lt;/button&gt;
+    &lt;button class&#x3D;&quot;btn btn-outline-dark&quot; (click)&#x3D;&quot;goBack()&quot;&gt;zurück&lt;/button&gt;
     
 &lt;/form&gt;
 &lt;/div&gt;</code></pre>
@@ -877,7 +889,7 @@ export class FavoritsCreateComponent implements AfterViewInit{
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container"><form id="formCreate needs-validation" method="post" enctype="multipart/form-data" >    <strong>bitte keine Bilder größer als 3 MB hochladen</strong>    <input id="PicDialog" class="form-control" type="file" size=3000000 name="picture" (change)="preview($event)"/>    <img src="../../assets/images/camera.png" style="width:50px;height:50px">    <img id="preview" [src]="imageSrc" style="width:150px;height:150px"/>    <label for="cid">Welcher Discounter bietet das Produkt an?</label>    <select class="form-select" id="cid" >        <option value=1>Lidl</option>        <option value=2>Rewe</option>        <option value=3>Kaufland</option>        <option value=4>Aldi Nord</option>        <option value=5>Aldi Süd</option>    </select>    <label for="price">Preis in €</label>    <input class="form-control" type="number" step="0.01" min="0" id="price" [(ngModel)]="newProduct.new_price" [ngModelOptions]="{standalone: true}"><!--regex-->    <input class="form-control" type="text" id="title" placeholder="Mein Produktname" [(ngModel)]="newProduct.title" [ngModelOptions]="{standalone: true}">    <input class="form-control" type="textarea" id="description" placeholder="Deine Produktbeschreibung" [(ngModel)]="newProduct.description" [ngModelOptions]="{standalone: true}">    <input class="form-control" type="text" id="amount" placeholder="1" [(ngModel)]="newProduct.amount" [ngModelOptions]="{standalone: true}">    <label for="amount_suffix">Mengeneinheit (bei Bedarf)</label>    <select class="form-select" id="amount_suffix">        <option>Stück</option>        <option></option>        <option>g</option>        <option>kg</option>        <option>l</option>        <option>ml</option>    </select>    <input class="form-control" type="text" id="price_per_amount" placeholder="100g für 1.55€" [(ngModel)]="newProduct.price_per_amount" [ngModelOptions]="{standalone: true}">    <input class="form-control" type="text" id="hint" placeholder="Dein Hinweis" [(ngModel)]="newProduct.hint" [ngModelOptions]="{standalone: true}">    <button (click)="postForm()" >erstelle Favorit</button>         <button class="btn btn-secondary" (click)="goBack()">zurück</button>    </form></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container">    <div class="hstack gap-1">        <h1>Favoriten erstellen</h1>        <img src="../../assets/images/icon_favorits.png" width="50px" height="50px">    </div>        <hr><form id="formCreate needs-validation" method="post" enctype="multipart/form-data" >    <strong>bitte keine Bilder größer als 3 MB hochladen</strong>    <input id="PicDialog" class="form-control mt-2" type="file" size=3000000 name="picture" (change)="preview($event)"/>    <img id="preview_icon" src="../../assets/images/camera.png" style="width:50px;height:50px">    <img class=" mt-2" id="preview" [src]="imageSrc" style="width:150px;height:150px" hidden>    <label for="cid">Welcher Discounter bietet das Produkt an?</label>    <select class="form-select" id="cid" >        <option value=1>Lidl</option>        <option value=2>Rewe</option>        <option value=3>Kaufland</option>        <option value=4>Aldi Nord</option>        <option value=5>Aldi Süd</option>    </select>    <label for="price">Preis in €</label>    <input class="form-control" type="number" step="0.01" min="0" id="price" [(ngModel)]="newProduct.new_price" [ngModelOptions]="{standalone: true}"><!--regex-->    <input class="form-control" type="text" id="title" placeholder="Mein Produktname" [(ngModel)]="newProduct.title" [ngModelOptions]="{standalone: true}">    <input class="form-control" type="textarea" id="description" placeholder="Deine Produktbeschreibung" [(ngModel)]="newProduct.description" [ngModelOptions]="{standalone: true}">    <input class="form-control" type="text" id="amount" placeholder="1" [(ngModel)]="newProduct.amount" [ngModelOptions]="{standalone: true}">    <label for="amount_suffix">Mengeneinheit (bei Bedarf)</label>    <select class="form-select" id="amount_suffix">        <option>Stück</option>        <option></option>        <option>g</option>        <option>kg</option>        <option>l</option>        <option>ml</option>    </select>    <input class="form-control" type="text" id="price_per_amount" placeholder="100g für 1.55€" [(ngModel)]="newProduct.price_per_amount" [ngModelOptions]="{standalone: true}">    <input class="form-control" type="text" id="hint" placeholder="Dein Hinweis" [(ngModel)]="newProduct.hint" [ngModelOptions]="{standalone: true}">    <button class="btn btn-primary me-2" (click)="postForm()" >erstelle Favorit</button>         <button class="btn btn-outline-dark" (click)="goBack()">zurück</button>    </form></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FavoritsCreateComponent'};

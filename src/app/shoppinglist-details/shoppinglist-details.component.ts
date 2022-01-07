@@ -221,12 +221,17 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
 
   addCustomEntry(note:string) {
     this.service_ManageingShoppinglist.addCustomEntryToShoppingList(this.id, note);
-
+    this.customText = "";
     this.alllists.Shop.forEach((element) => {
       if (element.id == this.id) {
         this.products = element.products;
       }
     });
+    this.closeCollpase();
+  }
+
+  closeCollpase() {
+    document.getElementById('ShopDetailMenu')?.setAttribute("class", "collapse position-fixed bg-white");
   }
 
 }

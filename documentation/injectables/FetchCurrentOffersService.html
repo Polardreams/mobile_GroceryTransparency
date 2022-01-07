@@ -302,6 +302,7 @@ export class FetchCurrentOffersService {
   }
 
   getcurrentProduct(sid:string|null) {
+    console.log(&quot;sid: &quot; + sid);
     if (sid!&#x3D;null) {
       return this.http.get&lt;GT_Response_List&gt;(environment.backendUrl+&#x27;getCurrentProducts.php?sid&#x3D;&#x27;+sid);
     } else {

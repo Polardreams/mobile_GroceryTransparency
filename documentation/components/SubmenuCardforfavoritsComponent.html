@@ -180,6 +180,9 @@
                                 <a href="#addProductToShoppingList" >addProductToShoppingList</a>
                             </li>
                             <li>
+                                <a href="#closeCollpase" >closeCollpase</a>
+                            </li>
+                            <li>
                                 <a href="#ngAfterViewInit" >ngAfterViewInit</a>
                             </li>
                             <li>
@@ -421,6 +424,43 @@
                     </div>
                     <div class="io-description">
                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeCollpase"></a>
+                    <span class="name">
+                        <span ><b>closeCollpase</b></span>
+                        <a href="#closeCollpase"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeCollpase()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/submenu-cardforfavorits/submenu-cardforfavorits.component.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
                     </div>
                 </td>
             </tr>
@@ -727,7 +767,7 @@ export class SubmenuCardforfavoritsComponent implements AfterViewInit, OnChanges
     this.service_Favorits.getAllLists().subscribe((datas) &#x3D;&gt; {
       this.alllists &#x3D; datas;
     });
-
+    this.closeCollpase();
   }
   
   /**
@@ -737,6 +777,11 @@ export class SubmenuCardforfavoritsComponent implements AfterViewInit, OnChanges
   addProductToShoppingList(sid:number) {
     this.service.setAlllist(this.alllists);
     this.service.addProductToShoppingList(sid, this.id);
+    this.closeCollpase();
+  }
+
+  closeCollpase() {
+    document.getElementById(&#x27;target&#x27;+this.id)?.setAttribute(&quot;class&quot;, &quot;collapse mt-2&quot;);
   }
 
 }
@@ -755,11 +800,6 @@ export class SubmenuCardforfavoritsComponent implements AfterViewInit, OnChanges
         &lt;div class&#x3D;&quot;col&quot;&gt;
           &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; style&#x3D;&quot;padding-left: 0px;&quot; id&#x3D;&quot;addShop&quot; data-bs-toggle&#x3D;&quot;modal&quot; data-bs-target&#x3D;&quot;#modal&quot;&gt;
               &lt;img src&#x3D;&quot;../../assets/images/icon_shoppinglist.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
-          &lt;/button&gt;
-      &lt;/div&gt;
-      &lt;div class&#x3D;&quot;col&quot;&gt;
-          &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; style&#x3D;&quot;padding-left: 0px;&quot;&gt;
-              &lt;img src&#x3D;&quot;../../assets/images/teilen.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
           &lt;/button&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -823,7 +863,7 @@ export class SubmenuCardforfavoritsComponent implements AfterViewInit, OnChanges
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="collapse mt-2" id="target">  <div class="card card-body border-light position-absolute end-0 me-5">    <div class="row">        <div class="col" >          <button class="btn btn-primary-outline" style="padding-left: 0px;" (click)="removeProductFromFavoris()">              <img src="../../assets/images/star_grey.png" width="25px" height="25px"/>          </button>        </div>        <div class="col">          <button class="btn btn-primary-outline" style="padding-left: 0px;" id="addShop" data-bs-toggle="modal" data-bs-target="#modal">              <img src="../../assets/images/icon_shoppinglist.png" width="25px" height="25px"/>          </button>      </div>      <div class="col">          <button class="btn btn-primary-outline" style="padding-left: 0px;">              <img src="../../assets/images/teilen.png" width="25px" height="25px"/>          </button>      </div>    </div>  </div></div><button id="btn" class="btn btn-primary-outline fs-1" style="padding-left: 0px;" type="button" data-bs-toggle="collapse" data-bs-target="#target" aria-expanded="false" aria-controls="collapseExample">    ...</button><div class="modal" tabindex="-1" id="modal">  <div class="modal-dialog">    <div class="modal-content">      <div class="modal-header">        <h5 class="modal-title">Modal title</h5>        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>      </div>      <div class="modal-body">        <div *ngFor="let item of shoppinglists">          <button class="btn btn-light" data-bs-dismiss="modal" (click)="addProductToShoppingList(item.id)" >{{item.name}}</button>        </div>      </div>      <div class="modal-footer">        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>      </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="collapse mt-2" id="target">  <div class="card card-body border-light position-absolute end-0 me-5">    <div class="row">        <div class="col" >          <button class="btn btn-primary-outline" style="padding-left: 0px;" (click)="removeProductFromFavoris()">              <img src="../../assets/images/star_grey.png" width="25px" height="25px"/>          </button>        </div>        <div class="col">          <button class="btn btn-primary-outline" style="padding-left: 0px;" id="addShop" data-bs-toggle="modal" data-bs-target="#modal">              <img src="../../assets/images/icon_shoppinglist.png" width="25px" height="25px"/>          </button>      </div>    </div>  </div></div><button id="btn" class="btn btn-primary-outline fs-1" style="padding-left: 0px;" type="button" data-bs-toggle="collapse" data-bs-target="#target" aria-expanded="false" aria-controls="collapseExample">    ...</button><div class="modal" tabindex="-1" id="modal">  <div class="modal-dialog">    <div class="modal-content">      <div class="modal-header">        <h5 class="modal-title">Modal title</h5>        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>      </div>      <div class="modal-body">        <div *ngFor="let item of shoppinglists">          <button class="btn btn-light" data-bs-dismiss="modal" (click)="addProductToShoppingList(item.id)" >{{item.name}}</button>        </div>      </div>      <div class="modal-footer">        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>      </div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SubmenuCardforfavoritsComponent'};

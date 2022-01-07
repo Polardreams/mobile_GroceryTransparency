@@ -3,10 +3,11 @@
 
     <div class="hstack gap-2">
         <span class="display-12">{{product.validity}}</span>
-        <button class="btn btn-primary-outline ">
-            <img class="border rounded-circle" src="../../assets/images/icon_favorits.png" width="35px" height="35px"/>
-            <span style="position: relative; top:-30px;">{{product.favCount}}</span> <!--style="position: relative; top:-30px;"-->
-        </button>
+
+        <div class="border">
+            <img class="border rounded-circle" src="../../assets/images/icon_favorits.png" width="35px" height="35px"/><br>
+            <span>Fav: {{product.favCount}}</span>
+        </div>
 
     </div>
 

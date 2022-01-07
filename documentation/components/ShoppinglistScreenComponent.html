@@ -430,19 +430,20 @@ export class ShoppinglistScreenComponent implements AfterViewInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot;&gt;
-    &lt;nav&gt;
-        &lt;app-navigation&gt;&lt;/app-navigation&gt;
-    &lt;/nav&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Meine Einkaufslisten&lt;/h1&gt;
-        &lt;hr&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        &lt;!--card for shoppinglist--&gt;
-        &lt;app-card-for-shoppinglist [_alllists]&#x3D;&quot;alllists&quot;&gt;&lt;/app-card-for-shoppinglist&gt;
-    &lt;/main&gt;
-&lt;/div&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;nav&gt;
+    &lt;app-navigation&gt;&lt;/app-navigation&gt;
+&lt;/nav&gt;
+
+&lt;div class&#x3D;&quot;w-100&quot; class&#x3D;&quot;text-center&quot;&gt;
+    &lt;img class&#x3D;&quot;my-2&quot; width&#x3D;&quot;75px&quot; height&#x3D;&quot;75px&quot; style&#x3D;&quot;object-fit:cover&quot; src&#x3D;&quot;../../assets/images/icon_shoppinglist.png&quot;/&gt;
+    &lt;hr&gt;
+&lt;/div&gt;
+
+&lt;main&gt;
+    &lt;!--card for shoppinglist--&gt;
+    &lt;app-card-for-shoppinglist [_alllists]&#x3D;&quot;alllists&quot;&gt;&lt;/app-card-for-shoppinglist&gt;
+&lt;/main&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -477,7 +478,7 @@ export class ShoppinglistScreenComponent implements AfterViewInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container">    <nav>        <app-navigation></app-navigation>    </nav>    <header>        <h1>Meine Einkaufslisten</h1>        <hr>    </header>    <main>        <!--card for shoppinglist-->        <app-card-for-shoppinglist [_alllists]="alllists"></app-card-for-shoppinglist>    </main></div></div>'
+        var COMPONENT_TEMPLATE = '<div><nav>    <app-navigation></app-navigation></nav><div class="w-100" class="text-center">    <img class="my-2" width="75px" height="75px" style="object-fit:cover" src="../../assets/images/icon_shoppinglist.png"/>    <hr></div><main>    <!--card for shoppinglist-->    <app-card-for-shoppinglist [_alllists]="alllists"></app-card-for-shoppinglist></main></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ShoppinglistScreenComponent'};

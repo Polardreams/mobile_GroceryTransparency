@@ -180,6 +180,9 @@ Main Features are:
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#closeCollpase" >closeCollpase</a>
+                            </li>
+                            <li>
                                 <a href="#copyShoppingList" >copyShoppingList</a>
                             </li>
                             <li>
@@ -306,6 +309,43 @@ Main Features are:
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="closeCollpase"></a>
+                    <span class="name">
+                        <span ><b>closeCollpase</b></span>
+                        <a href="#closeCollpase"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeCollpase()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:73</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="copyShoppingList"></a>
                     <span class="name">
                         <span ><b>copyShoppingList</b></span>
@@ -322,8 +362,8 @@ Main Features are:
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/submenu-cardforshoppinglist/submenu-cardforshoppinglist.component.ts:68</a></div>
                 </td>
             </tr>
 
@@ -673,6 +713,7 @@ export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
    * @param id account id
    */
   deleteShoppingList (id:number) {
+    this.closeCollpase();
     this.service.removeShoppingListfromDBNSession(id);
   }
 
@@ -681,7 +722,12 @@ export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
    * @param id shoppinglist id
    */
   copyShoppingList(id:number) {
+    this.closeCollpase();
     this.service.copyShoppingListintoDBNSession(id);
+  }
+
+  closeCollpase() {
+    document.getElementById(&#x27;target&#x27;+this.id)?.setAttribute(&quot;class&quot;, &quot;collapse mt-2&quot;);
   }
 
 }
@@ -701,11 +747,6 @@ export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
           &lt;div class&#x3D;&quot;col&quot;&gt;
             &lt;button class&#x3D;&quot;btn btn-primary-outline&quot; (click)&#x3D;&quot;copyShoppingList(id)&quot;&gt;
                 &lt;img src&#x3D;&quot;../../assets/images/copy.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
-            &lt;/button&gt;
-        &lt;/div&gt;
-        &lt;div class&#x3D;&quot;col&quot;&gt;
-            &lt;button class&#x3D;&quot;btn btn-primary-outline&quot;&gt;
-                &lt;img src&#x3D;&quot;../../assets/images/teilen.png&quot; width&#x3D;&quot;25px&quot; height&#x3D;&quot;25px&quot;/&gt;
             &lt;/button&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -750,7 +791,7 @@ export class SubmenuCardforshoppinglistComponent implements AfterViewInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>  <!--Collapse-->  <div class="collapse mt-2" id="target">    <div class="card card-body border-light position-absolute end-0 me-5">      <div class="row">          <div class="col" >            <button class="btn btn-primary-outline" (click)="deleteShoppingList(id)">                <img src="../../assets/images/bin.png" width="25px" height="25px"/>            </button>          </div>          <div class="col">            <button class="btn btn-primary-outline" (click)="copyShoppingList(id)">                <img src="../../assets/images/copy.png" width="25px" height="25px"/>            </button>        </div>        <div class="col">            <button class="btn btn-primary-outline">                <img src="../../assets/images/teilen.png" width="25px" height="25px"/>            </button>        </div>      </div>    </div>  </div>  <button id="btn" class="btn btn-primary-outline fs-1" type="button" data-bs-target="#target" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">    ...  </button></div>'
+        var COMPONENT_TEMPLATE = '<div>  <!--Collapse-->  <div class="collapse mt-2" id="target">    <div class="card card-body border-light position-absolute end-0 me-5">      <div class="row">          <div class="col" >            <button class="btn btn-primary-outline" (click)="deleteShoppingList(id)">                <img src="../../assets/images/bin.png" width="25px" height="25px"/>            </button>          </div>          <div class="col">            <button class="btn btn-primary-outline" (click)="copyShoppingList(id)">                <img src="../../assets/images/copy.png" width="25px" height="25px"/>            </button>        </div>      </div>    </div>  </div>  <button id="btn" class="btn btn-primary-outline fs-1" type="button" data-bs-target="#target" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">    ...  </button></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SubmenuCardforshoppinglistComponent'};

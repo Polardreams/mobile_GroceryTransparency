@@ -614,8 +614,13 @@ export class FavoritsScreenComponent implements AfterViewInit, OnChanges {
     &lt;app-navigation&gt;&lt;/app-navigation&gt;
 &lt;/nav&gt;
 
+&lt;div class&#x3D;&quot;w-100&quot; class&#x3D;&quot;text-center&quot;&gt;
+    &lt;img class&#x3D;&quot;my-2&quot; width&#x3D;&quot;75px&quot; height&#x3D;&quot;75px&quot; style&#x3D;&quot;object-fit:cover&quot; src&#x3D;&quot;../../assets/images/icon_favorits.png&quot;/&gt;
+    &lt;hr&gt;
+&lt;/div&gt;
+
 &lt;main&gt;
-    &lt;button class&#x3D;&quot;btn btn-primary position-fixed start-50 bottom-50&quot; routerLink&#x3D;&quot;../favorits-create&quot;&gt;erstelle Favorit&lt;/button&gt;
+    &lt;button class&#x3D;&quot;btn btn-primary&quot; routerLink&#x3D;&quot;../favorits-create&quot;&gt;erstelle Favorit&lt;/button&gt;
     &lt;!--cards for favorits--&gt;
     &lt;app-cards-for-favorits [favorits]&#x3D;&quot;favorits&quot; [alllists]&#x3D;&quot;alllists&quot; [service_managingFavorits]&#x3D;&quot;service_managingFavorits&quot;&gt;&lt;/app-cards-for-favorits&gt;
 &lt;/main&gt;
@@ -655,7 +660,7 @@ export class FavoritsScreenComponent implements AfterViewInit, OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><nav>    <app-navigation></app-navigation></nav><main>    <button class="btn btn-primary position-fixed start-50 bottom-50" routerLink="../favorits-create">erstelle Favorit</button>    <!--cards for favorits-->    <app-cards-for-favorits [favorits]="favorits" [alllists]="alllists" [service_managingFavorits]="service_managingFavorits"></app-cards-for-favorits></main></div>'
+        var COMPONENT_TEMPLATE = '<div><nav>    <app-navigation></app-navigation></nav><div class="w-100" class="text-center">    <img class="my-2" width="75px" height="75px" style="object-fit:cover" src="../../assets/images/icon_favorits.png"/>    <hr></div><main>    <button class="btn btn-primary" routerLink="../favorits-create">erstelle Favorit</button>    <!--cards for favorits-->    <app-cards-for-favorits [favorits]="favorits" [alllists]="alllists" [service_managingFavorits]="service_managingFavorits"></app-cards-for-favorits></main></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FavoritsScreenComponent'};

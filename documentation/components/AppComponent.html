@@ -310,9 +310,15 @@ export class AppComponent {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;activate&#x3D;&#x3D;false; else elseprivacy&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">
+&lt;div class&#x3D;&quot;text-center&quot;&gt;
+    &lt;h1&gt;GroceryTransparency Beta&lt;/h1&gt;
+    &lt;hr&gt;
+&lt;/div&gt;
+&lt;div *ngIf&#x3D;&quot;activate&#x3D;&#x3D;false; else elseprivacy&quot;&gt;
     &lt;span&gt;Nutzer Account wird erstellt, bitte warten ...&lt;/span&gt;
 &lt;/div&gt;
+
 &lt;ng-template #elseprivacy&gt;
     &lt;router-outlet&gt;&lt;/router-outlet&gt;    
 &lt;/ng-template&gt;
@@ -351,7 +357,7 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="activate==false; else elseprivacy">    <span>Nutzer Account wird erstellt, bitte warten ...</span></div><ng-template #elseprivacy>    <router-outlet></router-outlet>    </ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="text-center">    <h1>GroceryTransparency Beta</h1>    <hr></div><div *ngIf="activate==false; else elseprivacy">    <span>Nutzer Account wird erstellt, bitte warten ...</span></div><ng-template #elseprivacy>    <router-outlet></router-outlet>    </ng-template></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardForMainComponent', 'selector': 'app-card-for-main'},{'name': 'CardForShoppinglistComponent', 'selector': 'app-card-for-shoppinglist'},{'name': 'CardsForFavoritsComponent', 'selector': 'app-cards-for-favorits'},{'name': 'FavoritsCreateComponent', 'selector': 'app-favorits-create'},{'name': 'FavoritsScreenComponent', 'selector': 'app-favorits-screen'},{'name': 'MainScreenComponent', 'selector': 'app-main-screen'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'ProductDetailviewComponent', 'selector': 'app-product-detailview'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'ShoppinglistDetailsComponent', 'selector': 'app-shoppinglist-details'},{'name': 'ShoppinglistScreenComponent', 'selector': 'app-shoppinglist-screen'},{'name': 'SubmenuCardforfavoritsComponent', 'selector': 'app-submenu-cardforfavorits'},{'name': 'SubmenuCardformainComponent', 'selector': 'app-submenu-cardformain'},{'name': 'SubmenuCardforshoppinglistComponent', 'selector': 'app-submenu-cardforshoppinglist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};
