@@ -3,10 +3,13 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
 
 After downloading from Github, execute the following commands:
+# install all nessessary node modules
 npm install node-modules // install all nessessary node modules
-ng serve --open //exeuting (hot reload mode) 
+# executing (hot reload mode) 
+ng serve --open
 
-for more informationen check out dosumentatrion folder or visit: #
+# for more informationen check out folder documentation
+ or visit: #
 https://www.vergleichdiscounter.de/mobilebackend/documentation/index.html
 
 
