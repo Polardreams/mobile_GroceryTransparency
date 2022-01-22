@@ -204,6 +204,9 @@
                                 <a href="#addCustomEntry" >addCustomEntry</a>
                             </li>
                             <li>
+                                <a href="#closeCollpase" >closeCollpase</a>
+                            </li>
+                            <li>
                                 <a href="#closeFullscreen" >closeFullscreen</a>
                             </li>
                             <li>
@@ -422,6 +425,43 @@
                     </div>
                     <div class="io-description">
                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeCollpase"></a>
+                    <span class="name">
+                        <span ><b>closeCollpase</b></span>
+                        <a href="#closeCollpase"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeCollpase()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="233"
+                            class="link-to-prism">src/app/shoppinglist-details/shoppinglist-details.component.ts:233</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
                     </div>
                 </td>
             </tr>
@@ -1365,12 +1405,17 @@ export class ShoppinglistDetailsComponent implements AfterViewInit, OnDestroy {
 
   addCustomEntry(note:string) {
     this.service_ManageingShoppinglist.addCustomEntryToShoppingList(this.id, note);
-
+    this.customText &#x3D; &quot;&quot;;
     this.alllists.Shop.forEach((element) &#x3D;&gt; {
       if (element.id &#x3D;&#x3D; this.id) {
         this.products &#x3D; element.products;
       }
     });
+    this.closeCollpase();
+  }
+
+  closeCollpase() {
+    document.getElementById(&#x27;ShopDetailMenu&#x27;)?.setAttribute(&quot;class&quot;, &quot;collapse position-fixed bg-white&quot;);
   }
 
 }
